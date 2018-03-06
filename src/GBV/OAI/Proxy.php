@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace GBV;
+namespace GBV\OAI;
 
 use Psr\Http\Message\RequestInterface;
 use GuzzleHttp\Psr7\Response;
@@ -10,11 +10,8 @@ use GuzzleHttp\Client;
 /**
  * OAI-PMH Proxy implemented as Guzzle Handler.
  */
-class OAIProxy
+class Proxy
 {
-    protected $backend;
-    protected $baseUrl;
-
     public function __construct(array $config)
     {
         $this->backend = $config['backend'];
@@ -22,6 +19,7 @@ class OAIProxy
         $this->client  = $config['client'] ?? new Client([
             'http_errors' => false
         ]);
+        $this->xslt = $config['xslt'] ?? '';
     }
 
     public function __invoke(RequestInterface $request)
@@ -45,6 +43,13 @@ class OAIProxy
 
     public function transform(string $body)
     {
+        // add link to XSLT
+        if ($this->xslt) {
+            $xslt = '<?xml-stylesheet type="text/xsl" href="'.$this->xslt.'"?>';
+            $body = preg_replace("/\?>$/m", "?>\n$xslt", $body);
+        }
+
+        // rewrite base URL
         $body = preg_replace(
             "/<request>[^<]*</m",
             "<request>{$this->baseUrl}<",

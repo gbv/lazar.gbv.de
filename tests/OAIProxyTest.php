@@ -1,6 +1,6 @@
 <?php
 
-use GBV\OAIProxy;
+use GBV\OAI\Proxy;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
@@ -23,7 +23,7 @@ class OAIProxyTest extends TestCase
     {
         $mock = new MockHandler([ static::xmlResponse('badVerb') ]);
         $handler = HandlerStack::create($mock);
-        $proxy = new OAIProxy([
+        $proxy = new Proxy([
             'backend' => 'http://example.com/',
             'baseUrl' => 'http://example.org/',
             'client' => new Client(['handler' => $handler]),
