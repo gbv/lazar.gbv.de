@@ -1,12 +1,26 @@
-# lazar-oai
+# lazar.gbv.de
 
-OAI-PMH Dokumentation und Proxy für [LaZAR](http://lazar.gbv.de/).
+Dieses git-Repository enthält den Quellcode der Homepage des DFG-Projekt LaZAR
+unter [LaZAR](http://lazar.gbv.de/).
 
-## Schnittmengen von Sets
+## Umfang
 
-Der OAI-Proxy erweitert die OAI-Schnittstelle des zugrunde liegenden
-Datenbanksystems easyDB um Schnittmengen von sets für `ListRecords` Abfragen.
+- Startseite
+- Schnittstellen
+    - OAI-PMH Proxy
+    - Linked Open Data (RDF)
 
-*Achtung:* Set-Schnittmengen tauchen nicht unter `ListSets` auf und werden bei
-`ListIdentifiers` nicht unterstützt.
+### OAI-PMH-Proxy
 
+Der OAI-PMH-Proxy erweitert die OAI-Schnittstelle des zugrunde liegenden
+Datenbanksystems easyDB um Schnittmengen von sets für Abfragen vom Typ
+`ListRecords`.
+
+## Installation
+
+Benötigt wird mindestens PHP 7 und composer zur Paketverwaltung.
+
+    $ composer update --no-dev
+
+Das Einstiegsverzeichnis für den Webserver ist `public/`. Für Apache ist eine
+`.htaccess` enthalten.
