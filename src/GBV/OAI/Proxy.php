@@ -6,47 +6,77 @@ use Psr\Http\Message\RequestInterface;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Client;
+use SimpleXMLElement;
 
 /**
  * OAI-PMH Proxy implemented as Guzzle Handler.
+ *
+ * The proxy extends an OAI-PMH service with
+ *
+ * - rewriting of the baseURL
+ * - injection of processing instructions, especially XSLT
+ * - support of set intersection (only for ListRecords)
+ * - additional metadata formats (not implemented yet)
  */
 class Proxy
 {
+    // only these HTTP query arguments are passed to the OAI-PMH backend
+    const OAI_ARGUMENTS = [
+        'verb', 'identifier', 'metadataPrefix',
+        'from', 'until', 'set', 'resumptionToken'
+    ];
+
+    const OAI_NS = 'http://www.openarchives.org/OAI/2.0/';
+
     public function __construct(array $config)
     {
-        $this->backend = $config['backend'];
-        $this->baseUrl = $config['baseUrl'];
+        $this->backend = $config['backend'];  // required
+        $this->baseUrl = $config['baseUrl'];  // required
         $this->client  = $config['client'] ?? new Client([
             'http_errors' => false
         ]);
-        $this->xslt = $config['xslt'] ?? '';
+
+        // processing instructions
+        $this->instructions = $config['instructions'] ?? [];
+        if ($config['xslt'] ?? false) {
+            $this->instructions['xml-stylesheet'] =
+                'type="text/xsl" href="'.$config['xslt'].'"';
+        }
     }
 
     public function __invoke(RequestInterface $request)
     {
-        $query = $request->getUri()->getQuery();
-
         $headers = $request->getHeaders();
         $headers = array_diff_key($headers, array_flip(['Cookie', 'Host']));
+        
+        parse_str($request->getUri()->getQuery(), $query);
+        $query = $this->transformQuery($query);
 
+        // pass query to OAI-PMH backend
+        $args = array_intersect_key($query, array_flip(static::OAI_ARGUMENTS));
         $response = $this->client->request(
             $request->getMethod(),
             $this->backend,
-            ['headers' => $headers, 'query' => $query]
+            [ 'headers' => $headers, 'query' => $args ]
         );
+        # error_log($this->backend.'?'.http_build_query($args));
 
-        $body = $this->transform((string)$response->getBody());
+        // transform response and return as Promise
+        $body = $this->transformBody((string)$response->getBody(), $query);
         $response = $response->withBody(Psr7\stream_for($body));
 
         return \GuzzleHttp\Promise\promise_for($response);
     }
 
-    public function transform(string $body)
+    public function transformBody(string $body, array $query): string
     {
-        // add link to XSLT
-        if ($this->xslt) {
-            $xslt = '<?xml-stylesheet type="text/xsl" href="'.$this->xslt.'"?>';
-            $body = preg_replace("/\?>$/m", "?>\n$xslt", $body);
+        // add processing instructions
+        if (count($this->instructions)) {
+            $pis = [];
+            foreach ($this->instructions as $name => $content) {
+                $pis[] = "<?$name $content?>";
+            }
+            $body = preg_replace("/\?>$/m", "?>\n".implode("\n", $pis), $body);
         }
 
         // rewrite base URL
@@ -56,30 +86,54 @@ class Proxy
             $body
         );
 
-/*
+        $verb = $query['verb'] ?? '';
 
-$verb = $query['verb'] ?? '';
-
-// split sets if multiple sets provided as comma-separated list
-$sets = explode(',', $query['set'] ?? '');
-if (count($sets) > 1) {
-    $query['set'] = $sets[0];
-}
-
-// helper function to filter and transform records
-function filter_body($body)
-{
-    global $sets;
-    $xml = new SimpleXMLElement($body);
-
-    // TODO: filter records with sets
-    // TODO: transform with XSLT if requested
-
-    return $xml->asXML();
-}
-
-*/
+        if (count($query['sets']) > 1 && $verb == 'ListRecords') {
+            $xml = new SimpleXMLElement($body);
+            $body = $this->filterXML($xml, $query)->asXML();
+        }
 
         return $body;
+    }
+
+    public function transformQuery(array $query): array
+    {
+        // split sets if multiple sets provided as comma-separated list
+        if (isset($query['set'])) {
+            $sets = explode(',', $query['set']);
+            if (count($sets) > 1) {
+                $query['set'] = $sets[0];
+            }
+            $query['sets'] = $sets;
+        } else {
+            $query['sets'] = [];
+        }
+
+        return $query;
+    }
+
+    public function filterXML(SimpleXMLElement $xml, array $query): SimpleXMLElement
+    {
+        $xml->registerXPathNamespace('oai', static::OAI_NS);
+
+        // filter records with sets
+        $sets = $query['sets'];
+        if (count($sets) > 1) {
+            $records = $xml->xpath('//oai:record');
+            foreach ($records as $rec) {
+                $rec->registerXPathNamespace('oai', static::OAI_NS);
+                $setSpecs = array_map(
+                    function ($setSpec) {
+                        return (string)$setSpec;
+                    },
+                    $rec->xpath('oai:header/oai:setSpec')
+                );
+                if (array_intersect($sets, $setSpecs) != $sets) {
+                    unset($rec[0][0]);
+                }
+            }
+        }
+
+        return $xml;
     }
 }

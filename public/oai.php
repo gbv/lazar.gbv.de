@@ -6,7 +6,8 @@ require '../vendor/autoload.php';
 $proxy = new GBV\OAI\Proxy([
     'backend' => 'https://lazardb.gbv.de/api/plugin/base/oai/oai/request',
     'baseUrl' => 'http://lazar.gbv.de/api/oai',
-    'xslt'    => '/oai.xsl',
+//    'xslt'    => '/oai.xsl',
+    'instructions' => ['css' => 'bootstrap.css'],
 ]);
 
 // handle request
