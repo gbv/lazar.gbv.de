@@ -6,6 +6,8 @@
        http://www.php-fig.org/psr/psr-2/ -->
   <rule ref="PSR2">
     <exclude name="PSR1.Classes.ClassDeclaration.MissingNamespace"/>
+    <exclude-pattern>*.js</exclude-pattern>
+    <exclude-pattern>*.css</exclude-pattern>
   </rule>
 
   <file>src</file>

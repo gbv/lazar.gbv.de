@@ -81,8 +81,8 @@ class Proxy
 
         // rewrite base URL
         $body = preg_replace(
-            "/<request>[^<]*</m",
-            "<request>{$this->baseUrl}<",
+            "/>[^<]*<\/request>/m",
+            ">{$this->baseUrl}</request>",
             $body
         );
 
