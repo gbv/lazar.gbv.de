@@ -17,6 +17,9 @@ use SimpleXMLElement;
  * - injection of processing instructions, especially XSLT
  * - support of set intersection (only for ListRecords)
  * - additional metadata formats (not implemented yet)
+ *
+ * See <https://packagist.org/packages/picturae/oai-pmh> for a full 
+ * OAI-PMH server implementation in PHP.
  */
 class Proxy
 {
