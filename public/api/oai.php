@@ -7,7 +7,11 @@ $proxy = new GBV\OAI\Proxy([
     'backend' => 'https://lazardb.gbv.de/api/plugin/base/oai/oai/request',
     'baseUrl' => 'http://lazar.gbv.de/api/oai',
     'xslt'    => 'oai.xsl',
-    'instructions' => ['css' => '../css/bootstrap.min.css'],
+    'instructions' => [
+        'css' => '../css/bootstrap.min.css ../css/bootstrap-lazar.css',
+        'brand' => 'LaZAR OAI-PMH',
+        'brandUrl' => '../api'
+    ],
 ]);
 
 // handle request

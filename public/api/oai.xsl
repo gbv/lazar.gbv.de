@@ -7,13 +7,12 @@
   Southampton, licensed under the GNU General Public License:
   <https://www.gnu.org/licenses/gpl-3.0.en.html>
 
-  Copyright of the original script by University of Southampton 
-  and of modification that led to this script by Jakob Voß.
-
+  Copyright of the original script by University of Southampton.
+  Copyright if this script by Jakob Voß.
 -->
-  
+
 <!--
-  
+
   Not Done
     The 'about' section of 'record'
     The 'compession' part of 'identify'
@@ -26,9 +25,13 @@
 
 <xsl:stylesheet
     version="1.0"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:oai="http://www.openarchives.org/OAI/2.0/"
 >
+
+<!-- custom configuration -->
+<xsl:param name="brand" select="/processing-instruction('brand')"/>
+<xsl:param name="brandUrl" select="/processing-instruction('brandUrl')"/>
 
 <!-- link to this script -->
 <xsl:param name="xslt" select="substring-before(substring-after(/processing-instruction('xml-stylesheet'),'href=&quot;'),'&quot;')"
@@ -37,6 +40,7 @@
 <!-- link to optional CSS file (Bootstrap CSS 4 recommended) -->
 <xsl:param name="css" select="/processing-instruction('css')" />
 
+<!-- current request and verb -->
 <xsl:param name="request" select="/oai:OAI-PMH/oai:request" />
 <xsl:param name="verb" select="$request/@verb" />
 
@@ -47,14 +51,29 @@
 
 <xsl:output method="html"/>
 
+<!-- process space separated list of CSS files -->
+<xsl:template name="css">
+  <xsl:param name="url" select="normalize-space($css)"/>
+  <xsl:if test="string-length($url)">
+    <xsl:if test="not(contains($url, ' '))">
+      <link rel="stylesheet" href="{$url}"/>
+    </xsl:if>
+    <xsl:if test="contains($url, ' ')">
+      <link rel="stylesheet" href="{substring-before($url,' ')}"/>
+      <xsl:call-template name="css">
+        <xsl:with-param name="url" select="substring-after($url, ' ')"/>
+      </xsl:call-template>
+    </xsl:if>
+  </xsl:if>
+</xsl:template>
+
+
 <xsl:template match="/">
   <html lang="en">
     <head>
       <meta charset="utf-8"/>
       <title>OAI 2.0 Request Results</title>
-      <xsl:if test="$css">
-        <link rel="stylesheet" href="{$css}"/>
-      </xsl:if>
+      <xsl:call-template name="css"/>
     </head>
     <body>
       <xsl:call-template name="navbar"/>
@@ -69,7 +88,7 @@
 <xsl:template name="footer">
   <hr/>
   <p>
-    This view of an   
+    This view of an
     <a href="https://www.openarchives.org/pmh/">OAI-PMH 2.0</a>
     response has been created by <a href="{$xslt}">an XSLT script</a>
     based on a script by Christopher Gutteridge, licensed
@@ -78,14 +97,19 @@
 </xsl:template>
 
 <xsl:template name="navbar">
-  <nav class="navbar navbar-expand navbar-light bg-light">
+  <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
+    <xsl:if test="$brand">
+      <a class="navbar-brand" href="{$brandUrl}">
+        <xsl:value-of select="$brand"/>
+      </a>
+    </xsl:if>
     <ul class="navbar-nav">
       <li>
         <xsl:attribute name="class">nav-item
           <xsl:if test="$verb ='Identify'">active</xsl:if>
         </xsl:attribute>
         <a class="nav-link" href="?verb=Identify">Identify</a>
-      </li> 
+      </li>
       <li>
         <xsl:attribute name="class">nav-item
           <xsl:if test="$verb ='ListRecords'">active</xsl:if>
@@ -218,12 +242,12 @@
       </tr>
     </thead>
     <tbody>
-      <xsl:apply-templates select="oai:header"/>
+      <xsl:apply-templates select="oai:header" mode="list"/>
     </tbody>
   </table>
 </xsl:template>
 
-<xsl:template match="oai:header">
+<xsl:template match="oai:header" mode="list">
   <tr>
     <td>
       <code><xsl:value-of select="oai:identifier"/></code>
@@ -234,8 +258,6 @@
         This record has been deleted.
       </xsl:if>
     </td>
-    <!-- TODO -->
-    <!--xsl:apply-templates select="oai:setSpec" /-->
     <td>
       <a href="?verb=GetRecord&amp;metadataPrefix=oai_dc&amp;identifier={oai:identifier}">oai_dc</a>
     </td>
@@ -273,7 +295,7 @@
 <xsl:template match="oai:setSpec">
   <!-- TODO: use selected or default metadataPrefix -->
   <a href="?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set={.}">Identifiers</a>
-  <br/>
+  /
   <a href="?verb=ListRecords&amp;metadataPrefix=oai_dc&amp;set={.}">Records</a>
 </xsl:template>
 
@@ -284,8 +306,8 @@
     <thead>
       <tr>
         <th>metadataPrefix</th>
-        <th>Namespace &amp; Schema</th>
-        <th></th>
+        <th>namespace &amp; schema</th>
+        <th>list</th>
       </tr>
     </thead>
     <tbody>
@@ -326,16 +348,39 @@
 
 <!-- record object -->
 
-<!-- TODO: FIX THIS -->
-
 <xsl:template match="oai:record">
-  <code><xsl:value-of select="oai:header/oai:identifier"/></code>
-  <div class="oaiRecord">
-    <xsl:apply-templates select="oai:header" />
-    <xsl:apply-templates select="oai:metadata" />
-    <xsl:apply-templates select="oai:about" />
+   <xsl:apply-templates select="oai:header" />
+   <xsl:apply-templates select="oai:metadata" />
+   <xsl:apply-templates select="oai:about" />
+</xsl:template>
+
+<xsl:template match="oai:header">
+  <dl>
+    <dt>identifier</dt>
+    <dd><code><xsl:value-of select="oai:identifier"/></code></dd>
+    <dt>datestamp</dt>
+    <dd><code><xsl:value-of select="oai:datestamp"/></code></dd>
+    <xsl:if test="oai:setSpec">
+      <dt>setSpec</dt>
+      <dd>
+        <table class="table table-sm">
+          <xsl:for-each select="oai:setSpec">
+            <tr>
+              <td><xsl:value-of select="."/></td>
+              <td><xsl:apply-templates select="."/></td>
+            </tr>
+          </xsl:for-each>
+        </table>
+      </dd>
+    </xsl:if>
+  </dl>
+  <div>
+    <xsl:if test="@status='deleted'">
+      This record has been deleted.
+    </xsl:if>
   </div>
 </xsl:template>
+
 
 <xsl:template match="oai:metadata">
   <div class="metadata">
