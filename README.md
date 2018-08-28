@@ -4,6 +4,8 @@ Dieses git-Repository enthält den Quellcode der Homepage des DFG-Projekt LaZAR
 unter [LaZAR](http://lazar.gbv.de/) sowie verschiedene XSLT-Skripte
 Konvertierung des internen easyBD-Datenformates von LaZAR.
 
+[![Build Status](https://travis-ci.org/gbv/lazar.gbv.de.svg?branch=master)](https://travis-ci.org/gbv/lazar.gbv.de)
+
 
 ## Umfang der Homepage
 
