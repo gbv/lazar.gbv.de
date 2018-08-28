@@ -1,0 +1,17 @@
+#!/bin/bash -e
+# get record in easydbXML format and locally apply transformation
+
+SCRIPT="$2.xsl"
+
+if [ -z "$2" ]; then
+    echo "missing format argument"
+    exit 1
+elif [ ! -f "$SCRIPT" ]; then
+    echo "missing format script $SCRIPT"
+    exit 1
+fi
+
+./getrecord "$1" easydb > easydb.xml
+
+echo $SCRIPT >&2
+xsltproc $SCRIPT easydb.xml

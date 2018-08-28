@@ -3,6 +3,7 @@
 # run unit tests
 test:
 	composer test
+	cd xslt && ./runtest
 
 # fix coding-style
 style:

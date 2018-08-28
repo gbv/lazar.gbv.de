@@ -1,0 +1,49 @@
+#!/bin/bash -e
+
+TEST_COUNTER=0
+FAIL_COUNTER=0
+
+function ok {
+    TEST_COUNTER=$(($TEST_COUNTER+1))
+    echo ok $TEST_COUNTER - $1
+}
+
+function not_ok {
+    TEST_COUNTER=$(($TEST_COUNTER+1))
+    FAIL_COUNTER=$(($TEST_COUNTER+1))
+    echo not ok $TEST_COUNTER - $1
+}
+
+function xslt_test {
+    in=$1
+    base=${in%.in.xml}
+    out=$base.out.xml
+    for script in *.xsl; do
+        format=${script%.xsl}
+        expect=$base.$format.xml        
+        if [ -f "$expect" ]; then			
+            xsltproc "$script" "$in" > $out
+			if diff -Bb $out $expect > /dev/null
+            then
+                ok "$in $out"
+            else
+                not_ok "$expect $out"
+			fi
+        fi
+    done
+}
+
+if [ "$#" -eq 0 ]; then
+    for file in test/*.in.xml; do
+        xslt_test $file
+    done
+else
+    for file in "$@"; do
+        xslt_test $file
+    done
+fi
+
+# done_testing
+echo 1..$TEST_COUNTER
+
+exit $FAIL_COUNTER

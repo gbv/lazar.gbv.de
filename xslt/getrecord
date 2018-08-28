@@ -1,0 +1,9 @@
+#!/bin/bash -e
+# get record via OAI
+
+source oai.sh
+
+URL=$(GetRecordURL "$BASE" "$IDENTIFIER" "$FORMAT")
+
+echo $URL >&2
+curl --silent "$URL" | xsltproc getrecord.xslt -
