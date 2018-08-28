@@ -16,25 +16,26 @@ function not_ok {
 
 function xslt_test {
     in=$1
-    base=${in%.in.xml}
+    tmp=${in%.xml}; from=${tmp##*.}
+    base=${in%.$from.xml}
     out=$base.out.xml
-    for script in *.xsl; do
-        format=${script%.xsl}
+    for script in ${from}2*.xsl; do
+        tmp=${script%.xsl}; format=${tmp##*2}
         expect=$base.$format.xml        
         if [ -f "$expect" ]; then			
             xsltproc "$script" "$in" > $out
 			if diff -Bb $out $expect > /dev/null
             then
-                ok "$in $out"
+                ok "$in $out # $script"
             else
-                not_ok "$expect $out"
+                not_ok "$expect $out # $script"
 			fi
         fi
     done
 }
 
 if [ "$#" -eq 0 ]; then
-    for file in test/*.in.xml; do
+    for file in test/*.xml; do
         xslt_test $file
     done
 else
