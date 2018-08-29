@@ -7,6 +7,7 @@ use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Client;
 use SimpleXMLElement;
+use DOMDocument;
 
 /**
  * OAI-PMH Proxy implemented as Guzzle Handler.
@@ -16,7 +17,8 @@ use SimpleXMLElement;
  * - rewriting of the baseURL
  * - injection of processing instructions, especially XSLT
  * - support of set intersection (only for ListRecords)
- * - additional metadata formats (not implemented yet)
+ * - additional metadata formats
+ * - optional pretty-printing
  *
  * See <https://packagist.org/packages/picturae/oai-pmh> for a full
  * OAI-PMH server implementation in PHP.
@@ -45,6 +47,9 @@ class Proxy
             $this->instructions['xml-stylesheet'] =
                 'type="text/xsl" href="'.$config['xslt'].'"';
         }
+
+        $this->formats = $config['formats'] ?? [];
+        $this->pretty = $config['pretty'] ?? true;
     }
 
     public function __invoke(RequestInterface $request)
@@ -93,7 +98,23 @@ class Proxy
 
         if (count($query['sets']) > 1 && $verb == 'ListRecords') {
             $xml = new SimpleXMLElement($body);
-            $body = $this->filterXML($xml, $query)->asXML();
+            $xml = $this->filterListRecords($xml, $query);
+            $body = $xml->asXML();
+        }
+
+        if ($verb == 'ListMetadataFormats' && count($this->formats)) {
+            $xml = new SimpleXMLElement($body);
+            $xml = $this->filterMetadataFormats($xml);
+            $body = $xml->asXML();
+        }
+
+        // pretty-print XML (requires to serialize and parse again)
+        if ($this->pretty) {
+            $dom = new DOMDocument('1.0');
+            $dom->preserveWhiteSpace = false;
+            $dom->formatOutput = true;
+            $dom->loadXML($body);
+            $body = $dom->saveXML();
         }
 
         return $body;
@@ -115,7 +136,51 @@ class Proxy
         return $query;
     }
 
-    public function filterXML(SimpleXMLElement $xml, array $query): SimpleXMLElement
+    public function extendFormat($node, $format)
+    {
+        if ($format['schema'] ?? 0) {
+            if (!$node->{'schema'}) {
+                $node->addChild('schema');
+            }
+            $node->{'schema'} = $format['schema'];
+        }
+        if ($format['namespace'] ?? 0) {
+            if (!$node->{'metadataNamespace'}) {
+                $node->addChild('metadataNamespace');
+            }
+            $node->{'metadataNamespace'} = $format['namespace'];
+        }
+    }
+
+    public function filterMetadataFormats(SimpleXMLElement $xml)
+    {
+        $xml->registerXPathNamespace('oai', static::OAI_NS);
+
+        $formats = $this->formats ?? [];
+
+        // extend existing format description
+        $formatNodes = $xml->xpath('//oai:metadataFormat');
+        foreach ($formatNodes as $node) {
+            $name = (string)$node->{'metadataPrefix'};
+            if (isset($formats[$name])) {
+                $format = $formats[$name];
+                $this->extendFormat($node, $format);
+                unset($formats[$name]);
+            }
+        }
+
+        // add formats
+        $root = $xml->xpath('//oai:ListMetadataFormats')[0];
+        foreach ($formats as $name => $format) {
+            $node = $root->addChild('metadataFormat');
+            $node->addChild('metadataPrefix', $name);
+            $this->extendFormat($node, $format);
+        }
+
+        return $xml;
+    }
+
+    public function filterListRecords(SimpleXMLElement $xml, array $query): SimpleXMLElement
     {
         $xml->registerXPathNamespace('oai', static::OAI_NS);
 

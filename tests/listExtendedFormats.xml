@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+  <responseDate>2018-08-29T06:42:30Z</responseDate>
+  <request verb="ListMetadataFormats">http://example.org/</request>
+  <ListMetadataFormats>
+    <metadataFormat>
+      <metadataPrefix>oai_dc</metadataPrefix>
+      <schema>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</schema>
+      <metadataNamespace>http://www.openarchives.org/OAI/2.0/oai_dc/</metadataNamespace>
+    </metadataFormat>
+    <metadataFormat>
+      <metadataPrefix>example</metadataPrefix>
+      <schema>http://examle.org/schema</schema>
+      <metadataNamespace>http://example.org/ns</metadataNamespace>
+    </metadataFormat>
+    <metadataFormat>
+      <metadataPrefix>another</metadataPrefix>
+      <schema>http://examle.org/another/schema</schema>
+      <metadataNamespace>http://example.org/another/ns</metadataNamespace>
+    </metadataFormat>
+  </ListMetadataFormats>
+</OAI-PMH>
