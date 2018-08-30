@@ -226,7 +226,31 @@
 <!-- ListRecords -->
 
 <xsl:template match="oai:ListRecords">
-  <xsl:apply-templates select="oai:record" />
+  <xsl:for-each select="oai:record">
+    <xsl:variable name="n" select="count(preceding-sibling::oai:record)+1"/>
+    <xsl:variable name="count" select="count(../oai:record)"/>
+    <div class="anchor">
+      <a name="{$n}" />
+      <h3>
+        <xsl:text>Record </xsl:text>
+        <xsl:value-of select="$n"/>      
+        <xsl:text>/</xsl:text>
+        <xsl:value-of select="$count"/>      
+        <xsl:if test="$n > 1">
+          <a href="#{0-1+$n}" style="padding-left: 0.5em">
+            <xsl:text>&#8249;</xsl:text>
+          </a>
+        </xsl:if>
+        <xsl:if test="$count > $n">
+          <a href="#{1+$n}" style="padding-left: 0.5em">
+            <xsl:text>&#8250;</xsl:text>
+          </a>
+        </xsl:if>
+      </h3>
+    </div>
+    <xsl:apply-templates select="." />
+    <hr/>
+  </xsl:for-each>
 </xsl:template>
 
 <!-- ListIdentifiers -->

@@ -4,3 +4,12 @@
 body {
   padding-top: 70px;
 }
+
+.anchor > a {
+  position: absolute;
+  left: 0px;
+  top: -70px;
+}
+.anchor {
+  position: relative;
+}
