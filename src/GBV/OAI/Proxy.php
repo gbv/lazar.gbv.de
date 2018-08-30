@@ -6,8 +6,12 @@ use Psr\Http\Message\RequestInterface;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Client;
-use SimpleXMLElement;
 use DOMDocument;
+use DOMElement;
+use DOMXPath;
+use DOMNodeList;
+use DOMComment;
+use GBV\XSLTPipeline;
 
 /**
  * OAI-PMH Proxy implemented as Guzzle Handler.
@@ -78,47 +82,66 @@ class Proxy
 
     public function transformBody(string $body, array $query): string
     {
-        // add processing instructions
-        if (count($this->instructions)) {
-            $pis = [];
-            foreach ($this->instructions as $name => $content) {
-                $pis[] = "<?$name $content?>";
-            }
-            $body = preg_replace("/\?>$/m", "?>\n".implode("\n", $pis), $body);
-        }
+        $dom = new DOMDocument();
+        $dom->loadXML($body); // TODO: catch error
 
-        // rewrite base URL
-        $body = preg_replace(
-            "/>[^<]*<\/request>/m",
-            ">{$this->baseUrl}</request>",
-            $body
-        );
-
+        $prefix = $query['targetPrefix'] ?? '';
         $verb = $query['verb'] ?? '';
 
-        if (count($query['sets']) > 1 && $verb == 'ListRecords') {
-            $xml = new SimpleXMLElement($body);
-            $xml = $this->filterListRecords($xml, $query);
-            $body = $xml->asXML();
+        if ($verb == 'ListRecords') {
+            if (count($query['sets']) > 1) {
+                $dom = $this->filterListRecords($dom, $query);
+            }
+            $dom = $this->rewriteRecords($dom, $prefix);
+        } elseif ($verb == 'GetRecord') {
+            $dom = $this->rewriteRecords($dom, $prefix);
+        } elseif ($verb == 'ListMetadataFormats' && count($this->formats)) {
+            $dom = $this->rewriteMetadataFormats($dom);
         }
 
-        if ($verb == 'ListMetadataFormats' && count($this->formats)) {
-            $xml = new SimpleXMLElement($body);
-            $xml = $this->filterMetadataFormats($xml);
-            $body = $xml->asXML();
+        // add processing instructions
+        foreach ($this->instructions as $name => $content) {
+            $pi = $dom->createProcessingInstruction($name, $content);
+            $dom->insertBefore($pi, $dom->documentElement);
         }
 
-        // pretty-print XML (requires to serialize and parse again)
+        // rewrite request element
+        foreach (static::xpath($dom, '//oai:request') as $node) {
+            $node->textContent = $this->baseUrl;
+            if ($prefix && $node->getAttribute('metadataPrefix')) {
+                $node->setAttribute('metadataPrefix', $query['targetPrefix']);
+            }
+        }
+
+        // enforce pretty-printing
         if ($this->pretty) {
-            $dom = new DOMDocument('1.0');
             $dom->preserveWhiteSpace = false;
             $dom->formatOutput = true;
-            $dom->loadXML($body);
-            $body = $dom->saveXML();
         }
-
-        return $body;
+ 
+        return $dom->saveXML();
     }
+
+    // helper function
+    public static function xpath($node, string $query): DOMNodeList
+    {
+        $dom = $node instanceof DOMDocument ? $node : $node->ownerDocument;
+        $xpath = new DOMXPath($dom);
+        $xpath->registerNamespace('oai', static::OAI_NS);
+        return $xpath->query($query, $node);
+    }
+
+    // helper function
+    public static function xmlChild(DOMElement $node, string $name, bool $create = false)
+    {
+        foreach ($node->childNodes as $child) {
+            if ($child->nodeName == $name) {
+                return $child;
+            }
+        }
+        return $create ? $node->appendChild(new DOMElement($name)) : null;
+    }
+
 
     public function transformQuery(array $query): array
     {
@@ -133,35 +156,40 @@ class Proxy
             $query['sets'] = [];
         }
 
+        // change metadata prefix to apply pipeline on
+        $prefix = $query['metadataPrefix'] ?? '';
+        $format = $this->formats[$prefix] ?? [];
+        $pipeline = $format['pipeline'] ?? null;
+        if ($pipeline) {
+            $query['metadataPrefix'] = $pipeline[0];
+            $query['targetPrefix'] = $prefix;
+        } else {
+            unset($query['targetPrefix']);
+        }
+
         return $query;
     }
 
-    public function extendFormat($node, $format)
+    public function extendFormat(DOMElement $node, $format)
     {
         if ($format['schema'] ?? 0) {
-            if (!$node->{'schema'}) {
-                $node->addChild('schema');
-            }
-            $node->{'schema'} = $format['schema'];
+            $elem = static::xmlChild($node, 'schema', true);
+            $elem->textContent = $format['schema'];
         }
         if ($format['namespace'] ?? 0) {
-            if (!$node->{'metadataNamespace'}) {
-                $node->addChild('metadataNamespace');
-            }
-            $node->{'metadataNamespace'} = $format['namespace'];
+            $elem = static::xmlChild($node, 'metadataNamespace', true);
+            $elem->textContent = $format['namespace'];
         }
     }
 
-    public function filterMetadataFormats(SimpleXMLElement $xml)
+    public function rewriteMetadataFormats(DOMDocument $dom): DOMDocument
     {
-        $xml->registerXPathNamespace('oai', static::OAI_NS);
-
-        $formats = $this->formats ?? [];
+        $formats = $this->formats;
 
         // extend existing format description
-        $formatNodes = $xml->xpath('//oai:metadataFormat');
-        foreach ($formatNodes as $node) {
-            $name = (string)$node->{'metadataPrefix'};
+        foreach (static::xpath($dom, '//oai:metadataFormat') as $node) {
+            $name = static::xmlChild($node, 'metadataPrefix');
+            $name && $name = $name->textContent;
             if (isset($formats[$name])) {
                 $format = $formats[$name];
                 $this->extendFormat($node, $format);
@@ -170,38 +198,66 @@ class Proxy
         }
 
         // add formats
-        $root = $xml->xpath('//oai:ListMetadataFormats')[0];
+        $root = static::xpath($dom, '//oai:ListMetadataFormats')->item(0);
         foreach ($formats as $name => $format) {
-            $node = $root->addChild('metadataFormat');
-            $node->addChild('metadataPrefix', $name);
+            $node = $root->appendChild(new DOMElement('metadataFormat'));
+            $prefix = $node->appendChild(new DOMElement('metadataPrefix'));
+            $prefix->textContent = $name;
             $this->extendFormat($node, $format);
         }
 
-        return $xml;
+        return $dom;
     }
 
-    public function filterListRecords(SimpleXMLElement $xml, array $query): SimpleXMLElement
+    public function rewriteRecords(DOMDocument $dom, string $prefix)
     {
-        $xml->registerXPathNamespace('oai', static::OAI_NS);
+        $format = $this->formats[$prefix] ?? null;
 
-        // filter records with sets
-        $sets = $query['sets'];
-        if (count($sets) > 1) {
-            $records = $xml->xpath('//oai:record');
-            foreach ($records as $rec) {
-                $rec->registerXPathNamespace('oai', static::OAI_NS);
-                $setSpecs = array_map(
-                    function ($setSpec) {
-                        return (string)$setSpec;
-                    },
-                    $rec->xpath('oai:header/oai:setSpec')
-                );
-                if (array_intersect($sets, $setSpecs) != $sets) {
-                    unset($rec[0][0]);
+        $pipeline = new XSLTPipeline();
+        error_log(implode("\n!\n", array_slice($format['pipeline'] ?? [], 1)));
+        $pipeline->appendFiles(array_slice($format['pipeline'] ?? [], 1));
+
+        foreach (static::xpath($dom, '//oai:record') as $record) {
+            foreach (static::xpath($record, 'oai:metadata/*') as $metadata) {
+                $metadata->setAttribute('xmlns:'.$metadata->prefix, $metadata->namespaceURI);
+                file_put_contents('/tmp/tmp.xml', $dom->saveXML($metadata));
+
+                // move metadata to a new document (why?)
+                $m = new DOMDocument();
+                $m->appendChild($m->importNode($metadata, true));
+
+                // FIXME: what if pipeline is empty or broken or result is empty?
+                $result = $pipeline->transformToDoc($m);
+
+                if ($result->documentElement) {
+                    $node = $dom->importNode($result->documentElement, true);
+                    $metadata->parentNode->replaceChild($node, $metadata);
+                } else {
+                    // remove the whole record
+                    $comment = new DOMComment("skipped record not available in $prefix format");
+                    $record->parentNode->replaceChild($comment, $record);
                 }
             }
         }
 
-        return $xml;
+        return $dom;
+    }
+
+
+    public function filterListRecords(DOMDocument $dom, array $query): DOMDocument
+    {
+        // filter records with sets
+        $sets = $query['sets'];
+        foreach (static::xpath($dom, '//oai:record') as $rec) {
+            $setSpecs = [];
+            foreach (static::xpath($rec, 'oai:header/oai:setSpec') as $setSpec) {
+                $setSpecs[] = $setSpec->textContent;
+            }
+            if (array_intersect($sets, $setSpecs) != $sets) {
+                $rec->parentNode->removeChild($rec);
+            }
+        }
+
+        return $dom;
     }
 }

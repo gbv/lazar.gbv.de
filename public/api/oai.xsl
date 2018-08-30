@@ -74,6 +74,7 @@
       <meta charset="utf-8"/>
       <title>OAI 2.0 Request Results</title>
       <xsl:call-template name="css"/>
+      <xsl:call-template name="xmlStyle"/>
     </head>
     <body>
       <xsl:call-template name="navbar"/>
@@ -418,6 +419,7 @@
   <p>
     There are more results.
     resumptionToken:
+    <!-- TODO: include set and other parameters -->
     <a href="?verb={$verb}&amp;resumptionToken={.}">
      <xsl:value-of select="."/>
     </a>
@@ -425,50 +427,66 @@
 </xsl:template>
 
 <xsl:template match="oai:metadata/*">
-  <pre><code>
+  <div class="xmlSource">
     <xsl:apply-templates select="." mode='xmlMarkup' />
-  </code></pre>
-</xsl:template>
-
-<!-- XML Pretty Maker -->
-
-<!-- TODO: remove this? -->
-
-<xsl:template match="node()" mode='xmlMarkup'>
-  <div class="xmlBlock">
-    &lt;<span class="xmlTagName"><xsl:value-of select='name(.)' /></span><xsl:apply-templates select="@*" mode='xmlMarkup'/>&gt;<xsl:apply-templates select="node()" mode='xmlMarkup' />&lt;/<span class="xmlTagName"><xsl:value-of select='name(.)' /></span>&gt;
   </div>
 </xsl:template>
 
-<xsl:template match="text()" mode='xmlMarkup'><span class="xmlText"><xsl:value-of select='.' /></span></xsl:template>
+<!-- XML Pretty -->
 
-<xsl:template match="@*" mode='xmlMarkup'>
-  <xsl:text> </xsl:text><span class="xmlAttrName"><xsl:value-of select='name()' /></span>="<span class="xmlAttrValue"><xsl:value-of select='.' /></span>"
+<xsl:template match="node()" mode='xmlMarkup'>
+  <div class="xmlBlock">
+    <xsl:text>&lt;</xsl:text>
+    <span class="xmlTagName"><xsl:value-of select='name(.)' /></span>
+    <xsl:apply-templates select="@*" mode='xmlMarkup'/>
+    <xsl:text>&gt;</xsl:text>
+    <xsl:apply-templates select="node()" mode='xmlMarkup' />
+    <xsl:text>&lt;/</xsl:text>
+    <span class="xmlTagName"><xsl:value-of select='name(.)' /></span>
+    <xsl:text>&gt;</xsl:text>
+  </div>
 </xsl:template>
 
-<!--xsl:template name="xmlstyle">
-.xmlSource {
-	font-size: 70%;
-	border: solid #c0c0a0 1px;
-	background-color: #ffffe0;
-	padding: 2em 2em 2em 0em;
-}
-.xmlBlock {
-	padding-left: 2em;
-}
-.xmlTagName {
-	color: #800000;
-	font-weight: bold;
-}
-.xmlAttrName {
-	font-weight: bold;
-}
-.xmlAttrValue {
-	color: #0000c0;
-}
-</xsl:template-->
+<xsl:template match="text()" mode='xmlMarkup'>
+  <span class="xmlText"><xsl:value-of select='.' /></span>
+</xsl:template>
 
-<xsl:template match="*"/>
+<xsl:template match="@*" mode='xmlMarkup'>
+  <xsl:text> </xsl:text>
+  <span class="xmlAttrName"><xsl:value-of select='name()'/></span>
+  <xsl:text>="</xsl:text>
+  <span class="xmlAttrValue"><xsl:value-of select='.' /></span>
+  <xsl:text>"</xsl:text>
+</xsl:template>
+
+<xsl:template name="xmlStyle">
+  <style type="text/css">
+    .xmlSource {
+      font-size: 70%;
+      font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      background-color: #f7f7f9;
+      padding: 1em 0em;
+    }
+    .xmlSource > .xmlBlock {
+      padding-left: 0em;
+    }
+    .xmlBlock {
+      display: block;
+      padding-left: 1em;
+    }
+    .xmlTagName {
+      color: #800000;
+      font-weight: bold;
+    }
+    .xmlAttrName {
+      font-weight: bold;
+    }
+    .xmlAttrValue {
+      color: #0000c0;
+    }
+  </style>
+</xsl:template>
+
+<xsl:template match="*|text()"/>
 
 </xsl:stylesheet>
-
