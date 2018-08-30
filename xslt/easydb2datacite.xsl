@@ -7,7 +7,7 @@
   xmlns:edb="https://schema.easydb.de/EASYDB/1.0/objects/"
   exclude-result-prefixes="edb xsl">
 
-  <xsl:output method="xml" indent="yes"/>
+  <xsl:output method="xml" indent="yes" encoding="UTF-8" />
 
   <!-- Wurzelelement -->
   <xsl:template match="edb:objects">

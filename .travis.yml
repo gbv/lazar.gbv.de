@@ -2,9 +2,6 @@ language: php
 php:
   - '7.0'
 
-before_install:
-  - sudo apt-get install xsltproc
-
 install:
   - composer install
 

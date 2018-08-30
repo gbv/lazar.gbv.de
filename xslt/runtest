@@ -23,7 +23,7 @@ function xslt_test {
         tmp=${script%.xsl}; format=${tmp##*2}
         expect=$base.$format.xml        
         if [ -f "$expect" ]; then			
-            xsltproc "$script" "$in" > $out
+            ../bin/xslt.php "$in" "$script" > $out
 			if diff -Bb $out $expect > /dev/null
             then
                 ok "$in $out # $script"

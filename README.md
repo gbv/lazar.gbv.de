@@ -44,13 +44,13 @@ Das Skript `makerecord` führt die Konvertierung lokal mit xsltproc durch:
 entspricht
 
     ./getrecord oai:lazar.gbv.de:4c5b995c-32b5-45c0-8ad4-8f5c3964bcdb > easydb.xml
-    xsltproc datacite.xsl easydb.xml
+    ../bin/xslt.php easydb.xml easydb2datacite.xsl
 
 Im Unterverzeichnis `test` befinden sich Beispieldatensätze für Regressionstest. Mit
 
     ./runtest
 
-werden alle Beispiele überprüft (benötigt xsltproc).
+werden alle Beispiele überprüft.
 
 
 ## Installation
@@ -63,6 +63,8 @@ Das Repository liegt auf GitHub unter <https://github.com/gbv/lazar.gbv.de>.
 Die Homepage benötigt mindestens PHP 7 und composer zur Paketverwaltung:
 
     $ composer update --no-dev
+
+Außerdem muss libxslt für PHP aktiviert sein (z.B. Debian-Paket `php-xsl`).
 
 Das Einstiegsverzeichnis für den Webserver ist `public/`. Für Apache ist eine
 `.htaccess` enthalten.

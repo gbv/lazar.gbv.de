@@ -4,6 +4,8 @@
 source oai.sh
 
 URL=$(GetRecordURL "$BASE" "$IDENTIFIER" "$FORMAT")
+TMP=$(mktemp)
 
 echo $URL >&2
-curl --silent "$URL" | xsltproc getrecord.xslt -
+curl --silent "$URL" > $TMP
+../bin/xslt.php $TMP getrecord.xslt
