@@ -16,7 +16,6 @@
   Not Done
     The 'about' section of 'record'
     The 'compession' part of 'identify'
-    The optional attributes of 'resumptionToken'
     The optional 'setDescription' container of 'set'
 
   All the links just link to oai_dc versions of records.
@@ -43,11 +42,10 @@
 <!-- current request and verb -->
 <xsl:param name="request" select="/oai:OAI-PMH/oai:request" />
 <xsl:param name="verb" select="$request/@verb" />
-
-<!--
-<xsl:param name='identifier'
-    select="substring-before(concat(substring-after(/oai:OAI-PMH/oai:request,'identifier='),'&amp;'),'&amp;')"
-/-->
+<xsl:param name="identifier" select="$request/@identifier" />
+<xsl:param name="metadataPrefix" select="$request/@metadataPrefix" />
+<xsl:param name="set" select="$request/@set" />
+<xsl:param name="resumptionToken" select="/oai:OAI-PMH/*/oai:resumptionToken" />
 
 <xsl:output method="html"/>
 
@@ -163,7 +161,7 @@
     <small><code><xsl:value-of select="oai:responseDate"/></code></small>
   </h2>
   <xsl:apply-templates/>
-  <xsl:apply-templates select="*/oai:resumptionToken" />
+  <xsl:apply-templates select="$resumptionToken" />
 </xsl:template>
 
 <xsl:template match="oai:error">
@@ -237,6 +235,9 @@
         <xsl:value-of select="$n"/>      
         <xsl:text>/</xsl:text>
         <xsl:value-of select="$count"/>      
+        <xsl:if test="$resumptionToken">
+          <xsl:text>+…</xsl:text>
+        </xsl:if>
         <xsl:if test="$n > 1">
           <a href="#{0-1+$n}" style="padding-left: 0.5em">
             <xsl:text>&#8249;</xsl:text>
@@ -318,10 +319,20 @@
 </xsl:template>
 
 <xsl:template match="oai:setSpec">
-  <!-- TODO: use selected or default metadataPrefix -->
-  <a href="?verb=ListIdentifiers&amp;metadataPrefix=oai_dc&amp;set={.}">Identifiers</a>
+  <xsl:variable name="query">
+    <xsl:text>set=</xsl:text>
+    <xsl:value-of select="."/>
+    <xsl:text>&amp;metadataPrefix=</xsl:text>
+    <xsl:choose>
+      <xsl:when test="$request/@metadataPrefix">
+        <xsl:value-of select="$request/@metadataPrefix"/>
+      </xsl:when>
+      <xsl:otherwise>oai_dc</xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <a href="?verb=ListIdentifiers&amp;{$query}">Identifiers</a>
   /
-  <a href="?verb=ListRecords&amp;metadataPrefix=oai_dc&amp;set={.}">Records</a>
+  <a href="?verb=ListRecords&amp;{$query}">Records</a>
 </xsl:template>
 
 <!-- ListMetadataFormats -->
@@ -332,7 +343,12 @@
       <tr>
         <th>metadataPrefix</th>
         <th>namespace &amp; schema</th>
-        <th>list</th>
+        <th>
+          <xsl:choose>
+            <xsl:when test="$identifier">get</xsl:when>
+            <xsl:otherwise>list</xsl:otherwise>
+          </xsl:choose>
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -355,13 +371,22 @@
       <a href="{oai:schema}"><xsl:value-of select="oai:schema"/></a>
     </td>
     <td>
-      <a href="?verb=ListIdentifiers&amp;metadataPrefix={$prefix}">
-        Identifiers
-      </a>
-      <br/>
-      <a href="?verb=ListRecords&amp;metadataPrefix={$prefix}">
-        Records
-      </a>
+      <xsl:choose>
+        <xsl:when test="$identifier">
+          <a href="?verb=GetRecord&amp;metadataPrefix={$prefix}&amp;identifier={$identifier}">
+            Record
+          </a>
+        </xsl:when>   
+        <xsl:otherwise>
+          <a href="?verb=ListIdentifiers&amp;metadataPrefix={$prefix}">
+            Identifiers
+          </a>
+          <br/>
+          <a href="?verb=ListRecords&amp;metadataPrefix={$prefix}">
+            Records
+          </a>
+        </xsl:otherwise>            
+      </xsl:choose>
     </td>
   </tr>
 </xsl:template>
@@ -419,10 +444,20 @@
   <p>
     There are more results.
     resumptionToken:
-    <!-- TODO: include set and other parameters -->
-    <a href="?verb={$verb}&amp;resumptionToken={.}">
+    <xsl:variable name="query">
+      <xsl:if test="$metadataPrefix">
+        <xsl:text>&amp;metadataPrefix=</xsl:text>
+        <xsl:value-of select="$metadataPrefix"/>
+      </xsl:if>
+      <xsl:if test="$set">
+        <xsl:text>&amp;set=</xsl:text>
+        <xsl:value-of select="$set"/>
+      </xsl:if>
+    </xsl:variable>
+    <a href="?verb={$verb}{$query}&amp;resumptionToken={.}">
      <xsl:value-of select="."/>
     </a>
+    <!-- TODO: optional fields `expirationDate`, `completeListSize`, `cursor` -->
   </p>
 </xsl:template>
 

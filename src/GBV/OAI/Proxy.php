@@ -214,7 +214,6 @@ class Proxy
         $format = $this->formats[$prefix] ?? null;
 
         $pipeline = new XSLTPipeline();
-        error_log(implode("\n!\n", array_slice($format['pipeline'] ?? [], 1)));
         $pipeline->appendFiles(array_slice($format['pipeline'] ?? [], 1));
 
         foreach (static::xpath($dom, '//oai:record') as $record) {
