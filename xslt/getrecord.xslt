@@ -5,15 +5,23 @@
     version="1.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:oai="http://www.openarchives.org/OAI/2.0/"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    strip-namespace-prefixes="oai"
   >
+
+  <xsl:output method="xml" indent="yes" encoding="UTF-8" />
+  <xsl:strip-space elements="*"/>
 
   <!-- extract first metadata element -->
   <xsl:template match="/oai:OAI-PMH">
-    <xsl:copy-of select="oai:GetRecord/oai:record/oai:metadata/*"/>
+    <xsl:apply-templates select="oai:GetRecord/oai:record/oai:metadata/*[1]"/>
   </xsl:template>
 
-  <!-- ignore the rest -->
-  <xsl:template match="@*|node()"/>
+  <!-- avoid namespace prefix -->
+  <xsl:template match="*">
+    <xsl:element name="{local-name(.)}" namespace="{namespace-uri(.)}">
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
 
 </xsl:stylesheet>  
