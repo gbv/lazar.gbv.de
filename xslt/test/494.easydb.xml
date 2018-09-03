@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects xmlns="https://schema.easydb.de/EASYDB/1.0/objects/" base-schema="195" instance="lazar" timestamp="2018-09-03T10:01:06+02:00" user-schema="224" uuid="33a8cae1-a9fa-4655-8c3d-b71241bbc99b">
+<objects xmlns="https://schema.easydb.de/EASYDB/1.0/objects/" base-schema="195" instance="lazar" timestamp="2018-09-03T11:10:46+02:00" user-schema="225" uuid="33a8cae1-a9fa-4655-8c3d-b71241bbc99b">
   <objekttyp>
     <_version>39</_version>
     <_id>399</_id>
@@ -235,21 +235,21 @@
     <_nested__objekttyp__keywords_gnd>
       <objekttyp__keywords_gnd>
         <custom name="keyword" type="custom:base.custom-data-type-gnd.gnd">
-          <string name="conceptURI">http://d-nb.info/gnd/4354672-9</string>
           <object name="_fulltext">
             <string name="text">Besen</string>
             <string name="string">http://d-nb.info/gnd/4354672-9</string>
           </object>
+          <string name="conceptURI">http://d-nb.info/gnd/4354672-9</string>
           <string name="conceptName">Besen</string>
         </custom>
       </objekttyp__keywords_gnd>
       <objekttyp__keywords_gnd>
         <custom name="keyword" type="custom:base.custom-data-type-gnd.gnd">
-          <string name="conceptURI">http://d-nb.info/gnd/4253274-7</string>
           <object name="_fulltext">
             <string name="text">Selbstgenügsamkeit</string>
             <string name="string">http://d-nb.info/gnd/4253274-7</string>
           </object>
+          <string name="conceptURI">http://d-nb.info/gnd/4253274-7</string>
           <string name="conceptName">Selbstgenügsamkeit</string>
         </custom>
       </objekttyp__keywords_gnd>
@@ -302,17 +302,187 @@
       </objekttyp__datum>
     </_nested__objekttyp__datum>
     <_nested__objekttyp__sprachen>
-      <objekttyp__sprachen/>
-      <objekttyp__sprachen/>
-      <objekttyp__sprachen/>
+      <objekttyp__sprachen>
+        <sprache>
+          <sprache date-created="2016-03-08T17:31:53Z" date-last-updated="2018-04-28T17:20:24Z">
+            <_version>14</_version>
+            <_id>1</_id>
+            <name type="text_l10n_oneline">
+              <de-DE>Deutsch</de-DE>
+              <en-US>German</en-US>
+              <und>German</und>
+            </name>
+            <isocode type="string">deu</isocode>
+            <custom name="glottolog" type="custom:base.custom-data-type-link.link">
+              <string name="url">http://glottolog.org/resource/languoid/id/stan1295</string>
+              <string name="hostname">glottolog.org</string>
+              <string name="tld">org</string>
+              <object name="_fulltext">
+                <string name="string">http://glottolog.org/resource/languoid/id/stan1295</string>
+              </object>
+            </custom>
+            <_parent_id>399</_parent_id>
+            <_objecttype>sprache</_objecttype>
+            <_system_object_id>11</_system_object_id>
+            <_global_object_id>11@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>e4a39f0d-acc8-4d20-83f5-2749c8749afe</_uuid>
+            <_mask>sprache__all_fields</_mask>
+          </sprache>
+        </sprache>
+      </objekttyp__sprachen>
+      <objekttyp__sprachen>
+        <sprache>
+          <sprache date-created="2016-03-09T16:53:54Z" date-last-updated="2018-04-28T12:52:17Z">
+            <_version>17</_version>
+            <_id>2</_id>
+            <name type="text_l10n_oneline">
+              <de-DE>Georgisch</de-DE>
+              <en-US>Georgian</en-US>
+              <und>Georgian</und>
+            </name>
+            <isocode type="string">kat</isocode>
+            <custom name="glottolog" type="custom:base.custom-data-type-link.link">
+              <string name="url">http://glottolog.org/resource/languoid/id/nucl1302</string>
+              <string name="hostname">glottolog.org</string>
+              <string name="tld">org</string>
+              <object name="_fulltext">
+                <string name="string">http://glottolog.org/resource/languoid/id/nucl1302</string>
+              </object>
+            </custom>
+            <custom name="gnd" type="custom:base.custom-data-type-gnd.gnd">
+              <string name="conceptName">Georgisch</string>
+              <string name="conceptURI">http://d-nb.info/gnd/4124679-2</string>
+              <object name="_fulltext">
+                <string name="text">Georgisch</string>
+                <string name="string">http://d-nb.info/gnd/4124679-2</string>
+              </object>
+            </custom>
+            <_parent_id>399</_parent_id>
+            <_objecttype>sprache</_objecttype>
+            <_system_object_id>36</_system_object_id>
+            <_global_object_id>36@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>4ce5900d-82cd-44e9-b7ce-5874758dd211</_uuid>
+            <_mask>sprache__all_fields</_mask>
+          </sprache>
+        </sprache>
+      </objekttyp__sprachen>
+      <objekttyp__sprachen>
+        <sprache>
+          <sprache date-created="2016-03-25T14:31:33Z" date-last-updated="2017-09-11T13:14:36Z">
+            <_version>7</_version>
+            <_id>4</_id>
+            <name type="text_l10n_oneline">
+              <de-DE>Avarisch</de-DE>
+              <en-US>Avar</en-US>
+              <ka-GE>ხუნძური</ka-GE>
+            </name>
+            <isocode type="string">ava</isocode>
+            <custom name="glottolog" type="custom:base.custom-data-type-link.link">
+              <string name="url">http://glottolog.org/resource/languoid/id/avar1256</string>
+              <string name="hostname">glottolog.org</string>
+              <string name="tld">org</string>
+              <object name="_fulltext">
+                <string name="string">http://glottolog.org/resource/languoid/id/avar1256</string>
+              </object>
+            </custom>
+            <custom name="gnd" type="custom:base.custom-data-type-gnd.gnd">
+              <string name="conceptName">Awarisch</string>
+              <string name="conceptURI">http://d-nb.info/gnd/4143737-8</string>
+              <object name="_fulltext">
+                <string name="text">Awarisch</string>
+                <string name="string">http://d-nb.info/gnd/4143737-8</string>
+              </object>
+            </custom>
+            <_parent_id>399</_parent_id>
+            <_objecttype>sprache</_objecttype>
+            <_system_object_id>242</_system_object_id>
+            <_global_object_id>242@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>be90070c-31e5-40c9-a30a-a203e9faf6a3</_uuid>
+            <_mask>sprache__all_fields</_mask>
+          </sprache>
+        </sprache>
+      </objekttyp__sprachen>
     </_nested__objekttyp__sprachen>
     <beschreibung type="text_l10n">
       <de-DE>Die Video- und Fotodateien zeigen die Anfertigung des Besens im Detail</de-DE>
     </beschreibung>
     <_nested__objekttyp__orte>
-      <objekttyp__orte/>
-      <objekttyp__orte/>
-      <objekttyp__orte/>
+      <objekttyp__orte>
+        <ort>
+          <ort date-created="2016-04-16T16:18:15Z" date-last-updated="2017-11-29T12:07:02Z">
+            <_version>8</_version>
+            <_id>5</_id>
+            <name type="text_l10n_oneline">
+              <de-DE>Der Kaukasus</de-DE>
+              <en-US>Caucasus Region</en-US>
+              <ka-GE>კავკასიის რეგიონი</ka-GE>
+            </name>
+            <custom name="geonames_uri" type="custom:base.custom-data-type-geonames.geonames">
+              <string name="conceptName">Caucasus Region</string>
+              <object name="_fulltext">
+                <string name="text">Caucasus Region</string>
+                <string name="string">http://www.geonames.org/615318</string>
+              </object>
+              <string name="conceptURI">http://www.geonames.org/615318</string>
+            </custom>
+            <exakte_koordinaten type="text_oneline"/>
+            <_parent_id>399</_parent_id>
+            <_objecttype>ort</_objecttype>
+            <_system_object_id>558</_system_object_id>
+            <_global_object_id>558@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>6742e8fd-56a0-47cc-ba47-eac5cd5a51e3</_uuid>
+            <_mask>ort__all_fields</_mask>
+          </ort>
+        </ort>
+      </objekttyp__orte>
+      <objekttyp__orte>
+        <ort>
+          <ort date-created="2016-03-08T17:35:37Z" date-last-updated="2017-11-29T12:07:47Z">
+            <_version>6</_version>
+            <_id>2</_id>
+            <name type="text_l10n_oneline">
+              <de-DE>Georgien</de-DE>
+              <en-US>Georgia</en-US>
+              <ka-GE>საქართველო</ka-GE>
+            </name>
+            <custom name="geonames_uri" type="custom:base.custom-data-type-geonames.geonames">
+              <string name="conceptName">Georgien</string>
+              <object name="_fulltext">
+                <string name="text">Georgien</string>
+                <string name="string">http://www.geonames.org/614540</string>
+              </object>
+              <string name="conceptURI">http://www.geonames.org/614540</string>
+            </custom>
+            <exakte_koordinaten type="text_oneline"/>
+            <_parent_id>399</_parent_id>
+            <_objecttype>ort</_objecttype>
+            <_system_object_id>14</_system_object_id>
+            <_global_object_id>14@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>9f022e85-91b6-4abf-99aa-aeb38b3f0e3d</_uuid>
+            <_mask>ort__all_fields</_mask>
+          </ort>
+        </ort>
+      </objekttyp__orte>
+      <objekttyp__orte>
+        <ort>
+          <ort date-created="2016-04-06T15:17:31Z" date-last-updated="2017-10-20T09:10:25Z">
+            <_version>4</_version>
+            <_id>3</_id>
+            <name type="text_l10n_oneline">
+              <de-DE>Chantlisqure</de-DE>
+              <en-US>Chantlisqure</en-US>
+              <ka-GE>ჩანტლისყურე</ka-GE>
+            </name>
+            <exakte_koordinaten type="text_oneline">41.906562, 45.914137</exakte_koordinaten>
+            <_parent_id>399</_parent_id>
+            <_objecttype>ort</_objecttype>
+            <_system_object_id>417</_system_object_id>
+            <_global_object_id>417@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>7124d505-7026-42b1-973e-f9099faaacab</_uuid>
+            <_mask>ort__all_fields</_mask>
+          </ort>
+        </ort>
+      </objekttyp__orte>
     </_nested__objekttyp__orte>
   </objekttyp>
 </objects>

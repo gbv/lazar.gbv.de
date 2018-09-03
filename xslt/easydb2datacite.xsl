@@ -32,11 +32,12 @@
       <xsl:call-template name="publisher"/>
       <xsl:call-template name="publicationYear"/>
       <xsl:call-template name="subjects"/>
-      <xsl:call-template name="contributors"/>
       <xsl:call-template name="resourceType"/>
       <!-- optional fields -->
+      <xsl:call-template name="contributors"/>
       <xsl:call-template name="descriptions"/>
       <xsl:call-template name="dates"/>
+      <xsl:call-template name="languages"/>
       <xsl:call-template name="alternateIdentifiers"/>
       <xsl:call-template name="relatedIdentifiers"/>
       <xsl:call-template name="size"/>
@@ -121,7 +122,7 @@
   <!-- 6 Subject (required) -->
   <xsl:template name="subjects">
 
-    <!-- TODO: add orte, sprachen, methoden, affiliation -->
+    <!-- TODO: add orte, methoden, affiliation -->
 
     <xsl:variable name="gnd" select="edb:_nested__objekttyp__keywords_gnd/edb:objekttyp__keywords_gnd"/>
     <xsl:variable name="getty" select="edb:_nested__objekttyp__keywords_getty/edb:objekttyp__keywords_getty"/>
@@ -206,7 +207,16 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 9 Language (optional): TODO -->
+  <!-- 9 Language (optional) -->
+  <xsl:template name="languages">
+    <xsl:variable name="sprachen"
+      select="edb:_nested__objekttyp__sprachen/edb:objekttyp__sprachen/edb:sprache/edb:sprache"/>
+    <xsl:for-each select="$sprachen/edb:isocode[string-length(text()) > 0]">
+      <datacite:language>
+        <xsl:value-of select="."/>
+      </datacite:language>
+    </xsl:for-each>
+  </xsl:template>
 
   <!-- 10 Resource Type (required) -->
   <xsl:template name="resourceType">

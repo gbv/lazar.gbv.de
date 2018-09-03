@@ -16,19 +16,22 @@
     <datacite:subject schemeURI="http://bartoc.org/en/node/430" valueURI="http://d-nb.info/gnd/4354672-9">Besen</datacite:subject>
     <datacite:subject schemeURI="http://bartoc.org/en/node/430" valueURI="http://d-nb.info/gnd/4253274-7">Selbstgenügsamkeit</datacite:subject>
   </datacite:subjects>
+  <datacite:resourceType resourceTypeGeneral="Collection">Collection</datacite:resourceType>
   <datacite:contributors>
     <datacite:contributor contributorType="ProjectMember">
       <datacite:contributorName>May, Etienne</datacite:contributorName>
       <datacite:nameIdentifier nameIdentifierScheme="ORCID" schemeURI="http://orcid.org/">http://orcid.org/0000-0001-5786-9581</datacite:nameIdentifier>
     </datacite:contributor>
   </datacite:contributors>
-  <datacite:resourceType resourceTypeGeneral="Collection">Collection</datacite:resourceType>
   <datacite:descriptions>
     <datacite:description descriptionType="Abstracts" xml:lang="de">Die Video- und Fotodateien zeigen die Anfertigung des Besens im Detail</datacite:description>
   </datacite:descriptions>
   <datacite:dates>
     <datacite:date dateType="Created">2011-09-29</datacite:date>
   </datacite:dates>
+  <datacite:language>deu</datacite:language>
+  <datacite:language>kat</datacite:language>
+  <datacite:language>ava</datacite:language>
   <datacite:alternateIdentifiers>
     <datacite:alternateIdentifier alternateIdentifierType="LaZAR URL">https://lazardb.gbv.de/detail/494</datacite:alternateIdentifier>
     <datacite:alternateIdentifier alternateIdentifierType="UUID">31ab40ef-9fbf-4674-9c5b-2391e0b5cdb4</datacite:alternateIdentifier>

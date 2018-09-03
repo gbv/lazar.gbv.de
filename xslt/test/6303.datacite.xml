@@ -18,6 +18,7 @@
     <datacite:subject schemeURI="http://bartoc.org/en/node/430" valueURI="http://d-nb.info/gnd/4145241-0">Bibliografische Daten</datacite:subject>
     <datacite:subject schemeURI="http://vocab.getty.edu/dataset/aat" valueURI="http://vocab.getty.edu/aat/300026769">catalog cards</datacite:subject>
   </datacite:subjects>
+  <datacite:resourceType resourceTypeGeneral="Image">Image</datacite:resourceType>
   <datacite:contributors>
     <datacite:contributor contributorType="Other">
       <datacite:contributorName>Dadunashvili, Elguja</datacite:contributorName>
@@ -25,7 +26,6 @@
       <datacite:nameIdentifier nameIdentifierScheme="ORCID" schemeURI="http://orcid.org/">http://orcid.org/0000-0002-5434-0815</datacite:nameIdentifier>
     </datacite:contributor>
   </datacite:contributors>
-  <datacite:resourceType resourceTypeGeneral="Image">Image</datacite:resourceType>
   <datacite:descriptions>
     <datacite:description descriptionType="Abstracts" xml:lang="de">Annotierte Katalogkarte aus den 1960ern</datacite:description>
     <datacite:description descriptionType="Abstracts" xml:lang="en">annotated catalog card</datacite:description>
@@ -34,6 +34,7 @@
     <datacite:date dateType="Created">1966/1968</datacite:date>
     <datacite:date dateType="Created">2017-08-01</datacite:date>
   </datacite:dates>
+  <datacite:language>eng</datacite:language>
   <datacite:alternateIdentifiers>
     <datacite:alternateIdentifier alternateIdentifierType="LaZAR URL">https://lazardb.gbv.de/detail/8223</datacite:alternateIdentifier>
     <datacite:alternateIdentifier alternateIdentifierType="UUID">b79de4e5-8d1f-4840-b85f-e052db92a52f</datacite:alternateIdentifier>

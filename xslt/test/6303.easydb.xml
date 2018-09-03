@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects xmlns="https://schema.easydb.de/EASYDB/1.0/objects/" base-schema="195" instance="lazar" timestamp="2018-09-03T09:34:12+02:00" user-schema="224" uuid="33a8cae1-a9fa-4655-8c3d-b71241bbc99b">
+<objects xmlns="https://schema.easydb.de/EASYDB/1.0/objects/" base-schema="195" instance="lazar" timestamp="2018-09-03T11:07:09+02:00" user-schema="225" uuid="33a8cae1-a9fa-4655-8c3d-b71241bbc99b">
   <objekttyp>
     <_version>21</_version>
     <_id>6303</_id>
@@ -338,6 +338,7 @@
           <person_informant date-created="2016-04-06T15:50:29Z" date-last-updated="2016-10-10T12:31:27Z">
             <_version>3</_version>
             <_id>1</_id>
+            <pseudonym type="text_oneline">424v1_m_52</pseudonym>
             <_parent_id>6303</_parent_id>
             <_objecttype>person_informant</_objecttype>
             <_system_object_id>424</_system_object_id>
@@ -352,6 +353,7 @@
           <person_informant date-created="2017-03-16T19:45:56Z" date-last-updated="2018-04-16T15:13:59Z">
             <_version>3</_version>
             <_id>1522</_id>
+            <pseudonym type="text_oneline">#7432m1966</pseudonym>
             <_parent_id>6303</_parent_id>
             <_objecttype>person_informant</_objecttype>
             <_system_object_id>7432</_system_object_id>
@@ -373,8 +375,70 @@
       </objekttyp__datum>
     </_nested__objekttyp__datum>
     <_nested__objekttyp__sprachen>
-      <objekttyp__sprachen/>
-      <objekttyp__sprachen/>
+      <objekttyp__sprachen>
+        <sprache>
+          <sprache date-created="2017-08-01T11:49:12Z" date-last-updated="2017-09-11T13:14:58Z">
+            <_version>4</_version>
+            <_id>14</_id>
+            <name type="text_l10n_oneline">
+              <de-DE>Englisch</de-DE>
+              <en-US>English</en-US>
+              <ka-GE>ინგლისური</ka-GE>
+            </name>
+            <isocode type="string">eng</isocode>
+            <custom name="glottolog" type="custom:base.custom-data-type-link.link">
+              <string name="url">http://glottolog.org/resource/languoid/id/stan1293</string>
+              <string name="hostname">glottolog.org</string>
+              <string name="tld">org</string>
+              <object name="_fulltext">
+                <string name="string">http://glottolog.org/resource/languoid/id/stan1293</string>
+              </object>
+            </custom>
+            <custom name="gnd" type="custom:base.custom-data-type-gnd.gnd">
+              <string name="conceptName">Englisch</string>
+              <string name="conceptURI">http://d-nb.info/gnd/4014777-0</string>
+              <object name="_fulltext">
+                <string name="text">Englisch</string>
+                <string name="string">http://d-nb.info/gnd/4014777-0</string>
+              </object>
+            </custom>
+            <_parent_id>6303</_parent_id>
+            <_objecttype>sprache</_objecttype>
+            <_system_object_id>8224</_system_object_id>
+            <_global_object_id>8224@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>1fc95329-4b93-47cd-a0cc-988c3415cbd5</_uuid>
+            <_mask>sprache__all_fields</_mask>
+          </sprache>
+        </sprache>
+      </objekttyp__sprachen>
+      <objekttyp__sprachen>
+        <sprache>
+          <sprache date-created="2016-03-25T14:31:56Z" date-last-updated="2017-09-11T13:14:00Z">
+            <_version>3</_version>
+            <_id>5</_id>
+            <name type="text_l10n_oneline">
+              <de-DE>Tlyadatalisch</de-DE>
+              <en-US>Tlyadaly</en-US>
+              <ka-GE>ტლადატალური</ka-GE>
+            </name>
+            <isocode type="string"/>
+            <custom name="glottolog" type="custom:base.custom-data-type-link.link">
+              <string name="url">http://glottolog.org/resource/languoid/id/tlya1238</string>
+              <string name="hostname">glottolog.org</string>
+              <string name="tld">org</string>
+              <object name="_fulltext">
+                <string name="string">http://glottolog.org/resource/languoid/id/tlya1238</string>
+              </object>
+            </custom>
+            <_parent_id>6303</_parent_id>
+            <_objecttype>sprache</_objecttype>
+            <_system_object_id>243</_system_object_id>
+            <_global_object_id>243@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>a1ae6032-1465-48bb-8d7b-40a847160792</_uuid>
+            <_mask>sprache__all_fields</_mask>
+          </sprache>
+        </sprache>
+      </objekttyp__sprachen>
     </_nested__objekttyp__sprachen>
     <_nested__objekttyp__alternative_id>
       <objekttyp__alternative_id>
@@ -389,11 +453,128 @@
       <en-US>annotated catalog card</en-US>
     </beschreibung>
     <_nested__objekttyp__orte>
-      <objekttyp__orte/>
-      <objekttyp__orte/>
-      <objekttyp__orte/>
-      <objekttyp__orte/>
+      <objekttyp__orte>
+        <ort>
+          <ort date-created="2016-06-15T10:02:37Z" date-last-updated="2017-11-29T12:20:40Z">
+            <_version>5</_version>
+            <_id>29</_id>
+            <name type="text_l10n_oneline">
+              <de-DE>Russland</de-DE>
+              <en-US>Russia</en-US>
+              <ka-GE>რუსეთი</ka-GE>
+            </name>
+            <exakte_koordinaten type="text_oneline"/>
+            <_parent_id>6303</_parent_id>
+            <_objecttype>ort</_objecttype>
+            <_system_object_id>3933</_system_object_id>
+            <_global_object_id>3933@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>06ceb6ef-2bc2-44f2-adef-b0dde3105efe</_uuid>
+            <_mask>ort__all_fields</_mask>
+          </ort>
+        </ort>
+      </objekttyp__orte>
+      <objekttyp__orte>
+        <ort>
+          <ort date-created="2016-05-27T18:04:18Z" date-last-updated="2017-09-12T13:04:03Z">
+            <_version>2</_version>
+            <_id>16</_id>
+            <name type="text_l10n_oneline">
+              <de-DE>Khe</de-DE>
+              <en-US>Khe</en-US>
+              <ka-GE>ხე</ka-GE>
+            </name>
+            <exakte_koordinaten type="text_oneline">42.94028, 42.911</exakte_koordinaten>
+            <_parent_id>6303</_parent_id>
+            <_objecttype>ort</_objecttype>
+            <_system_object_id>3766</_system_object_id>
+            <_global_object_id>3766@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>3fd93200-1e1e-4e2c-8875-4d64e374f225</_uuid>
+            <_mask>ort__all_fields</_mask>
+          </ort>
+        </ort>
+      </objekttyp__orte>
+      <objekttyp__orte>
+        <ort>
+          <ort date-created="2016-05-25T19:25:46Z" date-last-updated="2018-08-15T15:36:25Z">
+            <_version>3</_version>
+            <_id>12</_id>
+            <name type="text_l10n_oneline">
+              <de-DE>Mulakhi</de-DE>
+              <en-US>Mulakhi</en-US>
+              <und>მულახი</und>
+            </name>
+            <exakte_koordinaten type="text_oneline">43.04982, 42.79621</exakte_koordinaten>
+            <_parent_id>6303</_parent_id>
+            <_objecttype>ort</_objecttype>
+            <_system_object_id>1566</_system_object_id>
+            <_global_object_id>1566@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>b07bfd92-2108-4a34-9e81-affbe7ef9e5e</_uuid>
+            <_mask>ort__all_fields</_mask>
+          </ort>
+        </ort>
+      </objekttyp__orte>
+      <objekttyp__orte>
+        <ort>
+          <ort date-created="2016-03-08T17:35:04Z" date-last-updated="2017-11-29T12:07:09Z">
+            <_version>8</_version>
+            <_id>1</_id>
+            <name type="text_l10n_oneline">
+              <de-DE>Deutschland</de-DE>
+              <en-US>Germany</en-US>
+              <ka-GE>გერმანია</ka-GE>
+            </name>
+            <exakte_koordinaten type="text_oneline"/>
+            <_parent_id>6303</_parent_id>
+            <_objecttype>ort</_objecttype>
+            <_system_object_id>13</_system_object_id>
+            <_global_object_id>13@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>012d0257-c823-4a5f-9dc9-4c14d28f61d5</_uuid>
+            <_mask>ort__all_fields</_mask>
+          </ort>
+        </ort>
+      </objekttyp__orte>
     </_nested__objekttyp__orte>
+    <_nested__objekttyp__relationen>
+      <objekttyp__relationen>
+        <lk_relation_typ_id>
+          <relation_typ date-created="2016-04-01T19:22:04Z" date-last-updated="2017-09-12T09:47:16Z">
+            <_version>2</_version>
+            <_id>21</_id>
+            <name type="text_l10n_oneline">
+              <de-DE>IstIdentischZu</de-DE>
+              <en-US>IsIdenticalTo</en-US>
+              <ka-GE>არის_იდენტური</ka-GE>
+            </name>
+            <_parent_id>6303</_parent_id>
+            <_objecttype>relation_typ</_objecttype>
+            <_system_object_id>395</_system_object_id>
+            <_global_object_id>395@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>14e76546-66e3-4b4e-b2bf-169a03950571</_uuid>
+            <_mask>relation_typ__all_fields</_mask>
+          </relation_typ>
+        </lk_relation_typ_id>
+        <lk_relation_id>
+          <objekttyp>
+            <_objecttype>objekttyp</_objecttype>
+            <_id>6303</_id>
+            <_version>21</_version>
+            <_parent_id>6303</_parent_id>
+            <_system_object_id>8223</_system_object_id>
+            <_global_object_id>8223@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>b79de4e5-8d1f-4840-b85f-e052db92a52f</_uuid>
+            <_mask>objekttyp__all_fields</_mask>
+            <_standard>
+              <de-DE>Katalogkarte, annotierte Katalogkarte, 1966, 01.08.2017, 572.04 Mal, TEST</de-DE>
+              <en-US>1966, 08/01/2017, 572.04 Mal, TEST</en-US>
+              <und>%y, 01.08.%y, 572.04 Mal, TEST</und>
+            </_standard>
+          </objekttyp>
+        </lk_relation_id>
+        <extern type="text_l10n_oneline">
+          <de-DE>sich selbst</de-DE>
+        </extern>
+      </objekttyp__relationen>
+    </_nested__objekttyp__relationen>
     <_nested__objekttyp__methoden>
       <objekttyp__methoden>
         <lk_methode_id>
