@@ -120,20 +120,35 @@
   <!-- 6 Subject (required) -->
   <xsl:template name="subjects">
 
-  <!-- TODO: add GND, Orte, Methoden(?) -->
+  <!-- TODO: add orte, sprachen, methoden, affiliation -->
 
-    <xsl:variable name="getty" select="edb:_nested__objekttyp__keywords_getty/edb:objekttyp__keywords_getty"/>
-    <xsl:if test="$getty">
+  <xsl:variable name="gnd" select="edb:_nested__objekttyp__keywords_gnd/edb:objekttyp__keywords_gnd"/>
+  <xsl:variable name="getty" select="edb:_nested__objekttyp__keywords_getty/edb:objekttyp__keywords_getty"/>
+
+    <xsl:if test="$gnd|$getty">
       <datacite:subjects>
+        <xsl:for-each select="$gnd">
+          <datacite:subject schemeURI="http://bartoc.org/en/node/430">
+            <xsl:apply-templates select="edb:custom[@name='keyword']"/>
+          </datacite:subject>
+        </xsl:for-each>
         <xsl:for-each select="$getty">
-          <datacite:subject
-            schemeURI="http://vocab.getty.edu/dataset/aat"
-            valueURI="{edb:custom/edb:string[@name='conceptURI']}">
-            <xsl:value-of select="edb:custom/edb:string[@name='conceptName']"/>
+          <datacite:subject schemeURI="http://vocab.getty.edu/dataset/aat">
+            <xsl:apply-templates select="edb:custom[@name='keyword']"/>
           </datacite:subject>
         </xsl:for-each>
       </datacite:subjects>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="edb:custom[@name='keyword']">
+    <xsl:variable name="uri" select="edb:string[@name='conceptURI']"/>
+    <xsl:if test="$uri">
+      <xsl:attribute name="valueURI">
+        <xsl:value-of select="$uri"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:value-of select="edb:string[@name='conceptName']"/>
   </xsl:template>
 
   <!-- 7 Contributor (required): TODO -->
@@ -219,6 +234,7 @@
       <datacite:relatedIdentifier relatedIdentifierType="URL" relationType="isIdenticalTo">
         <xsl:value-of select="edb:_urls/edb:url[@type='easydb-id']"/>
       </datacite:relatedIdentifier>
+
       <xsl:if test="edb:tags/edb:tag[@id='2']">
         <datacite:relatedIdentifier relatedIdentifierType="URL" relationType="isIdenticalTo">
           <xsl:value-of select="edb:datei/edb:files/edb:file/edb:versions/edb:version[1]/edb:deep_link_url"/>

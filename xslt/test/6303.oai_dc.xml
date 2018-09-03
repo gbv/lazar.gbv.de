@@ -11,10 +11,14 @@
   <dc:identifier>unknown:572.04 Mal</dc:identifier>
   <dc:identifier>unknown:TEST</dc:identifier>
   <dc:relation>url:https://lazardb.gbv.de/detail/8223</dc:relation>
-  <dc:relation>url:https://lazardb.gbv.de/api/v1/objects/uuid/b79de4e5-8d1f-4840-b85f-e052db92a52f/file/id/1001974122/file_version/name/small/disposition/inline</dc:relation>
+  <dc:relation>url:https://lazardb.gbv.de/api/v1/objects/uuid/b79de4e5-8d1f-4840-b85f-e052db92a52f/file/id/1001974122/file_version/name/original/disposition/inline</dc:relation>
+  <dc:subject>Katalogisierung</dc:subject>
+  <dc:subject>Bibliografische Daten</dc:subject>
   <dc:subject>catalog cards</dc:subject>
   <dc:description>Abstracts</dc:description>
   <dc:description xml:lang="de">Annotierte Katalogkarte aus den 1960ern</dc:description>
+  <dc:description>Abstracts</dc:description>
+  <dc:description xml:lang="en">annotated catalog card</dc:description>
   <dc:type>Image</dc:type>
   <dc:type>Image</dc:type>
   <dc:format>768 x 381 @ 8 bit, 62.4 kB</dc:format>

@@ -14,11 +14,14 @@
   </datacite:titles>
   <datacite:publisher>LaZAR</datacite:publisher>
   <datacite:subjects>
+    <datacite:subject schemeURI="http://bartoc.org/en/node/430" valueURI="http://d-nb.info/gnd/4163418-4">Katalogisierung</datacite:subject>
+    <datacite:subject schemeURI="http://bartoc.org/en/node/430" valueURI="http://d-nb.info/gnd/4145241-0">Bibliografische Daten</datacite:subject>
     <datacite:subject schemeURI="http://vocab.getty.edu/dataset/aat" valueURI="http://vocab.getty.edu/aat/300026769">catalog cards</datacite:subject>
   </datacite:subjects>
   <datacite:resourceType resourceTypeGeneral="Image">Image</datacite:resourceType>
   <datacite:descriptions>
     <datacite:description descriptionType="Abstracts" xml:lang="de">Annotierte Katalogkarte aus den 1960ern</datacite:description>
+    <datacite:description descriptionType="Abstracts" xml:lang="en">annotated catalog card</datacite:description>
   </datacite:descriptions>
   <datacite:dates>
     <datacite:date dateType="Created">1966/1968</datacite:date>
@@ -32,7 +35,7 @@
   </datacite:alternateIdentifiers>
   <datacite:relatedIdentifiers>
     <datacite:relatedIdentifier relatedIdentifierType="URL" relationType="isIdenticalTo">https://lazardb.gbv.de/detail/8223</datacite:relatedIdentifier>
-    <datacite:relatedIdentifier relatedIdentifierType="URL" relationType="isIdenticalTo">https://lazardb.gbv.de/api/v1/objects/uuid/b79de4e5-8d1f-4840-b85f-e052db92a52f/file/id/1001974122/file_version/name/small/disposition/inline</datacite:relatedIdentifier>
+    <datacite:relatedIdentifier relatedIdentifierType="URL" relationType="isIdenticalTo">https://lazardb.gbv.de/api/v1/objects/uuid/b79de4e5-8d1f-4840-b85f-e052db92a52f/file/id/1001974122/file_version/name/original/disposition/inline</datacite:relatedIdentifier>
   </datacite:relatedIdentifiers>
   <datacite:sizes>
     <datacite:size>768 x 381 @ 8 bit, 62.4 kB</datacite:size>

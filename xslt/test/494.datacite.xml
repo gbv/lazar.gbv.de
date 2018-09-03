@@ -12,6 +12,10 @@
     <datacite:title xml:lang="de">Herstellung des Besens</datacite:title>
   </datacite:titles>
   <datacite:publisher>LaZAR</datacite:publisher>
+  <datacite:subjects>
+    <datacite:subject schemeURI="http://bartoc.org/en/node/430" valueURI="http://d-nb.info/gnd/4354672-9">Besen</datacite:subject>
+    <datacite:subject schemeURI="http://bartoc.org/en/node/430" valueURI="http://d-nb.info/gnd/4253274-7">Selbstgenügsamkeit</datacite:subject>
+  </datacite:subjects>
   <datacite:resourceType resourceTypeGeneral="Collection">Collection</datacite:resourceType>
   <datacite:descriptions>
     <datacite:description descriptionType="Abstracts" xml:lang="de">Die Video- und Fotodateien zeigen die Anfertigung des Besens im Detail</datacite:description>
@@ -27,4 +31,7 @@
     <datacite:relatedIdentifier relatedIdentifierType="URL" relationType="isIdenticalTo">https://lazardb.gbv.de/detail/494</datacite:relatedIdentifier>
   </datacite:relatedIdentifiers>
   <datacite:version>1.0</datacite:version>
+  <datacite:rightsList>
+    <datacite:rights rightsURI="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)</datacite:rights>
+  </datacite:rightsList>
 </datacite:resource>

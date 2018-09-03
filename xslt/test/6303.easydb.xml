@@ -1,14 +1,14 @@
-<?xml version="1.0"?>
-<objects base-schema="182" instance="lazar" timestamp="2018-01-04T13:17:59+01:00" user-schema="207" uuid="33a8cae1-a9fa-4655-8c3d-b71241bbc99b" xmlns="https://schema.easydb.de/EASYDB/1.0/objects/">
+<?xml version="1.0" encoding="UTF-8"?>
+<objects xmlns="https://schema.easydb.de/EASYDB/1.0/objects/" base-schema="195" instance="lazar" timestamp="2018-09-03T09:34:12+02:00" user-schema="224" uuid="33a8cae1-a9fa-4655-8c3d-b71241bbc99b">
   <objekttyp>
-    <_version>20</_version>
+    <_version>21</_version>
     <_id>6303</_id>
     <_objecttype>objekttyp</_objecttype>
     <_system_object_id>8223</_system_object_id>
     <_global_object_id>8223@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
     <_uuid>b79de4e5-8d1f-4840-b85f-e052db92a52f</_uuid>
     <_mask>objekttyp__restricted</_mask>
-    <_last_modified>2017-11-20T15:30:16Z</_last_modified>
+    <_last_modified>2018-03-01T12:12:20Z</_last_modified>
     <tags>
       <tag id="2">
         <name>
@@ -48,8 +48,6 @@
         <_objecttype>objekttyp</_objecttype>
         <_standard>
           <de-DE>Beispielkonvolut</de-DE>
-          <en-US>#8227</en-US>
-          <ka-GE>#8227</ka-GE>
         </_standard>
       </objekttyp>
       <objekttyp level="1" parent-level="1">
@@ -60,8 +58,6 @@
         <_objecttype>objekttyp</_objecttype>
         <_standard>
           <de-DE>Beispiel-Unterkonvolut</de-DE>
-          <en-US>#9136</en-US>
-          <ka-GE>#9136</ka-GE>
         </_standard>
       </objekttyp>
       <objekttyp level="2" parent-level="0">
@@ -71,9 +67,7 @@
         <_id>6303</_id>
         <_objecttype>objekttyp</_objecttype>
         <_standard>
-          <de-DE>0.9, Katalogkarte, annotierte Katalogkarte</de-DE>
-          <en-US>0.9</en-US>
-          <ka-GE>0.9</ka-GE>
+          <de-DE>Katalogkarte, annotierte Katalogkarte</de-DE>
         </_standard>
       </objekttyp>
     </_path>
@@ -82,9 +76,7 @@
       <url type="easydb-id">https://lazardb.gbv.de/detail/8223</url>
     </_urls>
     <_standard>
-      <de-DE>0.9, Katalogkarte, annotierte Katalogkarte</de-DE>
-      <en-US>0.9</en-US>
-      <ka-GE>0.9</ka-GE>
+      <de-DE>Katalogkarte, annotierte Katalogkarte</de-DE>
     </_standard>
     <datei>
       <files>
@@ -97,7 +89,7 @@
           <original_filename>Library-Card-pic.png</original_filename>
           <compiled>png image, 768 x 381 @ 8 bit, 62.4 kB</compiled>
           <eas_parent_id/>
-          <date_inserted>2017-11-20T15:30:16Z</date_inserted>
+          <date_inserted>2018-03-01T12:12:20Z</date_inserted>
           <date_created>2017-08-01T09:49:56+00:00</date_created>
           <date_uploaded>2017-08-01T09:49:54Z</date_uploaded>
           <filesize>63853</filesize>
@@ -113,6 +105,28 @@
             <colordepth>8</colordepth>
           </technical_metadata>
           <versions>
+            <version name="original">
+              <extension>png</extension>
+              <_download_allowed>0</_download_allowed>
+              <status>done</status>
+              <filesize>63853</filesize>
+              <height>381</height>
+              <has_more_jobs>0</has_more_jobs>
+              <width>768</width>
+              <class>image</class>
+              <deep_link_url>https://lazardb.gbv.de/api/v1/objects/uuid/b79de4e5-8d1f-4840-b85f-e052db92a52f/file/id/1001974122/file_version/name/original/disposition/inline</deep_link_url>
+            </version>
+            <version name="preview">
+              <extension>png</extension>
+              <_download_allowed>0</_download_allowed>
+              <status>done</status>
+              <filesize>152590</filesize>
+              <height>381</height>
+              <has_more_jobs>0</has_more_jobs>
+              <width>768</width>
+              <class>image</class>
+              <deep_link_url>https://lazardb.gbv.de/api/v1/objects/uuid/b79de4e5-8d1f-4840-b85f-e052db92a52f/file/id/1001974122/file_version/name/preview/disposition/inline</deep_link_url>
+            </version>
             <version name="small">
               <extension>png</extension>
               <_download_allowed>1</_download_allowed>
@@ -123,6 +137,28 @@
               <width>504</width>
               <class>image</class>
               <deep_link_url>https://lazardb.gbv.de/api/v1/objects/uuid/b79de4e5-8d1f-4840-b85f-e052db92a52f/file/id/1001974122/file_version/name/small/disposition/inline</deep_link_url>
+            </version>
+            <version name="huge">
+              <extension/>
+              <_download_allowed>0</_download_allowed>
+              <status>pending</status>
+              <filesize>0</filesize>
+              <height>0</height>
+              <has_more_jobs>1</has_more_jobs>
+              <width>0</width>
+              <class>image</class>
+              <deep_link_url>https://lazardb.gbv.de/api/v1/objects/uuid/b79de4e5-8d1f-4840-b85f-e052db92a52f/file/id/1001974122/file_version/name/huge/disposition/inline</deep_link_url>
+            </version>
+            <version name="full">
+              <extension/>
+              <_download_allowed>0</_download_allowed>
+              <status>pending</status>
+              <filesize>0</filesize>
+              <height>0</height>
+              <has_more_jobs>1</has_more_jobs>
+              <width>0</width>
+              <class>image</class>
+              <deep_link_url>https://lazardb.gbv.de/api/v1/objects/uuid/b79de4e5-8d1f-4840-b85f-e052db92a52f/file/id/1001974122/file_version/name/full/disposition/inline</deep_link_url>
             </version>
           </versions>
         </file>
@@ -150,16 +186,16 @@
             <name type="text_oneline">Voß, Jakob</name>
             <custom name="gnd" type="custom:base.custom-data-type-gnd.gnd">
               <string name="conceptName">Voß, Jakob</string>
-              <string name="conceptURI">http://d-nb.info/gnd/1038709040</string>
               <object name="_fulltext">
                 <string name="text">Voß, Jakob</string>
                 <string name="string">http://d-nb.info/gnd/1038709040</string>
               </object>
+              <string name="conceptURI">http://d-nb.info/gnd/1038709040</string>
             </custom>
             <custom name="orcid" type="custom:base.custom-data-type-link.link">
-              <string name="url">https://orcid.org/0000-0002-7613-4123</string>
-              <string name="hostname">orcid.org</string>
               <string name="tld">org</string>
+              <string name="hostname">orcid.org</string>
+              <string name="url">https://orcid.org/0000-0002-7613-4123</string>
               <object name="text">
                 <string name="en_US"/>
                 <string name="de_DE"/>
@@ -181,9 +217,14 @@
           </person_urheber>
         </urheber>
         <affiliation>
-          <affiliation>
-            <_version>2</_version>
+          <affiliation date-created="2017-11-20T15:15:52Z" date-last-updated="2018-04-28T17:49:18Z">
+            <_version>3</_version>
             <_id>5</_id>
+            <name type="text_l10n_oneline">
+              <de-DE>VZG</de-DE>
+              <en-US>VZG</en-US>
+              <und>VZG</und>
+            </name>
             <_parent_id>6303</_parent_id>
             <_objecttype>affiliation</_objecttype>
             <_system_object_id>10196</_system_object_id>
@@ -198,32 +239,133 @@
       <de-DE>Katalogisierung</de-DE>
     </thema>
     <_nested__objekttyp__keywords_gnd>
-      <objekttyp__keywords_gnd/>
-      <objekttyp__keywords_gnd/>
+      <objekttyp__keywords_gnd>
+        <custom name="keyword" type="custom:base.custom-data-type-gnd.gnd">
+          <object name="_fulltext">
+            <string name="text">Katalogisierung</string>
+            <string name="string">http://d-nb.info/gnd/4163418-4</string>
+          </object>
+          <string name="conceptURI">http://d-nb.info/gnd/4163418-4</string>
+          <string name="conceptName">Katalogisierung</string>
+        </custom>
+      </objekttyp__keywords_gnd>
+      <objekttyp__keywords_gnd>
+        <custom name="keyword" type="custom:base.custom-data-type-gnd.gnd">
+          <object name="_fulltext">
+            <string name="text">Bibliografische Daten</string>
+            <string name="string">http://d-nb.info/gnd/4145241-0</string>
+          </object>
+          <string name="conceptURI">http://d-nb.info/gnd/4145241-0</string>
+          <string name="conceptName">Bibliografische Daten</string>
+        </custom>
+      </objekttyp__keywords_gnd>
     </_nested__objekttyp__keywords_gnd>
+    <_nested__objekttyp__keywords_getty>
+      <objekttyp__keywords_getty>
+        <custom name="keyword" type="custom:base.custom-data-type-getty.getty">
+          <object name="_fulltext">
+            <string name="text">catalog cards</string>
+            <string name="string">http://vocab.getty.edu/aat/300026769</string>
+          </object>
+          <string name="conceptURI">http://vocab.getty.edu/aat/300026769</string>
+          <string name="conceptName">catalog cards</string>
+        </custom>
+      </objekttyp__keywords_getty>
+    </_nested__objekttyp__keywords_getty>
     <_nested__objekttyp__contributor>
-      <objekttyp__contributor/>
+      <objekttyp__contributor>
+        <person>
+          <person_urheber date-created="2016-04-06T15:39:29Z" date-last-updated="2017-10-09T18:39:58Z">
+            <_version>10</_version>
+            <_id>3</_id>
+            <name type="text_oneline">Dadunashvili, Elguja</name>
+            <custom name="gnd" type="custom:base.custom-data-type-gnd.gnd">
+              <string name="conceptName">Dadunašvili, Elguǰa</string>
+              <object name="_fulltext">
+                <string name="text">Dadunašvili, Elguǰa</string>
+                <string name="string">http://d-nb.info/gnd/133557154</string>
+              </object>
+              <string name="conceptURI">http://d-nb.info/gnd/133557154</string>
+            </custom>
+            <custom name="orcid" type="custom:base.custom-data-type-link.link">
+              <string name="tld">org</string>
+              <string name="hostname">orcid.org</string>
+              <string name="url">http://orcid.org/0000-0002-5434-0815</string>
+              <object name="text">
+                <string name="en_US"/>
+                <string name="de_DE"/>
+                <string name="ka_GE"/>
+              </object>
+              <object name="_fulltext">
+                <object name="l10ntext">
+                  <string name="en_US"/>
+                  <string name="de_DE"/>
+                  <string name="ka_GE"/>
+                </object>
+                <string name="string">http://orcid.org/0000-0002-5434-0815</string>
+              </object>
+            </custom>
+            <_parent_id>6303</_parent_id>
+            <_objecttype>person_urheber</_objecttype>
+            <_system_object_id>418</_system_object_id>
+            <_global_object_id>418@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>eca63e7e-f5de-46a6-8fcc-51484ae6041a</_uuid>
+            <_mask>person_urheber__all_fields</_mask>
+          </person_urheber>
+        </person>
+        <rolle>
+          <person_rolle date-created="2016-04-16T18:29:49Z" date-last-updated="2017-10-06T11:33:05Z">
+            <_version>3</_version>
+            <_id>24</_id>
+            <name type="text_l10n_oneline">
+              <de-DE>Sonstiges</de-DE>
+              <en-US>Other</en-US>
+              <ka-GE>სხვა</ka-GE>
+            </name>
+            <_parent_id>6303</_parent_id>
+            <_objecttype>person_rolle</_objecttype>
+            <_system_object_id>589</_system_object_id>
+            <_global_object_id>589@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>1e2a6a19-6853-40e2-b4da-015ef567858b</_uuid>
+            <_mask>main_person_rolle__all_fields</_mask>
+          </person_rolle>
+        </rolle>
+      </objekttyp__contributor>
     </_nested__objekttyp__contributor>
+    <_nested__objekttyp__informant>
+      <objekttyp__informant>
+        <informant>
+          <person_informant date-created="2016-04-06T15:50:29Z" date-last-updated="2016-10-10T12:31:27Z">
+            <_version>3</_version>
+            <_id>1</_id>
+            <_parent_id>6303</_parent_id>
+            <_objecttype>person_informant</_objecttype>
+            <_system_object_id>424</_system_object_id>
+            <_global_object_id>424@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>cd83c4b9-1f3d-47b2-91ab-68af187f26ee</_uuid>
+            <_mask>person_informant__only_pseudonym</_mask>
+          </person_informant>
+        </informant>
+      </objekttyp__informant>
+      <objekttyp__informant>
+        <informant>
+          <person_informant date-created="2017-03-16T19:45:56Z" date-last-updated="2018-04-16T15:13:59Z">
+            <_version>3</_version>
+            <_id>1522</_id>
+            <_parent_id>6303</_parent_id>
+            <_objecttype>person_informant</_objecttype>
+            <_system_object_id>7432</_system_object_id>
+            <_global_object_id>7432@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>d24fad20-08ee-4d80-9704-d1ca3395bf4a</_uuid>
+            <_mask>person_informant__only_pseudonym</_mask>
+          </person_informant>
+        </informant>
+      </objekttyp__informant>
+    </_nested__objekttyp__informant>
     <_nested__objekttyp__datum>
       <objekttyp__datum>
         <anfang type="date">1966</anfang>
         <ende type="date">1968</ende>
-        <datumstyp>
-          <datumstyp date-created="2016-04-20T15:27:51Z" date-last-updated="2016-10-11T09:06:30Z">
-            <_version>4</_version>
-            <_id>1</_id>
-            <name type="text_l10n_oneline">
-              <de-DE>Entstehungsdatum</de-DE>
-              <en-US>date of creation</en-US>
-            </name>
-            <_parent_id>6303</_parent_id>
-            <_objecttype>datumstyp</_objecttype>
-            <_system_object_id>599</_system_object_id>
-            <_global_object_id>599@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
-            <_uuid>547c232c-2fc4-403f-b126-cec586b8fd36</_uuid>
-            <_mask>datumstyp__all_fields</_mask>
-          </datumstyp>
-        </datumstyp>
       </objekttyp__datum>
       <objekttyp__datum>
         <anfang type="date">2017-08-01</anfang>
@@ -244,6 +386,7 @@
     </_nested__objekttyp__alternative_id>
     <beschreibung type="text_l10n">
       <de-DE>Annotierte Katalogkarte aus den 1960ern</de-DE>
+      <en-US>annotated catalog card</en-US>
     </beschreibung>
     <_nested__objekttyp__orte>
       <objekttyp__orte/>
@@ -251,61 +394,26 @@
       <objekttyp__orte/>
       <objekttyp__orte/>
     </_nested__objekttyp__orte>
-    <_nested__objekttyp__relationen>
-      <objekttyp__relationen>
-        <lk_relation_typ_id>
-          <relation_typ date-created="2016-04-01T19:22:04Z" date-last-updated="2017-09-12T09:47:16Z">
-            <_version>2</_version>
-            <_id>21</_id>
+    <_nested__objekttyp__methoden>
+      <objekttyp__methoden>
+        <lk_methode_id>
+          <methoden date-created="2016-05-01T14:00:53Z" date-last-updated="2017-09-13T17:54:32Z">
+            <_version>4</_version>
+            <_id>5</_id>
             <name type="text_l10n_oneline">
-              <de-DE>IstIdentischZu</de-DE>
-              <en-US>IsIdenticalTo</en-US>
-              <ka-GE>არის_იდენტური</ka-GE>
+              <de-DE>Feldnotizen</de-DE>
+              <en-US>Notes</en-US>
+              <ka-GE>საველე_ჩანაწერები</ka-GE>
             </name>
             <_parent_id>6303</_parent_id>
-            <_objecttype>relation_typ</_objecttype>
-            <_system_object_id>395</_system_object_id>
-            <_global_object_id>395@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
-            <_uuid>14e76546-66e3-4b4e-b2bf-169a03950571</_uuid>
-            <_mask>relation_typ__all_fields</_mask>
-          </relation_typ>
-        </lk_relation_typ_id>
-        <lk_relation_id>
-          <objekttyp>
-            <_objecttype>objekttyp</_objecttype>
-            <_id>6303</_id>
-            <_version>20</_version>
-            <_parent_id>6303</_parent_id>
-            <_system_object_id>8223</_system_object_id>
-            <_global_object_id>8223@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
-            <_uuid>b79de4e5-8d1f-4840-b85f-e052db92a52f</_uuid>
-            <_mask>objekttyp__all_fields</_mask>
-            <_standard>
-              <de-DE>Katalogkarte, annotierte Katalogkarte, 1966, 01.08.2017, 572.04 Mal, TEST</de-DE>
-              <en-US>1966, 08/01/2017, 572.04 Mal, TEST</en-US>
-              <ka-GE>%y, 01.08.%y, 572.04 Mal, TEST</ka-GE>
-            </_standard>
-          </objekttyp>
-        </lk_relation_id>
-        <extern type="text_l10n_oneline">
-          <de-DE>sich selbst</de-DE>
-        </extern>
-      </objekttyp__relationen>
-    </_nested__objekttyp__relationen>
-    <_nested__objekttyp__methoden>
-      <objekttyp__methoden/>
+            <_objecttype>methoden</_objecttype>
+            <_system_object_id>917</_system_object_id>
+            <_global_object_id>917@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+            <_uuid>3d702d4e-3e2f-42d1-840d-8e2796b58915</_uuid>
+            <_mask>methoden__all_fields</_mask>
+          </methoden>
+        </lk_methode_id>
+      </objekttyp__methoden>
     </_nested__objekttyp__methoden>
-    <_nested__objekttyp__keywords_getty>
-      <objekttyp__keywords_getty>
-        <custom name="keyword" type="custom:base.custom-data-type-getty.getty">
-          <object name="_fulltext">
-            <string name="text">catalog cards</string>
-            <string name="string">http://vocab.getty.edu/aat/300026769</string>
-          </object>
-          <string name="conceptURI">http://vocab.getty.edu/aat/300026769</string>
-          <string name="conceptName">catalog cards</string>
-        </custom>
-      </objekttyp__keywords_getty>
-    </_nested__objekttyp__keywords_getty>
   </objekttyp>
 </objects>
