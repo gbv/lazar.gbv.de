@@ -21,6 +21,15 @@ $proxy = new GBV\OAI\Proxy([
                 'easydb',
                 '../../xslt/easydb2datacite.xsl',
             ]
+        ],
+        'oai_dc' => [
+            'schema' => 'http://www.openarchives.org/OAI/2.0/oai_dc/',
+            'namespace' => 'http://www.openarchives.org/OAI/2.0/oai_dc.xsd',
+            'pipeline' => [
+                'easydb',
+                '../../xslt/easydb2datacite.xsl',
+                '../../xslt/datacite2oai_dc.xsl',
+            ]
         ]
     ]
 ]);
