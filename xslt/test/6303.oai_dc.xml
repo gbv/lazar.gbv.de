@@ -6,6 +6,7 @@
   <dc:publisher>LaZAR</dc:publisher>
   <dc:date>Created: 1966/1968</dc:date>
   <dc:date>Created: 2017-08-01</dc:date>
+  <dc:identifier>doi:</dc:identifier>
   <dc:identifier>lazar url:https://lazardb.gbv.de/detail/8223</dc:identifier>
   <dc:identifier>uuid:b79de4e5-8d1f-4840-b85f-e052db92a52f</dc:identifier>
   <dc:identifier>unknown:572.04 Mal</dc:identifier>
@@ -19,6 +20,7 @@
   <dc:description xml:lang="de">Annotierte Katalogkarte aus den 1960ern</dc:description>
   <dc:description>Abstracts</dc:description>
   <dc:description xml:lang="en">annotated catalog card</dc:description>
+  <dc:contributor>Dadunashvili, Elguja</dc:contributor>
   <dc:type>Image</dc:type>
   <dc:type>Image</dc:type>
   <dc:format>768 x 381 @ 8 bit, 62.4 kB</dc:format>

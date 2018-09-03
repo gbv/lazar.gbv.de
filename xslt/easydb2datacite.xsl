@@ -20,9 +20,9 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://datacite.org/schema/kernel-4 http://schema.datacite.org/meta/kernel-4/metadata.xsd">
       <!-- required fields -->
-      <identifier identifierType="DOI">
+      <datacite:identifier identifierType="DOI">
         <!-- TODO (required!) -->
-      </identifier>
+      </datacite:identifier>
       <datacite:creators>
         <xsl:apply-templates select="edb:_nested__objekttyp__urheber/edb:objekttyp__urheber"/>
       </datacite:creators>
@@ -32,6 +32,7 @@
       <xsl:call-template name="publisher"/>
       <xsl:call-template name="publicationYear"/>
       <xsl:call-template name="subjects"/>
+      <xsl:call-template name="contributors"/>
       <xsl:call-template name="resourceType"/>
       <!-- optional fields -->
       <xsl:call-template name="descriptions"/>
@@ -120,10 +121,10 @@
   <!-- 6 Subject (required) -->
   <xsl:template name="subjects">
 
-  <!-- TODO: add orte, sprachen, methoden, affiliation -->
+    <!-- TODO: add orte, sprachen, methoden, affiliation -->
 
-  <xsl:variable name="gnd" select="edb:_nested__objekttyp__keywords_gnd/edb:objekttyp__keywords_gnd"/>
-  <xsl:variable name="getty" select="edb:_nested__objekttyp__keywords_getty/edb:objekttyp__keywords_getty"/>
+    <xsl:variable name="gnd" select="edb:_nested__objekttyp__keywords_gnd/edb:objekttyp__keywords_gnd"/>
+    <xsl:variable name="getty" select="edb:_nested__objekttyp__keywords_getty/edb:objekttyp__keywords_getty"/>
 
     <xsl:if test="$gnd|$getty">
       <datacite:subjects>
@@ -151,7 +152,33 @@
     <xsl:value-of select="edb:string[@name='conceptName']"/>
   </xsl:template>
 
-  <!-- 7 Contributor (required): TODO -->
+  <!-- 7 Contributor (optional) -->
+  <xsl:template name="contributors">
+    <xsl:variable name="contributors" 
+                  select="edb:_nested__objekttyp__contributor/edb:objekttyp__contributor"/>
+    <xsl:if test="$contributors">
+      <datacite:contributors>
+        <xsl:for-each select="$contributors">
+          <xsl:variable name="person" select="edb:person/edb:person_urheber"/>
+          <xsl:variable name="role">
+            <xsl:apply-templates select="edb:rolle/edb:person_rolle"/>
+          </xsl:variable>
+          <datacite:contributor contributorType="{$role}">
+            <datacite:contributorName>
+              <xsl:value-of select="$person/edb:name[@type='text_oneline']"/>
+            </datacite:contributorName>
+            <!-- nameIdentifier -->
+            <xsl:apply-templates select="$person/edb:custom"/>
+          </datacite:contributor>
+          <!-- TODO: affiliation -->
+        </xsl:for-each>
+      </datacite:contributors>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="edb:person_rolle">
+    <xsl:value-of select="edb:name/edb:en-US"/>
+  </xsl:template>
 
   <!-- 8 Date (optional) -->
   <xsl:template name="dates">

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <datacite:resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:datacite="http://datacite.org/schema/kernel-4" xsi:schemaLocation="http://datacite.org/schema/kernel-4 http://schema.datacite.org/meta/kernel-4/metadata.xsd">
-  <identifier identifierType="DOI"/>
+  <datacite:identifier identifierType="DOI"/>
   <datacite:creators>
     <datacite:creator>
       <datacite:creatorName>Dadunashvili, Elguja</datacite:creatorName>
@@ -16,6 +16,12 @@
     <datacite:subject schemeURI="http://bartoc.org/en/node/430" valueURI="http://d-nb.info/gnd/4354672-9">Besen</datacite:subject>
     <datacite:subject schemeURI="http://bartoc.org/en/node/430" valueURI="http://d-nb.info/gnd/4253274-7">Selbstgenügsamkeit</datacite:subject>
   </datacite:subjects>
+  <datacite:contributors>
+    <datacite:contributor contributorType="ProjectMember">
+      <datacite:contributorName>May, Etienne</datacite:contributorName>
+      <datacite:nameIdentifier nameIdentifierScheme="ORCID" schemeURI="http://orcid.org/">http://orcid.org/0000-0001-5786-9581</datacite:nameIdentifier>
+    </datacite:contributor>
+  </datacite:contributors>
   <datacite:resourceType resourceTypeGeneral="Collection">Collection</datacite:resourceType>
   <datacite:descriptions>
     <datacite:description descriptionType="Abstracts" xml:lang="de">Die Video- und Fotodateien zeigen die Anfertigung des Besens im Detail</datacite:description>
