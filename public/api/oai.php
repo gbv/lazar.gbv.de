@@ -10,7 +10,8 @@ $proxy = new GBV\OAI\Proxy([
     'instructions' => [
         'css' => '../css/bootstrap.min.css ../css/bootstrap-lazar.css',
         'brand' => 'LaZAR OAI-PMH',
-        'brandUrl' => '../api'
+        'brandUrl' => '../api',
+        'defaultFormat' => 'easydb',
     ],
     'pretty' => true,
     'formats' => [

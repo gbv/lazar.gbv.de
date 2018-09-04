@@ -18,8 +18,6 @@
     The 'compession' part of 'identify'
     The optional 'setDescription' container of 'set'
 
-  All the links just link to oai_dc versions of records.
-
 -->
 
 <xsl:stylesheet
@@ -29,8 +27,16 @@
 >
 
 <!-- custom configuration -->
+
 <xsl:param name="brand" select="/processing-instruction('brand')"/>
 <xsl:param name="brandUrl" select="/processing-instruction('brandUrl')"/>
+
+<xsl:param name="dF" select="/processing-instruction('defaultFormat')"/>
+<xsl:param name="defaultFormat" select="
+  concat(
+    substring($dF,1,boolean($dF) div 0),
+    substring('oai_dc',1,not($dF) div 0)
+  )"/>
 
 <!-- link to this script -->
 <xsl:param name="xslt" select="substring-before(substring-after(/processing-instruction('xml-stylesheet'),'href=&quot;'),'&quot;')"
@@ -113,7 +119,7 @@
         <xsl:attribute name="class">nav-item
           <xsl:if test="$verb ='ListRecords'">active</xsl:if>
         </xsl:attribute>
-        <a class="nav-link" href="?verb=ListRecords&amp;metadataPrefix=oai_dc">ListRecords</a>
+        <a class="nav-link" href="?verb=ListRecords&amp;metadataPrefix={$defaultFormat}">ListRecords</a>
       </li>
       <li>
         <xsl:attribute name="class">nav-item
@@ -131,7 +137,7 @@
         <xsl:attribute name="class">nav-item
           <xsl:if test="$verb ='ListIdentifiers'">active</xsl:if>
         </xsl:attribute>
-        <a class="nav-link" href="?verb=ListIdentifiers&amp;metadataPrefix=oai_dc">ListIdentifiers</a>
+        <a class="nav-link" href="?verb=ListIdentifiers&amp;metadataPrefix={$defaultFormat}">ListIdentifiers</a>
       </li>
     </ul>
   </nav>
@@ -293,7 +299,9 @@
       </xsl:if>
     </td>
     <td>
-      <a href="?verb=GetRecord&amp;metadataPrefix=oai_dc&amp;identifier={oai:identifier}">oai_dc</a>
+      <a href="?verb=GetRecord&amp;metadataPrefix={$defaultFormat}&amp;identifier={oai:identifier}">
+        <xsl:value-of select="$defaultFormat"/>
+      </a>
     </td>
     <td>
       <a href="?verb=ListMetadataFormats&amp;identifier={oai:identifier}">formats</a>
@@ -335,7 +343,9 @@
       <xsl:when test="$request/@metadataPrefix">
         <xsl:value-of select="$request/@metadataPrefix"/>
       </xsl:when>
-      <xsl:otherwise>oai_dc</xsl:otherwise>
+      <xsl:otherwise>
+        <xsl:value-of select="$defaultFormat"/>
+      </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
   <a href="?verb=ListIdentifiers&amp;{$query}">Identifiers</a>
