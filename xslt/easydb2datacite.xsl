@@ -54,6 +54,7 @@
         </xsl:when>
         <xsl:otherwise>
           <xsl:attribute name="identifierType">URI</xsl:attribute>
+          <!-- TODO: this seems to be a fragile ID, take UUID instead? -->
            <xsl:value-of select="edb:_urls/edb:url[@type='easydb-id']"/>
         </xsl:otherwise>
       </xsl:choose>
@@ -133,7 +134,7 @@
   <!-- 6 Subject (required) -->
   <xsl:template name="subjects">
 
-    <!-- TODO: add orte, methoden, affiliation -->
+    <!-- TODO: add orte, methoden, affiliation, easydb:thema -->
 
     <xsl:variable name="gnd" select="edb:_nested__objekttyp__keywords_gnd/edb:objekttyp__keywords_gnd"/>
     <xsl:variable name="getty" select="edb:_nested__objekttyp__keywords_getty/edb:objekttyp__keywords_getty"/>
