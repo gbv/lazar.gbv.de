@@ -22,16 +22,8 @@ Ported from XSLT 2.0 to XSLT 1.0.
     <xsl:variable name="smallcase" select="'abcdefghijklmnopqrstuvwxyz'" />
     <xsl:variable name="uppercase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'" />
 
-    <xsl:strip-space elements="*"/>
-    
     <xsl:template match="datacite:identifier">
         <dc:identifier>
-            <xsl:choose>
-                <xsl:when test="string-length(@identifierType) &gt; 0">
-                    <xsl:value-of select="translate(@identifierType,  $uppercase, $smallcase)"/>
-                    <xsl:text>:</xsl:text>
-                </xsl:when>
-            </xsl:choose>
             <xsl:value-of select="."/>
         </dc:identifier>
     </xsl:template>

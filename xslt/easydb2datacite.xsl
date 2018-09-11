@@ -20,9 +20,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://datacite.org/schema/kernel-4 http://schema.datacite.org/meta/kernel-4/metadata.xsd">
       <!-- required fields -->
-      <datacite:identifier identifierType="DOI">
-        <!-- TODO (required!) -->
-      </datacite:identifier>
+      <xsl:call-template name="identifier"/>
       <datacite:creators>
         <xsl:apply-templates select="edb:_nested__objekttyp__urheber/edb:objekttyp__urheber"/>
       </datacite:creators>
@@ -47,7 +45,20 @@
   </xsl:template>
 
   <!-- 1 Identifier (required) -->
-  <!-- TODO: DOI -->
+  <xsl:template name="identifier">
+    <datacite:identifier identifierType="DOI">
+      <xsl:choose>
+        <xsl:when test="false()">
+          <xsl:attribute name="identifierType">DOI</xsl:attribute>
+          <!-- TODO: DOI -->
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:attribute name="identifierType">URI</xsl:attribute>
+           <xsl:value-of select="edb:_urls/edb:url[@type='easydb-id']"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </datacite:identifier>
+  </xsl:template>
  
   <!-- 2 Creator (required) -->
   <xsl:template match="edb:objekttyp__urheber">
