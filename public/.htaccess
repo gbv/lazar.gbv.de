@@ -4,5 +4,5 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^api/?$ api/index.php [L,QSA]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^api/oai$ api/oai.php [L,QSA]
-RewriteRule ^api/rdf$ api/rdf.php [L,QSA]
+RewriteRule ^api/lod$ api/lod.php [L,QSA]
 </IfModule>
