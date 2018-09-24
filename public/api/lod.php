@@ -1,6 +1,4 @@
-<?php 
-include '../rdf.php'; 
-?>
+<?php include '../header.php'; ?>
 
 <h2>Linked Open Data (LOD)</h2>
 <p>
@@ -18,10 +16,10 @@ include '../rdf.php';
     <th colspan=2>Links</th>
   </tr>
 <tbody>
-<?php foreach ($entityTypes as $path => $type) { ?>
+<?php foreach ($TYPES as $path => $type) { ?>
   <tr>
     <td>
-      <?=$type['name']?>
+      <a href="../<?=$path?>/"><?=$type['name']?></a>
     </td>
     <td>
       <a href="https://lazardb.gbv.de/lists/<?=$type['type']?>">Datenbank</a>
