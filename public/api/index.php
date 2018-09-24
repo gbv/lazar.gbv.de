@@ -1,4 +1,6 @@
-<?php include 'header.php'; ?>
+<?php
+$BASE='../';
+include '../header.php'; ?>
 
       <h1>Schnittstellen zur LaZAR</h1>
         <p>

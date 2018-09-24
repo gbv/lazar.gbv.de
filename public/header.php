@@ -14,18 +14,17 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-<?php
-$section = basename(get_included_files()[0], '.php');
-?>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link<?= $section == 'index' ? ' active' : '' ?>" href=".">APIs</a>
+            <a class="nav-link<?= $RDF ?? FALSE ? '' : ' active' ?>"
+               href="../api">APIs</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="oai">OAI-PMH</a>
+            <a class="nav-link" href="../api/oai">OAI-PMH</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link<?= $section == 'rdf' ? ' active' : '' ?>" href="rdf">RDF</a>
+            <a class="nav-link<?= $RDF ?? FALSE ? ' active' : '' ?>"
+               href="../api/rdf">RDF</a>
           </li>
         </ul>
       </div>
