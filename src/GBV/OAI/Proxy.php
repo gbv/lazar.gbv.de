@@ -219,15 +219,13 @@ class Proxy
         foreach (static::xpath($dom, '//oai:record') as $record) {
             foreach (static::xpath($record, 'oai:metadata/*') as $metadata) {
                 $metadata->setAttribute('xmlns:'.$metadata->prefix, $metadata->namespaceURI);
-                file_put_contents('/tmp/tmp.xml', $dom->saveXML($metadata));
+                // file_put_contents('/tmp/tmp.xml', $dom->saveXML($metadata));
 
                 // move metadata to a new document (why?)
                 $m = new DOMDocument();
                 $m->appendChild($m->importNode($metadata, true));
 
-                // FIXME: what if pipeline is empty or broken or result is empty?
                 $result = $pipeline->transformToDoc($m);
-
                 if ($result->documentElement) {
                     $node = $dom->importNode($result->documentElement, true);
                     $metadata->parentNode->replaceChild($node, $metadata);

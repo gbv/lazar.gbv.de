@@ -14,6 +14,38 @@
     <xsl:apply-templates/>
   </xsl:template>
 
+  <!-- LaZAR-Objekttyp "Sprache" -->
+  <xsl:template match="edb:sprache[parent::edb:objects]">
+    <datacite:resource>
+      <xsl:call-template name="identifier"/>
+      <datacite:titles>
+        <xsl:for-each select="edb:name[@type='text_l10n_oneline']/*[string()]">
+          <xsl:call-template name="title"/>
+        </xsl:for-each>
+      </datacite:titles>
+      <datacite:alternateIdentifiers>
+        <xsl:apply-templates select="edb:isocode"/>
+        <xsl:apply-templates select="edb:custom"/>
+      </datacite:alternateIdentifiers>
+    </datacite:resource>
+  </xsl:template>
+
+  <xsl:template match="edb:isocode">
+    <datacite:alternateIdentifier>
+      <xsl:choose>
+        <xsl:when test="string-length()=2">http://id.loc.gov/vocabulary/iso639-1/</xsl:when>
+        <xsl:when test="string-length()=3">http://id.loc.gov/vocabulary/iso639-2/</xsl:when>
+      </xsl:choose>
+      <xsl:value-of select="."/>
+    </datacite:alternateIdentifier>
+  </xsl:template>
+
+  <xsl:template match="edb:custom[@name='glottolog']">
+    <datacite:alternateIdentifier>
+      <xsl:value-of select="edb:string[@name='url']"/>
+    </datacite:alternateIdentifier>
+  </xsl:template>
+
   <!-- LaZAR-Objekttyp "Objekttyp" -->
   <xsl:template match="edb:objekttyp">
     <datacite:resource
@@ -46,7 +78,7 @@
 
   <!-- 1 Identifier (required) -->
   <xsl:template name="identifier">
-    <datacite:identifier identifierType="DOI">
+    <datacite:identifier>
       <xsl:choose>
         <xsl:when test="false()">
           <xsl:attribute name="identifierType">DOI</xsl:attribute>
@@ -107,10 +139,24 @@
   <!-- 3 Title (required) -->
   <xsl:template match="edb:objekttyp__titel">
     <xsl:for-each select="edb:titel/*[string()]">
-      <datacite:title xml:lang="{substring-before(local-name(),'-')}">
-        <xsl:value-of select="."/>
-      </datacite:title>
+      <xsl:call-template name="title"/>
     </xsl:for-each> 
+  </xsl:template>
+
+  <xsl:template name="title">
+    <xsl:variable name="lang">
+      <xsl:choose>
+        <xsl:when test="substring-before(local-name(),'-')">
+          <xsl:value-of select="substring-before(local-name(),'-')"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="local-name()"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <datacite:title xml:lang="{$lang}">
+      <xsl:value-of select="."/>
+    </datacite:title>
   </xsl:template>
 
   <!-- 4 Publisher (required) -->
