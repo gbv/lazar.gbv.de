@@ -6,6 +6,5 @@ install:
   - composer install
 
 script:
-  - cd xslt && ./runtest
-  - cd ..
+  - ./xslt/runtest
   - composer run test

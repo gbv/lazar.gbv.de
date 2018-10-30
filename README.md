@@ -1,8 +1,6 @@
 # lazar.gbv.de
 
-Dieses git-Repository enthält den Quellcode der Homepage des DFG-Projekt LaZAR
-unter [LaZAR](http://lazar.gbv.de/) sowie verschiedene XSLT-Skripte
-Konvertierung des internen easyBD-Datenformates von LaZAR.
+Dieses git-Repository enthält den Quellcode der Homepage des DFG-Projekt LaZAR unter [LaZAR](http://lazar.gbv.de/) sowie verschiedene XSLT-Skripte Konvertierung des internen easyBD-Datenformates von LaZAR.
 
 [![Build Status](https://travis-ci.org/gbv/lazar.gbv.de.svg?branch=master)](https://travis-ci.org/gbv/lazar.gbv.de)
 
@@ -16,9 +14,9 @@ Konvertierung des internen easyBD-Datenformates von LaZAR.
 
 ### OAI-PMH-Proxy
 
-Der OAI-PMH-Proxy erweitert die OAI-Schnittstelle des zugrunde liegenden
-Datenbanksystems easyDB um Schnittmengen von sets für Abfragen vom Typ
-`ListRecords`.
+Der OAI-PMH-Proxy erweitert die OAI-Schnittstelle des zugrunde liegenden Datenbanksystems easyDB um Schnittmengen von sets für Abfragen vom Typ `ListRecords`. Außerdem wird die Konvertierung von easyDB-XML nach DataCite-XML und nach Dublin Core im Proxy vorgenommen.
+
+Der Quellcode des Proxy befindet sich im Unterverzeichnis `src/`.
 
 ### Linked Open Data
 
@@ -83,6 +81,6 @@ Benötigt PHPUnit und PHP Codesniffer:
 In `Makefile` sind die üblichen Aktionen zusammengefasst:
 
     $ make style    # PHP-Code aufräumen
-    $ make test     # Unit-Tests
+    $ make test     # PHP-Tests und XSLT-Tests
     $ make web      # Anwendung testweise auf Port 8008 starten
 
