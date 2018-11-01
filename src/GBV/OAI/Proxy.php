@@ -74,13 +74,28 @@ class Proxy
         # error_log($this->backend.'?'.http_build_query($args));
 
         // transform response and return as Promise
-        $body = $this->transformBody((string)$response->getBody(), $query);
-        $response = $response->withBody(Psr7\stream_for($body));
+        $dom = $this->transformBody((string)$response->getBody(), $query);
+        $response = $response->withBody(Psr7\stream_for($dom->saveXML()));
 
         return \GuzzleHttp\Promise\promise_for($response);
     }
 
-    public function transformBody(string $body, array $query): string
+    public function getRecord(string $format, string $id)
+    {
+        $query = $this->transformQuery([
+            'verb' => 'GetRecord',
+            'metadataPrefix' => $format,
+            'identifier' => $id
+        ]);
+        $args = array_intersect_key($query, array_flip(static::OAI_ARGUMENTS));
+        $response = $this->client->request('GET', $this->backend, [ 'query' => $args, ]);
+
+        $dom = $this->transformBody((string)$response->getBody(), $query);
+
+        return static::xpath($dom, '//oai:GetRecord/oai:record/oai:metadata/*')[0];
+    }
+
+    public function transformBody(string $body, array $query): DOMDocument
     {
         $dom = new DOMDocument();
         $dom->loadXML($body); // TODO: catch error
@@ -119,7 +134,7 @@ class Proxy
             $dom->formatOutput = true;
         }
  
-        return $dom->saveXML();
+        return $dom;
     }
 
     // helper function

@@ -117,6 +117,12 @@
       </li>
       <li>
         <xsl:attribute name="class">nav-item
+          <xsl:if test="$verb ='ListIdentifiers'">active</xsl:if>
+        </xsl:attribute>
+        <a class="nav-link" href="?verb=ListIdentifiers&amp;metadataPrefix={$defaultFormat}">ListIdentifiers</a>
+      </li>
+      <li>
+        <xsl:attribute name="class">nav-item
           <xsl:if test="$verb ='ListRecords'">active</xsl:if>
         </xsl:attribute>
         <a class="nav-link" href="?verb=ListRecords&amp;metadataPrefix={$defaultFormat}">ListRecords</a>
@@ -132,12 +138,6 @@
           <xsl:if test="$verb ='ListMetadataFormats'">active</xsl:if>
         </xsl:attribute>
         <a class="nav-link" href="?verb=ListMetadataFormats">ListMetadataFormats</a>
-      </li>
-      <li>
-        <xsl:attribute name="class">nav-item
-          <xsl:if test="$verb ='ListIdentifiers'">active</xsl:if>
-        </xsl:attribute>
-        <a class="nav-link" href="?verb=ListIdentifiers&amp;metadataPrefix={$defaultFormat}">ListIdentifiers</a>
       </li>
     </ul>
   </nav>
@@ -425,7 +425,11 @@
 <xsl:template match="oai:header">
   <dl>
     <dt>identifier</dt>
-    <dd><code><xsl:value-of select="oai:identifier"/></code></dd>
+    <dd>
+      <code><xsl:value-of select="oai:identifier"/></code>
+      &#xA0;
+      <a href="?verb=GetRecord&amp;metadataPrefix={$defaultFormat}&amp;identifier={oai:identifier}">GetRecord</a>
+    </dd>
     <dt>datestamp</dt>
     <dd><code><xsl:value-of select="oai:datestamp"/></code></dd>
     <xsl:if test="oai:setSpec">

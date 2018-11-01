@@ -1,39 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
 require '../../vendor/autoload.php';
 
 // initialize proxy
-$proxy = new GBV\OAI\Proxy([
-    'backend' => 'https://lazardb.gbv.de/api/plugin/base/oai/oai/request',
-    'baseUrl' => 'http://lazar.gbv.de/api/oai',
-    'xslt'    => 'oai.xsl',
-    'instructions' => [
-        'css' => '../css/bootstrap.min.css ../css/bootstrap-lazar.css',
-        'brand' => 'LaZAR OAI-PMH',
-        'brandUrl' => '../api',
-        'defaultFormat' => 'easydb',
-    ],
-    'pretty' => true,
-    'formats' => [
-        'datacite' => [
-            'schema' => 'https://schema.datacite.org/meta/kernel-4.1/metadata.xsd',
-            'namespace' => 'http://datacite.org/schema/kernel-4',
-            'pipeline' => [
-                'easydb',
-                '../../xslt/easydb2datacite.xsl',
-            ]
-        ],
-        'oai_dc' => [
-            'schema' => 'http://www.openarchives.org/OAI/2.0/oai_dc/',
-            'namespace' => 'http://www.openarchives.org/OAI/2.0/oai_dc.xsd',
-            'pipeline' => [
-                'easydb',
-                '../../xslt/easydb2datacite.xsl',
-                '../../xslt/datacite2oai_dc.xsl',
-            ]
-        ]
-    ]
-]);
+$config = json_decode(file_get_contents('../../config-oai.json'), true);
+$proxy = new GBV\OAI\Proxy($config);
 
 // handle request
 $request = GuzzleHttp\Psr7\ServerRequest::fromGlobals();

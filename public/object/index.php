@@ -1,1 +1,0 @@
-<?php include '../rdf.php';

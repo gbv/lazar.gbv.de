@@ -2,7 +2,7 @@
 
 $SECTION = basename(get_included_files()[0], '.php');
 if ($SECTION === 'index') {
-  $SECTION = basename(dirname(get_included_files()[0]));
+    $SECTION = basename(dirname(get_included_files()[0]));
 }
 
 $TYPES = [

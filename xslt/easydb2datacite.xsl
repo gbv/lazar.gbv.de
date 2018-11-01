@@ -86,8 +86,8 @@
         </xsl:when>
         <xsl:otherwise>
           <xsl:attribute name="identifierType">URI</xsl:attribute>
-          <!-- TODO: this seems to be a fragile ID, take UUID instead? -->
-           <xsl:value-of select="edb:_urls/edb:url[@type='easydb-id']"/>
+          <xsl:text>https://lazar.gbv.de/id/</xsl:text>
+          <xsl:value-of select="edb:_uuid"/>
         </xsl:otherwise>
       </xsl:choose>
     </datacite:identifier>
