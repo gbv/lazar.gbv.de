@@ -26,9 +26,19 @@ if (!$record) {
     notFound();
 }
 
+$uri = "https://lazar.gbv.de/id/$id";
+
+// TODO: check type of record (objekt, sprache, ort...)
+include_once '../header.php';
+
 ?>
-<html>
-<body>
   <?php echo $record->ownerDocument->saveXML($record); ?>
-</body>
-</html>
+
+<hr>
+<p>
+    <a href="http://rdf-translator.appspot.com/convert/rdfa/pretty-xml/<?= urlencode($uri) ?>">RDF</a>
+</p>
+
+<?php
+
+include '../footer.php';

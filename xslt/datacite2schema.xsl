@@ -14,7 +14,7 @@ Minimal draft of DataCite 4.1 to Schema.org mapping.
     xmlns="http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="datacite">
     
-    <xsl:output method="xml" indent="yes" encoding="UTF-8" />
+    <xsl:output method="html" indent="yes" encoding="UTF-8" />
 
     <!-- We assume all identifiers are URIs (DataCite 4.1 only allows DOI) -->
     <xsl:template match="datacite:identifier">

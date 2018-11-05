@@ -25,7 +25,7 @@ $TYPES = [
 ];
 
 
-?><!doctype html>
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html lang="de">
   <head>
     <meta charset="utf-8">
@@ -53,11 +53,11 @@ $TYPES = [
                href="../api">APIs</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../api/oai">OAI-PMH</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link<?= $SECTION === 'lod' ? ' active' : '' ?>"
                href="../api/lod">LOD</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../api/oai">OAI-PMH</a>
           </li>
         </ul>
       </div>
