@@ -2,7 +2,7 @@
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^api/?$ api/index.php [L,QSA]
-RewriteRule ^objectr/ object/index.php [L,QSA]
+RewriteRule ^object/ object/index.php [L,QSA]
 RewriteRule ^creator/ creator/index.php [L,QSA]
 RewriteRule ^location/ location/index.php [L,QSA]
 RewriteRule ^language/?$ language/index.php [L,QSA]
