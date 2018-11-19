@@ -13,10 +13,9 @@
   <a href="../api/oai?verb=ListIdentifiers&metadataPrefix=easydb&set=objecttype:sprache">per OAI-PMH</a>
   eingesehen werden.
 </p>
-<h2>Beispiele</h2>
-<ul>
-  <li><a href="../id/4ce5900d-82cd-44e9-b7ce-5874758dd211">Georgisch</a></li>
-  <li><a href="../id/2c67d521-fe8e-4a8c-9758-2ffd58e915ff">Swanisch</a></li>
-</ul>
-
+<h3>Beispiele (zuletzt geänderte Datensätze)</h3>
+<?php
+  require '../oai_list.php';
+  show_oai_list("objecttype:sprache");
+?>
 <?php include '../footer.php';

@@ -18,21 +18,20 @@ Minimal draft of DataCite 4.1 to Schema.org mapping.
     <xsl:output method="html" indent="yes" encoding="UTF-8" />
 
     <xsl:variable name="resourceType" select="/datacite:resource/datacite:resourceType"/>
-    <xsl:variable name="type">
-      <xsl:choose>
-        <xsl:when test="$resourceType[@resourceTypeGeneral='Other']">
-          <xsl:value-of select="$resourceType[@resourceTypeGeneral='Other']"/>
-        </xsl:when>
-        <xsl:otherwise>schema:Dataset</xsl:otherwise>
-      </xsl:choose>
+    <xsl:variable name="resourceTypeName">
+      <xsl:if test="not(substring-after($resourceType, 'http://schema.org/'))">
+        <xsl:value-of select="$resourceType"/>
+      </xsl:if>
+      <xsl:value-of select="substring-after($resourceType, 'http://schema.org/')"/>
     </xsl:variable>
 
+    <xsl:variable name="resource" select="/datacite:resource/datacite:identifier"/>
+
     <xsl:template match="datacite:resource">
-      <div typeof="{$type}" vocab="http://schema.org/">
-        <xsl:attribute name="about">
-          <xsl:value-of select="datacite:identifier"/>
-        </xsl:attribute>
-        <h3>This is a <xsl:value-of select="$resourceType"/></h3>
+      <div typeof="{$resourceType}" vocab="http://schema.org/" resource="{$resource}">
+        <h3>
+          RDF record for a <xsl:value-of select="$resourceTypeName"/>
+        </h3>
         <xsl:apply-templates select="datacite:identifier"/>
         <xsl:apply-templates select="*[local-name() != 'identifier']"/>
       </div>
@@ -169,11 +168,16 @@ Minimal draft of DataCite 4.1 to Schema.org mapping.
     <xsl:template match="datacite:GeoLocation[datacite:geoLocationPoint]">
       <h3>Coordinates</h3>
       <xsl:for-each select="datacite:geoLocationPoint">
-        <p property="geo" typeof="GeoCoordinates">
-          <span property="latitude"><xsl:value-of select="datacite:pointLatitude"/></span>
-          <xsl:text>,&#xA0;</xsl:text>
-          <span property="longitude"><xsl:value-of select="datacite:pointLongitude"/></span>
-        </p>
+        <a href="http://www.openstreetmap.org/?mlat={datacite:pointLatitude}&amp;mlon={datacite:pointLongitude}&amp;zoom=12">
+          <!-- additional nesting required to let RDFa ignore the link to OSM -->
+          <span resource="{$resource}"> 
+            <span property="geo" typeof="GeoCoordinates">
+              <span property="latitude"><xsl:value-of select="datacite:pointLatitude"/></span>
+              <xsl:text>,&#xA0;</xsl:text>
+              <span property="longitude"><xsl:value-of select="datacite:pointLongitude"/></span>
+            </span>
+          </span>
+        </a>
       </xsl:for-each>
     </xsl:template>
 
@@ -183,7 +187,7 @@ Minimal draft of DataCite 4.1 to Schema.org mapping.
       </div>
     </xsl:template>
     
-    <xsl:template match="datacite:alternateIdentifiers">
+    <xsl:template match="datacite:alternateIdentifiers[datacite:alternateIdentifier]">
       <h4>Alternative Identifiers</h4>
       <ul>
         <xsl:for-each select="datacite:alternateIdentifier">

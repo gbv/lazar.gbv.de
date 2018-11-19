@@ -16,10 +16,13 @@
   <a href="../api/oai?verb=ListIdentifiers&metadataPrefix=easydb&set=objecttype:person_urheber">per OAI-PMH</a>
   eingesehen werden.
 </p>
-<h2>Beispiele</h2>
+<h3>Beispiele (zuletzt geänderte Datensätze)</h3>
+<?php
+  require '../oai_list.php';
+  show_oai_list("objecttype:person_urheber");
+?>
 <ul>
   <li><a href="../id/7786fb4d-8605-4dc5-8184-140493a5365c">Staatliche Ilia-Universität, Tiflis</a></li>
   <li><a href="../id/a5b07bf0-7186-47b8-ac9d-07ac92ea6625">Prof. Thede Karl</a></li>
 </ul>
-
 <?php include '../footer.php';

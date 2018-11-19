@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:schema="http://schema.org/" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:owl="http://www.w3.org/2002/07/owl#" typeof="http://schema.org/Language" vocab="http://schema.org/" about="https://lazar.gbv.de/id/4ce5900d-82cd-44e9-b7ce-5874758dd211">
-  <h3>http://schema.org/Language</h3>
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:schema="http://schema.org/" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:owl="http://www.w3.org/2002/07/owl#" typeof="http://schema.org/Language" vocab="http://schema.org/" resource="https://lazar.gbv.de/id/4ce5900d-82cd-44e9-b7ce-5874758dd211">
+  <h3>
+          RDF record for a Language</h3>
   <p>
     <a href="https://lazar.gbv.de/id/4ce5900d-82cd-44e9-b7ce-5874758dd211">https://lazar.gbv.de/id/4ce5900d-82cd-44e9-b7ce-5874758dd211</a>
   </p>

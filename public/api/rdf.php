@@ -39,6 +39,7 @@ include_once '../header.php';
   Record data in:
     <a href="http://rdf-translator.appspot.com/convert/rdfa/pretty-xml/<?= urlencode($uri) ?>">RDF</a> |
     <a href="../api/oai?verb=GetRecord&metadataPrefix=easydb&identifier=oai:lazar.gbv.de:<?=$id?>">easyDB-XML</a> |
+    <a href="../api/oai?verb=GetRecord&metadataPrefix=datacite&identifier=oai:lazar.gbv.de:<?=$id?>">DataCite</a> |
     <a href="../api/oai?verb=GetRecord&metadataPrefix=rdfa&identifier=oai:lazar.gbv.de:<?=$id?>">RDFa</a>
 </p>
 

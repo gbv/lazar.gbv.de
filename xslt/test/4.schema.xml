@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:schema="http://schema.org/" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:owl="http://www.w3.org/2002/07/owl#" typeof="http://schema.org/Place" vocab="http://schema.org/" about="https://lazar.gbv.de/id/9e3d759f-0dff-4722-ac1c-aab47776c99e">
-  <h3>This is a http://schema.org/Place</h3>
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:schema="http://schema.org/" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:owl="http://www.w3.org/2002/07/owl#" typeof="http://schema.org/Place" vocab="http://schema.org/" resource="https://lazar.gbv.de/id/9e3d759f-0dff-4722-ac1c-aab47776c99e">
+  <h3>
+          RDF record for a Place</h3>
   <p>
     <a href="https://lazar.gbv.de/id/9e3d759f-0dff-4722-ac1c-aab47776c99e">https://lazar.gbv.de/id/9e3d759f-0dff-4722-ac1c-aab47776c99e</a>
   </p>
@@ -26,5 +27,9 @@
     </li>
   </ul>
   <h3>Coordinates</h3>
-  <p property="geo" typeof="GeoCoordinates"><span property="latitude">41.937</span>, <span property="longitude">45.38139</span></p>
+  <a href="http://www.openstreetmap.org/?mlat=41.937&amp;mlon=45.38139&amp;zoom=12">
+    <span resource="https://lazar.gbv.de/id/9e3d759f-0dff-4722-ac1c-aab47776c99e">
+      <span property="geo" typeof="GeoCoordinates"><span property="latitude">41.937</span>, <span property="longitude">45.38139</span></span>
+    </span>
+  </a>
 </div>
