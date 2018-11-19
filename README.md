@@ -42,7 +42,7 @@ Das Skript `makerecord` führt die Konvertierung lokal mit xsltproc durch:
 entspricht
 
     ./getrecord oai:lazar.gbv.de:4c5b995c-32b5-45c0-8ad4-8f5c3964bcdb > easydb.xml
-    ../bin/xslt.php easydb.xml easydb2datacite.xsl
+    ./xslt.php easydb.xml easydb2datacite.xsl
 
 Im Unterverzeichnis `test` befinden sich Beispieldatensätze für Regressionstest. Mit
 

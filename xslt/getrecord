@@ -8,4 +8,4 @@ TMP=$(mktemp)
 
 echo $URL >&2
 curl --silent "$URL" > $TMP
-../bin/xslt.php $TMP getrecord.xslt
+./xslt.php $TMP getrecord.xslt
