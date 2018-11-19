@@ -1,0 +1,20 @@
+#!/bin/bash -e
+
+source oai.sh
+
+FILE=$1
+
+if ! [ -f "$FILE" ]; then
+    echo "missing file $FILE"
+    exit 1
+fi
+
+UUID=$(xsltproc uuid.xslt $FILE)
+TMPFILE=$(mktemp)
+
+./getrecord "oai:lazar.gbv.de:$UUID" > $TMPFILE
+
+if [ -s "$TMP" ]; then
+    mv $TMP $FILE
+    echo $FILE - updated via OAI
+fi
