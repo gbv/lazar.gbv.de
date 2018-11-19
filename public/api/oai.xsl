@@ -26,11 +26,20 @@
     xmlns:oai="http://www.openarchives.org/OAI/2.0/"
 >
 
+<!-- current request and verb -->
+<xsl:param name="request" select="/oai:OAI-PMH/oai:request" />
+<xsl:param name="verb" select="$request/@verb" />
+<xsl:param name="identifier" select="$request/@identifier" />
+<xsl:param name="metadataPrefix" select="$request/@metadataPrefix" />
+<xsl:param name="set" select="$request/@set" />
+<xsl:param name="resumptionToken" select="/oai:OAI-PMH/*/oai:resumptionToken" />
+
 <!-- custom configuration -->
 
 <xsl:param name="brand" select="/processing-instruction('brand')"/>
 <xsl:param name="brandUrl" select="/processing-instruction('brandUrl')"/>
 
+<xsl:param name="metadataFormats" select="document(concat($request,'?verb=ListMetadataFormats'))//oai:metadataFormat"/>
 <xsl:param name="dF" select="/processing-instruction('defaultFormat')"/>
 <xsl:param name="defaultFormat" select="
   concat(
@@ -44,14 +53,6 @@
 
 <!-- link to optional CSS file (Bootstrap CSS 4 recommended) -->
 <xsl:param name="css" select="/processing-instruction('css')" />
-
-<!-- current request and verb -->
-<xsl:param name="request" select="/oai:OAI-PMH/oai:request" />
-<xsl:param name="verb" select="$request/@verb" />
-<xsl:param name="identifier" select="$request/@identifier" />
-<xsl:param name="metadataPrefix" select="$request/@metadataPrefix" />
-<xsl:param name="set" select="$request/@set" />
-<xsl:param name="resumptionToken" select="/oai:OAI-PMH/*/oai:resumptionToken" />
 
 <xsl:output method="html"/>
 
@@ -426,9 +427,23 @@
   <dl>
     <dt>identifier</dt>
     <dd>
-      <code><xsl:value-of select="oai:identifier"/></code>
+      <xsl:variable name="identifier" select="oai:identifier"/>
+      <code><xsl:value-of select="$identifier"/></code>
       &#xA0;
-      <a href="?verb=GetRecord&amp;metadataPrefix={$defaultFormat}&amp;identifier={oai:identifier}">GetRecord</a>
+      <xsl:if test="not($metadataFormats)">
+        <a href="?verb=GetRecord&amp;metadataPrefix={$defaultFormat}&amp;identifier={$identifier}">GetRecord</a>
+      </xsl:if>
+      <xsl:if test="$metadataFormats">
+        <xsl:for-each select="$metadataFormats">
+          &#xA0;
+          <a href="?verb=GetRecord&amp;metadataPrefix={oai:metadataPrefix}&amp;identifier={$identifier}">
+            <xsl:if test="string(oai:metadataPrefix) = $metadataPrefix">
+              <xsl:attribute name="style">font-weight: bold</xsl:attribute>
+            </xsl:if>
+            <xsl:value-of select="oai:metadataPrefix"/>
+          </a>
+        </xsl:for-each>
+      </xsl:if>
     </dd>
     <dt>datestamp</dt>
     <dd><code><xsl:value-of select="oai:datestamp"/></code></dd>
