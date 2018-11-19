@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:schema="http://schema.org/" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:owl="http://www.w3.org/2002/07/owl#" typeof="http://schema.org/Language" vocab="http://schema.org/" about="https://lazar.gbv.de/id/4ce5900d-82cd-44e9-b7ce-5874758dd211">
+  <h3>http://schema.org/Language</h3>
+  <p>
+    <a href="https://lazar.gbv.de/id/4ce5900d-82cd-44e9-b7ce-5874758dd211">https://lazar.gbv.de/id/4ce5900d-82cd-44e9-b7ce-5874758dd211</a>
+  </p>
+  <h4>Titles</h4>
+  <ul>
+    <li>
+      <span property="name" xml:lang="de">Georgisch</span>
+      <sup style="color:#666;padding-left:2px;">de</sup>
+    </li>
+    <li>
+      <span property="name" xml:lang="en">Georgian</span>
+      <sup style="color:#666;padding-left:2px;">en</sup>
+    </li>
+    <li>
+      <span property="name" xml:lang="und">Georgian</span>
+      <sup style="color:#666;padding-left:2px;">und</sup>
+    </li>
+  </ul>
+  <h4>Alternative Identifiers</h4>
+  <ul>
+    <li>
+      <a href="http://id.loc.gov/vocabulary/iso639-2/kat" rel="sameAs">http://id.loc.gov/vocabulary/iso639-2/kat</a>
+    </li>
+    <li>
+      <a href="http://glottolog.org/resource/languoid/id/nucl1302" rel="sameAs">http://glottolog.org/resource/languoid/id/nucl1302</a>
+    </li>
+    <li>
+      <a href="http://d-nb.info/gnd/4124679-2" rel="sameAs">http://d-nb.info/gnd/4124679-2</a>
+    </li>
+  </ul>
+</div>

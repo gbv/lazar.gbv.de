@@ -3,9 +3,9 @@
 <h1>Sprachen in LaZAR</h1>
 <p>
   Zur einheitlichen Erschließung von Forschungsdaten enthält das Repository
-  <b>Informationen zu Sprachen</b>. Zur eindeutigen Identifizierung sind die
-  Sprachen in der Regel mit <a href="https://glottolog.org/">Glottolog</a>
-  verknüpft und mit ISO-Codes versehen.
+  <b>Informationen zu Sprachen</b>. Die Sprachen sind in der Regel mit 
+  <a href="https://glottolog.org/">Glottolog</a> und mit ISO-Sprachcodes
+  versehen.
 </p>
 <p>
   Eine Liste aller Sprachen kann

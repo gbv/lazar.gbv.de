@@ -10,26 +10,41 @@ Minimal draft of DataCite 4.1 to Schema.org mapping.
     xmlns:datacite="http://datacite.org/schema/kernel-4"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:schema="http://schema.org/"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns="http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="datacite">
     
     <xsl:output method="html" indent="yes" encoding="UTF-8" />
 
-    <!-- We assume all identifiers are URIs (DataCite 4.1 only allows DOI) -->
-    <xsl:template match="datacite:identifier">
-      <xsl:attribute name="about">
-        <xsl:value-of select="."/>
-      </xsl:attribute>
-    </xsl:template>
+    <xsl:variable name="resourceType" select="/datacite:resource/datacite:resourceType"/>
+    <xsl:variable name="type">
+      <xsl:choose>
+        <xsl:when test="$resourceType[@resourceTypeGeneral='Other']">
+          <xsl:value-of select="$resourceType[@resourceTypeGeneral='Other']"/>
+        </xsl:when>
+        <xsl:otherwise>schema:Dataset</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
 
     <xsl:template match="datacite:resource">
-      <div typeof="schema:Dataset" vocab="http://schema.org/">
+      <div typeof="{$type}" vocab="http://schema.org/">
+        <xsl:attribute name="about">
+          <xsl:value-of select="datacite:identifier"/>
+        </xsl:attribute>
+        <h3>This is a <xsl:value-of select="$resourceType"/></h3>
         <xsl:apply-templates select="datacite:identifier"/>
         <xsl:apply-templates select="*[local-name() != 'identifier']"/>
       </div>
     </xsl:template>
  
+    <!-- We assume all identifiers are URIs (DataCite 4.1 only allows DOI) -->
+    <xsl:template match="datacite:identifier">
+      <p>
+        <a href="{.}"><xsl:value-of select="."/></a>
+      </p>
+    </xsl:template>
+
     <xsl:template match="datacite:creators">
       <xsl:for-each select="datacite:creator">
         <div rel="creator" typeof="Person">
@@ -71,16 +86,22 @@ Minimal draft of DataCite 4.1 to Schema.org mapping.
     </xsl:template>
 
     <xsl:template match="@xml:lang">
-      <xsl:copy-of select="."/>
+      <sup style="color:#666;padding-left:2px;"><xsl:value-of select="."/></sup>
     </xsl:template>
 
     <xsl:template match="datacite:titles">
-      <xsl:for-each select="datacite:title">
-        <div property="name">
-          <xsl:apply-templates select="@xml:lang"/>
-          <xsl:apply-templates/>
-        </div>
-      </xsl:for-each>
+      <h4>Titles</h4>
+      <ul>
+        <xsl:for-each select="datacite:title">
+          <li>
+            <span property="name">
+              <xsl:copy-of select="@xml:lang"/>
+              <xsl:apply-templates/>
+            </span>
+            <xsl:apply-templates select="@xml:lang"/>
+          </li>
+        </xsl:for-each>
+      </ul>
     </xsl:template>
 
     <xsl:template match="datacite:publisher">
@@ -151,35 +172,16 @@ Minimal draft of DataCite 4.1 to Schema.org mapping.
       </div>
     </xsl:template>
     
-    <!--xsl:template match="datacite:resourceType">
-        <xsl:for-each select=".">
-            <xsl:if test="normalize-space(@resourceTypeGeneral)">
-                <xsl:element name="dc:type">
-                    <xsl:value-of select="@resourceTypeGeneral"/>
-                </xsl:element>
-            </xsl:if>
-            <xsl:if test="normalize-space(.)">
-                <xsl:element name="dc:type">
-                    <xsl:value-of select="."/>
-                </xsl:element>
-            </xsl:if>
-        </xsl:for-each>
-    </xsl:template>
-    
     <xsl:template match="datacite:alternateIdentifiers">
+      <h4>Alternative Identifiers</h4>
+      <ul>
         <xsl:for-each select="datacite:alternateIdentifier">
-            <xsl:element name="dc:identifier">
-                <xsl:choose>
-                    <xsl:when test="string-length(@alternateIdentifierType) &gt; 0">
-                        <xsl:value-of select="translate(@alternateIdentifierType,  $uppercase, $smallcase)"/>
-                        <xsl:text>:</xsl:text>
-                    </xsl:when>
-                </xsl:choose>
-                <xsl:value-of select="."/>
-            </xsl:element>
+          <li><a href="{.}" rel="sameAs"><xsl:value-of select="."/></a></li>
         </xsl:for-each>
+      </ul>
     </xsl:template>
     
+    <!--
     <xsl:template match="datacite:relatedIdentifiers">
         <xsl:for-each select="datacite:relatedIdentifier">
             <xsl:element name="dc:relation">

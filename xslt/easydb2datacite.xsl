@@ -25,13 +25,14 @@
       </datacite:titles>
       <datacite:alternateIdentifiers>
         <xsl:apply-templates select="edb:isocode"/>
-        <xsl:apply-templates select="edb:custom"/>
+        <xsl:apply-templates select="edb:custom" mode="alternateIdentifier"/>
       </datacite:alternateIdentifiers>
+      <datacite:resourceType resourceTypeGeneral="Other">http://schema.org/Language</datacite:resourceType>
     </datacite:resource>
   </xsl:template>
 
   <xsl:template match="edb:isocode">
-    <datacite:alternateIdentifier>
+    <datacite:alternateIdentifier alternateIdentifierType="URI">
       <xsl:choose>
         <xsl:when test="string-length()=2">http://id.loc.gov/vocabulary/iso639-1/</xsl:when>
         <xsl:when test="string-length()=3">http://id.loc.gov/vocabulary/iso639-2/</xsl:when>
@@ -40,8 +41,8 @@
     </datacite:alternateIdentifier>
   </xsl:template>
 
-  <xsl:template match="edb:custom[@name='glottolog']">
-    <datacite:alternateIdentifier>
+  <xsl:template match="edb:custom[@name='glottolog']" mode="alternateIdentifier">
+    <datacite:alternateIdentifier alternateIdentifierType="URI">
       <xsl:value-of select="edb:string[@name='url']"/>
     </datacite:alternateIdentifier>
   </xsl:template>
@@ -124,16 +125,34 @@
     </datacite:nameIdentifier>
   </xsl:template>
 
+  <xsl:template match="edb:custom[@name='orcid']" mode="alternateIdentifier">
+    <datacite:alternateIdentifier alternateIdentifierType="URI">
+      <xsl:value-of select="edb:string[@name='url']"/>
+    </datacite:alternateIdentifier>
+  </xsl:template>
+
   <xsl:template match="edb:custom[@name='gnd']">
     <datacite:nameIdentifier nameIdentifierScheme="GND" schemeURI="http://d-nb.info/gnd/">
       <xsl:value-of select="edb:string[@name='conceptURI']"/>
     </datacite:nameIdentifier>
   </xsl:template>
 
+  <xsl:template match="edb:custom[@name='gnd']" mode="alternateIdentifier">
+    <datacite:alternateIdentifier alternateIdentifierType="URI">
+      <xsl:value-of select="edb:string[@name='conceptURI']"/>
+    </datacite:alternateIdentifier>
+  </xsl:template>
+
   <xsl:template match="edb:custom[@name='grid']">
     <datacite:nameIdentifier nameIdentifierScheme="GRID"> <!-- TODO: schemeURI -->
       <xsl:value-of select="edb:string[@name='url']"/>    <!-- TODO: not tested yet -->
     </datacite:nameIdentifier>
+  </xsl:template>
+
+  <xsl:template match="edb:custom[@name='grib']" mode="alternateIdentifier">
+    <datacite:alternateIdentifier alternateIdentifierType="URI">
+      <xsl:value-of select="edb:string[@name='url']"/>
+    </datacite:alternateIdentifier>
   </xsl:template>
 
   <!-- 3 Title (required) -->

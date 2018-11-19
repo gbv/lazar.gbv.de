@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects xmlns="https://schema.easydb.de/EASYDB/1.0/objects/" base-schema="198" instance="lazar" timestamp="2018-11-19T10:06:15+01:00" user-schema="225" uuid="33a8cae1-a9fa-4655-8c3d-b71241bbc99b">
+  <sprache>
+    <_version>17</_version>
+    <_id>2</_id>
+    <_objecttype>sprache</_objecttype>
+    <_system_object_id>36</_system_object_id>
+    <_global_object_id>36@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+    <_uuid>4ce5900d-82cd-44e9-b7ce-5874758dd211</_uuid>
+    <_mask>sprache__all_fields</_mask>
+    <_last_modified>2018-04-28T12:52:17Z</_last_modified>
+    <_urls>
+      <url type="deep-link">https://lazardb.gbv.de/api/v1/objects/uuid/4ce5900d-82cd-44e9-b7ce-5874758dd211</url>
+      <url type="easydb-id">https://lazardb.gbv.de/detail/36</url>
+    </_urls>
+    <_standard>
+      <de-DE>Georgisch, kat</de-DE>
+      <en-US>Georgian, kat</en-US>
+      <und>Georgian, kat</und>
+    </_standard>
+    <name type="text_l10n_oneline">
+      <de-DE>Georgisch</de-DE>
+      <en-US>Georgian</en-US>
+      <und>Georgian</und>
+    </name>
+    <isocode type="string">kat</isocode>
+    <custom name="glottolog" type="custom:base.custom-data-type-link.link">
+      <string name="tld">org</string>
+      <string name="hostname">glottolog.org</string>
+      <string name="url">http://glottolog.org/resource/languoid/id/nucl1302</string>
+      <object name="_fulltext">
+        <string name="string">http://glottolog.org/resource/languoid/id/nucl1302</string>
+      </object>
+    </custom>
+    <custom name="gnd" type="custom:base.custom-data-type-gnd.gnd">
+      <object name="_fulltext">
+        <string name="text">Georgisch</string>
+        <string name="string">http://d-nb.info/gnd/4124679-2</string>
+      </object>
+      <string name="conceptURI">http://d-nb.info/gnd/4124679-2</string>
+      <string name="conceptName">Georgisch</string>
+    </custom>
+  </sprache>
+</objects>

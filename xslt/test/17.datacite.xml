@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datacite:resource xmlns:datacite="http://datacite.org/schema/kernel-4">
+  <datacite:identifier identifierType="URI">https://lazar.gbv.de/id/4ce5900d-82cd-44e9-b7ce-5874758dd211</datacite:identifier>
+  <datacite:titles>
+    <datacite:title xml:lang="de">Georgisch</datacite:title>
+    <datacite:title xml:lang="en">Georgian</datacite:title>
+    <datacite:title xml:lang="und">Georgian</datacite:title>
+  </datacite:titles>
+  <datacite:alternateIdentifiers>
+    <datacite:alternateIdentifier alternateIdentifierType="URI">http://id.loc.gov/vocabulary/iso639-2/kat</datacite:alternateIdentifier>
+    <datacite:alternateIdentifier alternateIdentifierType="URI">http://glottolog.org/resource/languoid/id/nucl1302</datacite:alternateIdentifier>
+    <datacite:alternateIdentifier alternateIdentifierType="URI">http://d-nb.info/gnd/4124679-2</datacite:alternateIdentifier>
+  </datacite:alternateIdentifiers>
+  <datacite:resourceType resourceTypeGeneral="Other">http://schema.org/Language</datacite:resourceType>
+</datacite:resource>
