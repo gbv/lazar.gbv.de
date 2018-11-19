@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects xmlns="https://schema.easydb.de/EASYDB/1.0/objects/" base-schema="198" instance="lazar" timestamp="2018-11-19T10:46:07+01:00" user-schema="225" uuid="33a8cae1-a9fa-4655-8c3d-b71241bbc99b">
+  <ort>
+    <_version>4</_version>
+    <_id>60</_id>
+    <_objecttype>ort</_objecttype>
+    <_system_object_id>8004</_system_object_id>
+    <_global_object_id>8004@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+    <_uuid>9e3d759f-0dff-4722-ac1c-aab47776c99e</_uuid>
+    <_mask>ort__all_fields</_mask>
+    <_last_modified>2017-09-12T13:25:20Z</_last_modified>
+    <_urls>
+      <url type="deep-link">https://lazardb.gbv.de/api/v1/objects/uuid/9e3d759f-0dff-4722-ac1c-aab47776c99e</url>
+      <url type="easydb-id">https://lazardb.gbv.de/detail/8004</url>
+    </_urls>
+    <_standard>
+      <de-DE>Ikalto Monastery</de-DE>
+      <en-US>Iqalto-Kloster</en-US>
+    </_standard>
+    <name type="text_l10n_oneline">
+      <de-DE>Ikalto Monastery</de-DE>
+      <en-US>Iqalto-Kloster</en-US>
+      <ka-GE>იყალთოს მონასტერი</ka-GE>
+    </name>
+    <custom name="geonames_uri" type="custom:base.custom-data-type-geonames.geonames">
+      <object name="_fulltext">
+        <string name="text">Ikalto Monastery</string>
+        <string name="string">http://www.geonames.org/8335170</string>
+      </object>
+      <string name="conceptURI">http://www.geonames.org/8335170</string>
+      <string name="conceptName">Ikalto Monastery</string>
+    </custom>
+    <exakte_koordinaten type="text_oneline">41.937, 45.38139</exakte_koordinaten>
+  </ort>
+</objects>

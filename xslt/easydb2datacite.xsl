@@ -47,6 +47,42 @@
     </datacite:alternateIdentifier>
   </xsl:template>
 
+  <!-- LaZAR-Objekttyp "Ort" -->
+  <xsl:template match="edb:ort[parent::edb:objects]">
+    <datacite:resource>
+      <xsl:call-template name="identifier"/>
+      <datacite:titles>
+        <xsl:for-each select="edb:name[@type='text_l10n_oneline']/*[string()]">
+          <xsl:call-template name="title"/>
+        </xsl:for-each>
+      </datacite:titles>
+      <datacite:alternateIdentifiers>
+        <xsl:apply-templates select="edb:custom[@name='geonames_uri']" mode="alternateIdentifier"/>
+      </datacite:alternateIdentifiers>
+      <datacite:resourceType resourceTypeGeneral="Other">http://schema.org/Place</datacite:resourceType>
+      <xsl:apply-templates select="edb:exakte_koordinaten"/>
+    </datacite:resource>
+  </xsl:template>
+
+  <xsl:template match="edb:custom[@name='geonames_uri']" mode="alternateIdentifier">
+    <datacite:alternateIdentifier alternateIdentifierType="URI">
+      <xsl:value-of select="edb:string[@name='conceptURI']"/>
+    </datacite:alternateIdentifier>
+  </xsl:template>
+
+  <xsl:template match="edb:exakte_koordinaten[text()]">
+    <datacite:GeoLocation>
+      <datacite:geoLocationPoint>
+        <datacite:pointLatitude>
+          <xsl:value-of select="normalize-space(substring-before(.,','))"/>
+        </datacite:pointLatitude>
+        <datacite:pointLongitude>
+          <xsl:value-of select="normalize-space(substring-after(.,','))"/>
+        </datacite:pointLongitude>
+      </datacite:geoLocationPoint>
+    </datacite:GeoLocation>
+  </xsl:template>
+
   <!-- LaZAR-Objekttyp "Objekttyp" -->
   <xsl:template match="edb:objekttyp">
     <datacite:resource

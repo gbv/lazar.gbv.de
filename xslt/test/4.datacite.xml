@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datacite:resource xmlns:datacite="http://datacite.org/schema/kernel-4">
+  <datacite:identifier identifierType="URI">https://lazar.gbv.de/id/9e3d759f-0dff-4722-ac1c-aab47776c99e</datacite:identifier>
+  <datacite:titles>
+    <datacite:title xml:lang="de">Ikalto Monastery</datacite:title>
+    <datacite:title xml:lang="en">Iqalto-Kloster</datacite:title>
+    <datacite:title xml:lang="ka">იყალთოს მონასტერი</datacite:title>
+  </datacite:titles>
+  <datacite:alternateIdentifiers>
+    <datacite:alternateIdentifier alternateIdentifierType="URI">http://www.geonames.org/8335170</datacite:alternateIdentifier>
+  </datacite:alternateIdentifiers>
+  <datacite:resourceType resourceTypeGeneral="Other">http://schema.org/Place</datacite:resourceType>
+  <datacite:GeoLocation>
+    <datacite:geoLocationPoint>
+      <datacite:pointLatitude>41.937</datacite:pointLatitude>
+      <datacite:pointLongitude>45.38139</datacite:pointLongitude>
+    </datacite:geoLocationPoint>
+  </datacite:GeoLocation>
+</datacite:resource>

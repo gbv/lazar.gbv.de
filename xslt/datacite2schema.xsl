@@ -166,6 +166,17 @@ Minimal draft of DataCite 4.1 to Schema.org mapping.
     </xsl:template>
     -->
 
+    <xsl:template match="datacite:GeoLocation[datacite:geoLocationPoint]">
+      <h3>Coordinates</h3>
+      <xsl:for-each select="datacite:geoLocationPoint">
+        <p property="geo" typeof="GeoCoordinates">
+          <span property="latitude"><xsl:value-of select="datacite:pointLatitude"/></span>
+          <xsl:text>,&#xA0;</xsl:text>
+          <span property="longitude"><xsl:value-of select="datacite:pointLongitude"/></span>
+        </p>
+      </xsl:for-each>
+    </xsl:template>
+
     <xsl:template match="datacite:language">
       <div rel="inLanguage">
         <xsl:value-of select="."/>
