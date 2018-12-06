@@ -9,6 +9,9 @@
     "defaultFormat": "easydb"
   },
   "pretty": true,
+  "intersectSets": {
+    "tagfilter:lza": "^pool:.*$"
+  },
   "formats": {
     "datacite": {
       "schema": "https://schema.datacite.org/meta/kernel-4.1/metadata.xsd",

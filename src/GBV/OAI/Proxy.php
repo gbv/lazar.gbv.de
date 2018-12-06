@@ -54,6 +54,7 @@ class Proxy
 
         $this->formats = $config['formats'] ?? [];
         $this->pretty = $config['pretty'] ?? true;
+        $this->intersectSets = $config['intersectSets'] ?? [];
     }
 
     public function __invoke(RequestInterface $request)
@@ -112,6 +113,24 @@ class Proxy
             $dom = $this->rewriteRecords($dom, $prefix);
         } elseif ($verb == 'ListMetadataFormats' && count($this->formats)) {
             $dom = $this->rewriteMetadataFormats($dom);
+        } elseif ($verb == 'ListSets') {
+            $listSetsNode = static::xpath($dom, '//oai:ListSets')[0];
+            $sets = [];
+            foreach (static::xpath($listSetsNode, 'oai:set') as $setNode) {
+                $setSpec = static::xpath($setNode, 'oai:setSpec')[0]->nodeValue;
+                $setName = static::xpath($setNode, 'oai:setName')[0];
+                $sets[$setSpec] = $setName ? $setName->nodeValue : '';
+            }
+            foreach ($this->intersectSets as $set1 => $pattern) {
+                if (!$sets[$set1]) continue;
+                foreach ($sets as $set2 => $setName) {
+                    if (!preg_match("/$pattern/", $set2)) continue;
+                    $setNode = $dom->createElement('set');
+                    $setNode->appendChild($dom->createElement('setSpec', "$set1*$set2"));
+                    $setNode->appendChild($dom->createElement('setName', $sets[$set1]." ".$setName));
+                    $listSetsNode->appendChild($setNode);
+                }
+            }
         }
 
         // add processing instructions
