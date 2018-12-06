@@ -126,6 +126,9 @@ class Proxy
             if ($prefix && $node->getAttribute('metadataPrefix')) {
                 $node->setAttribute('metadataPrefix', $query['targetPrefix']);
             }
+            if (count($query['sets'])) {
+                $node->setAttribute('set',implode("*",$query['sets']));
+            }
         }
 
         // enforce pretty-printing
@@ -160,9 +163,9 @@ class Proxy
 
     public function transformQuery(array $query): array
     {
-        // split sets if multiple sets provided as comma-separated list
+        // split sets if multiple sets provided as '*' separated list
         if (isset($query['set'])) {
-            $sets = explode(',', $query['set']);
+            $sets = explode('*', $query['set']);
             if (count($sets) > 1) {
                 $query['set'] = $sets[0];
             }

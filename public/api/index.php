@@ -17,8 +17,8 @@
   Kombinationen von sets für Abfragen vom Typ <code>ListRecords</code>. Beispiel:
   <ul>
     <li>
-  <code><a href="oai?verb=ListRecords&metadataPrefix=easydb&set=pool:1:2,tagfilter:lza"
-    >set=pool:1:2,tagfilter:lza</a></code>
+  <code><a href="oai?verb=ListRecords&metadataPrefix=easydb&set=tagfilter:lza*pool:1:2"
+    >set=tagfilter:lza*pool:1:2</a></code>
     </li>
   </ul>
 </p>
