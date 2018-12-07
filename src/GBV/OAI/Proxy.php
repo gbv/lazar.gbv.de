@@ -185,6 +185,7 @@ class Proxy
         // split sets if multiple sets provided as '*' separated list
         if (isset($query['set'])) {
             $sets = explode('*', $query['set']);
+            asort($sets); // smaller sets first
             if (count($sets) > 1) {
                 $query['set'] = $sets[0];
             }
