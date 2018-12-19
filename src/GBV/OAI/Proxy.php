@@ -104,11 +104,13 @@ class Proxy
         $prefix = $query['targetPrefix'] ?? '';
         $verb = $query['verb'] ?? '';
 
-        if ($verb == 'ListRecords') {
+        if ($verb === 'ListIdentifiers' || $verb === 'ListRecords') {
             if (count($query['sets']) > 1) {
                 $dom = $this->filterListRecords($dom, $query);
             }
-            $dom = $this->rewriteRecords($dom, $prefix);
+            if ($verb === 'ListRecords') {
+                $dom = $this->rewriteRecords($dom, $prefix);
+            }
         } elseif ($verb == 'GetRecord') {
             $dom = $this->rewriteRecords($dom, $prefix);
         } elseif ($verb == 'ListMetadataFormats' && count($this->formats)) {
@@ -281,11 +283,19 @@ class Proxy
 
     public function filterListRecords(DOMDocument $dom, array $query): DOMDocument
     {
-        // filter records with sets
         $sets = $query['sets'];
-        foreach (static::xpath($dom, '//oai:record') as $rec) {
+
+        if ($query['verb'] === 'ListIdentifiers') {
+            $recPath = '//oai:header';
+            $setPath = 'oai:setSpec';
+        } else {
+            $recPath = '//oai:record';
+            $setPath = 'oai:header/oai:setSpec';
+        }
+
+        foreach (static::xpath($dom, $recPath) as $rec) {
             $setSpecs = [];
-            foreach (static::xpath($rec, 'oai:header/oai:setSpec') as $setSpec) {
+            foreach (static::xpath($rec, $setPath) as $setSpec) {
                 $setSpecs[] = $setSpec->textContent;
             }
             if (array_intersect($sets, $setSpecs) != $sets) {
