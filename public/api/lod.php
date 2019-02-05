@@ -13,9 +13,9 @@
 <table class="table" style="width:auto">
 <thead>
   <tr>
-    <th>Entität</th>
+    <th>Entitätstyp</th>
     <th>Datenbank</th>
-    <th>OAI</th>
+    <th>OAI-PMH Link</th>
   </tr>
 <tbody>
 <?php foreach ($TYPES as $path => $type) { ?>
@@ -27,7 +27,7 @@
       <a href="https://lazardb.gbv.de/lists/<?=$type['type']?>">Datenbank</a>
     </td>
     <td>
-      <a href="../api/oai?verb=ListIdentifiers&metadataPrefix=easydb&set=objecttype:<?=$type['type']?>">LisIdentifiers</a> (easyDB),
+      <a href="../api/oai?verb=ListIdentifiers&metadataPrefix=easydb&set=objecttype:<?=$type['type']?>">ListIdentifiers</a> (easyDB),
       <a href="../api/oai?verb=ListRecords&metadataPrefix=rdfa&set=objecttype:<?=$type['type']?>">ListRecords</a> (RDFa)
     </td>
   </tr>
