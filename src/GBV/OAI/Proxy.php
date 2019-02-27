@@ -55,6 +55,7 @@ class Proxy
         $this->formats = $config['formats'] ?? [];
         $this->pretty = $config['pretty'] ?? true;
         $this->intersectSets = $config['intersectSets'] ?? [];
+        $this->tokenFile = new TokenFile($config['tokenFile'] ?? null);
     }
 
     public function __invoke(RequestInterface $request)
@@ -63,7 +64,18 @@ class Proxy
         $headers = array_diff_key($headers, array_flip(['Cookie', 'Host']));
         
         parse_str($request->getUri()->getQuery(), $query);
-        $query = $this->transformQuery($query);
+
+        // if resumptionToken: get query from tokenFile
+        if (isset($query['resumptionToken'])) {
+            $token = $query['resumptionToken'];
+            $firstQuery = $this->tokenFile->get($token);
+            if ($firstQuery) {
+                $firstQuery['resumptionToken'] = $token;
+                $query = $firstQuery;
+            }
+        } else {
+            $query = $this->transformQuery($query);
+        }
 
         // pass query to OAI-PMH backend
         $args = array_intersect_key($query, array_flip(static::OAI_ARGUMENTS));
@@ -76,6 +88,13 @@ class Proxy
 
         // transform response and return as Promise
         $dom = $this->transformBody((string)$response->getBody(), $query);
+
+        // save query with token
+        $token =  static::xpath($dom, '//oai:resumptionToken')[0];
+        if ($token) {
+            $this->tokenFile->add($token->nodeValue, $query);
+        }
+
         $response = $response->withBody(Psr7\stream_for($dom->saveXML()));
 
         return \GuzzleHttp\Promise\promise_for($response);
@@ -106,7 +125,7 @@ class Proxy
 
         if ($verb === 'ListIdentifiers' || $verb === 'ListRecords') {
             if (count($query['sets']) > 1) {
-                $dom = $this->filterListRecords($dom, $query);
+                $dom = $this->filterRecords($dom, $query);
             }
             if ($verb === 'ListRecords') {
                 $dom = $this->rewriteRecords($dom, $prefix);
@@ -281,7 +300,7 @@ class Proxy
     }
 
 
-    public function filterListRecords(DOMDocument $dom, array $query): DOMDocument
+    public function filterRecords(DOMDocument $dom, array $query): DOMDocument
     {
         $sets = $query['sets'];
 
@@ -298,7 +317,9 @@ class Proxy
             foreach (static::xpath($rec, $setPath) as $setSpec) {
                 $setSpecs[] = $setSpec->textContent;
             }
-            if (array_intersect($sets, $setSpecs) != $sets) {
+
+            $foundSets = array_intersect($sets, $setSpecs);
+            if (count($foundSets) != count($sets)) {
                 $rec->parentNode->removeChild($rec);
             }
         }
