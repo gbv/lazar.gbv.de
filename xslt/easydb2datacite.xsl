@@ -381,12 +381,12 @@
   <xsl:template name="relatedIdentifiers">
     <datacite:relatedIdentifiers>
       <!-- Deep Link to record view in easydb -->
-      <datacite:relatedIdentifier relatedIdentifierType="URL" relationType="isIdenticalTo">
+      <datacite:relatedIdentifier relatedIdentifierType="URL" relationType="IsIdenticalTo">
         <xsl:value-of select="edb:_urls/edb:url[@type='easydb-id']"/>
       </datacite:relatedIdentifier>
 
       <xsl:if test="edb:tags/edb:tag[@id='2']">
-        <datacite:relatedIdentifier relatedIdentifierType="URL" relationType="isIdenticalTo">
+        <datacite:relatedIdentifier relatedIdentifierType="URL" relationType="IsIdenticalTo">
           <xsl:value-of select="edb:datei/edb:files/edb:file/edb:versions/edb:version[1]/edb:deep_link_url"/>
         </datacite:relatedIdentifier>
       </xsl:if>
@@ -471,7 +471,7 @@
       <datacite:descriptions>
         <xsl:for-each select="$descriptions">
           <xsl:variable name="language" select="substring-before(local-name(),'-')"/>
-          <datacite:description descriptionType="Abstracts" xml:lang="{$language}">
+          <datacite:description descriptionType="Abstract" xml:lang="{$language}">
             <xsl:value-of select="."/>
           </datacite:description>
         </xsl:for-each>
