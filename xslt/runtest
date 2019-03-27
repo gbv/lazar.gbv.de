@@ -47,5 +47,6 @@ fi
 
 # done_testing
 echo 1..$TEST_COUNTER
+echo '# TODO: use xmllint --noout --schema schemas/datacite.xsd file.xml to further validate'
 
 exit $FAIL_COUNTER
