@@ -322,8 +322,9 @@
 
   <!-- 9 Language (optional) -->
   <xsl:template name="languages">
+    <!-- DataCite only wants a primary language. WTF? -->
     <xsl:variable name="sprachen"
-      select="edb:_nested__objekttyp__sprachen/edb:objekttyp__sprachen/edb:sprache/edb:sprache"/>
+      select="edb:_nested__objekttyp__sprachen/edb:objekttyp__sprachen[1]/edb:sprache/edb:sprache"/>
     <xsl:for-each select="$sprachen/edb:isocode[string-length(text()) > 0]">
       <datacite:language>
         <xsl:value-of select="."/>
