@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects xmlns="https://schema.easydb.de/EASYDB/1.0/objects/" base-schema="210" instance="lazar" timestamp="2019-03-27T12:47:33+01:00" user-schema="228" uuid="33a8cae1-a9fa-4655-8c3d-b71241bbc99b">
+  <objekttyp>
+    <_version>28</_version>
+    <_id>222</_id>
+    <_id_parent>221</_id_parent>
+    <_system_object_id>254</_system_object_id>
+    <_standard>
+      <de-DE>Markierung der Herde</de-DE>
+    </_standard>
+    <_objecttype>objekttyp</_objecttype>
+    <_global_object_id>254@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+    <_uuid>9e8b4b24-89e7-4521-b22b-2640cfdbe5b8</_uuid>
+    <_mask>objekttyp__restricted</_mask>
+    <_last_modified>2018-12-29T13:58:40Z</_last_modified>
+    <_created>2016-03-25T14:58:35Z</_created>
+    <tags>
+      <tag id="1">
+        <name>
+          <de-DE>Konvolut</de-DE>
+          <en-US>bundle</en-US>
+        </name>
+      </tag>
+      <tag id="6">
+        <name>
+          <de-DE>freigegeben</de-DE>
+          <en-US>approved</en-US>
+        </name>
+      </tag>
+      <tag id="12">
+        <name>
+          <de-DE>CC BY-SA</de-DE>
+          <en-US>CC BY-SA</en-US>
+        </name>
+      </tag>
+      <tag id="20">
+        <name>
+          <de-DE>LZA bewilligt</de-DE>
+          <en-US>digital preservation granted</en-US>
+        </name>
+      </tag>
+    </tags>
+    <collections/>
+    <pool id="2">
+      <de-DE>Kaukasusiologie Uni Jena</de-DE>
+    </pool>
+    <_path>
+      <objekttyp level="0" parent-level="2">
+        <_system_object_id>252</_system_object_id>
+        <_global_object_id>252@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+        <_uuid>4c5b995c-32b5-45c0-8ad4-8f5c3964bcdb</_uuid>
+        <_id>220</_id>
+        <_objecttype>objekttyp</_objecttype>
+        <_standard>
+          <de-DE>Feldforschung in Kachetien 2011</de-DE>
+          <und>საველე კვლევა კახეთში 2011</und>
+        </_standard>
+      </objekttyp>
+      <objekttyp level="1" parent-level="1">
+        <_system_object_id>253</_system_object_id>
+        <_global_object_id>253@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+        <_uuid>6a3fa468-b45f-45f5-b2a5-4d8a13fdffb8</_uuid>
+        <_id>221</_id>
+        <_objecttype>objekttyp</_objecttype>
+        <_standard>
+          <de-DE>Schafhaltung</de-DE>
+        </_standard>
+      </objekttyp>
+      <objekttyp level="2" parent-level="0">
+        <_system_object_id>254</_system_object_id>
+        <_global_object_id>254@33a8cae1-a9fa-4655-8c3d-b71241bbc99b</_global_object_id>
+        <_uuid>9e8b4b24-89e7-4521-b22b-2640cfdbe5b8</_uuid>
+        <_id>222</_id>
+        <_objecttype>objekttyp</_objecttype>
+        <_standard>
+          <de-DE>Markierung der Herde</de-DE>
+        </_standard>
+      </objekttyp>
+    </_path>
+    <_urls>
+      <url type="deep-link">https://lazardb.gbv.de/api/v1/objects/uuid/9e8b4b24-89e7-4521-b22b-2640cfdbe5b8</url>
+      <url type="easydb-id">https://lazardb.gbv.de/detail/254</url>
+    </_urls>
+    <datei>
+      <files>
+        <file>
+          <eas-id>1001976607</eas-id>
+          <preferred>true</preferred>
+          <status>done</status>
+          <class>image</class>
+          <extension>jpg</extension>
+          <original_filename/>
+          <compiled>jpg image, 2394 x 1842 @ 24 bit, 523.6 kB</compiled>
+          <eas_parent_id>1001976606</eas_parent_id>
+          <date_inserted>2018-12-29T13:58:40Z</date_inserted>
+          <date_created>2011-09-21T10:19:39Z</date_created>
+          <date_uploaded>2017-10-22T09:20:38Z</date_uploaded>
+          <filesize>536186</filesize>
+          <technical_metadata>
+            <colorprofile>sRGB IEC61966-2-1 black scaled</colorprofile>
+            <height>1842</height>
+            <format>landscape</format>
+            <width>2394</width>
+            <camera_scanner>NIKON D90</camera_scanner>
+            <colorspace>rgb</colorspace>
+            <aspect_ratio>1.299674267100977</aspect_ratio>
+            <max_dimension>2394</max_dimension>
+            <colordepth>24</colordepth>
+            <dpi>300</dpi>
+          </technical_metadata>
+          <versions>
+            <version name="original">
+              <aspect_ratio>1.2990000247955322</aspect_ratio>
+              <extension>jpg</extension>
+              <_download_allowed>0</_download_allowed>
+              <status>done</status>
+              <compiled>jpg image, 2394 x 1842 @ 24 bit, 523.6 kB</compiled>
+              <filesize>536186</filesize>
+              <height>1842</height>
+              <has_more_jobs>0</has_more_jobs>
+              <width>2394</width>
+              <dpi>300</dpi>
+              <date_created>2011-09-21T10:19:39Z</date_created>
+              <class>image</class>
+              <deep_link_url>https://lazardb.gbv.de/api/v1/objects/uuid/9e8b4b24-89e7-4521-b22b-2640cfdbe5b8/file/id/1001976607/file_version/name/original/disposition/inline</deep_link_url>
+            </version>
+            <version name="preview">
+              <aspect_ratio>1.2999999523162842</aspect_ratio>
+              <extension>jpg</extension>
+              <_download_allowed>0</_download_allowed>
+              <status>done</status>
+              <filesize>74195</filesize>
+              <height>769</height>
+              <has_more_jobs>0</has_more_jobs>
+              <width>1000</width>
+              <class>image</class>
+              <dpi>300</dpi>
+              <deep_link_url>https://lazardb.gbv.de/api/v1/objects/uuid/9e8b4b24-89e7-4521-b22b-2640cfdbe5b8/file/id/1001976607/file_version/name/preview/disposition/inline</deep_link_url>
+            </version>
+            <version name="small">
+              <aspect_ratio>1.2999999523162842</aspect_ratio>
+              <extension>jpg</extension>
+              <_download_allowed>1</_download_allowed>
+              <status>done</status>
+              <filesize>16584</filesize>
+              <height>250</height>
+              <has_more_jobs>0</has_more_jobs>
+              <width>325</width>
+              <class>image</class>
+              <dpi>300</dpi>
+              <deep_link_url>https://lazardb.gbv.de/api/v1/objects/uuid/9e8b4b24-89e7-4521-b22b-2640cfdbe5b8/file/id/1001976607/file_version/name/small/disposition/inline</deep_link_url>
+            </version>
+            <version name="huge">
+              <aspect_ratio>1.2990000247955322</aspect_ratio>
+              <extension>jpg</extension>
+              <_download_allowed>0</_download_allowed>
+              <status>done</status>
+              <filesize>228547</filesize>
+              <height>1539</height>
+              <has_more_jobs>0</has_more_jobs>
+              <width>2000</width>
+              <class>image</class>
+              <dpi>300</dpi>
+              <deep_link_url>https://lazardb.gbv.de/api/v1/objects/uuid/9e8b4b24-89e7-4521-b22b-2640cfdbe5b8/file/id/1001976607/file_version/name/huge/disposition/inline</deep_link_url>
+            </version>
+            <version name="full">
+              <aspect_ratio>1.2990000247955322</aspect_ratio>
+              <extension>jpg</extension>
+              <_download_allowed>0</_download_allowed>
+              <status>done</status>
+              <filesize>350015</filesize>
+              <height>1842</height>
+              <has_more_jobs>0</has_more_jobs>
+              <width>2394</width>
+              <class>image</class>
+              <dpi>300</dpi>
+              <deep_link_url>https://lazardb.gbv.de/api/v1/objects/uuid/9e8b4b24-89e7-4521-b22b-2640cfdbe5b8/file/id/1001976607/file_version/name/full/disposition/inline</deep_link_url>
+            </version>
+          </versions>
+        </file>
+        <file>
+          <eas-id>1001976606</eas-id>
+          <preferred>false</preferred>
+          <status>done</status>
+          <class>image</class>
+          <extension>jpg</extension>
+          <original_filename>_DSC4644.jpg</original_filename>
+          <compiled>jpg image, 4310 x 2868 @ 24 bit, 1.28 MB</compiled>
+          <eas_parent_id/>
+          <date_inserted>2018-12-29T13:58:40Z</date_inserted>
+          <date_created>2011-09-21T10:19:39Z</date_created>
+          <date_uploaded>2017-10-22T09:20:08Z</date_uploaded>
+          <filesize>1337009</filesize>
+          <technical_metadata>
+            <orientation>1</orientation>
+            <height>2868</height>
+            <format>landscape</format>
+            <width>4310</width>
+            <camera_scanner>NIKON D90</camera_scanner>
+            <colorspace>rgb</colorspace>
+            <aspect_ratio>1.50278940027894</aspect_ratio>
+            <max_dimension>4310</max_dimension>
+            <file_sha224_checksum>d35d37b7053cc7da0d9a8dca3eeaff530e41432fed14cb97bf483922</file_sha224_checksum>
+            <colordepth>24</colordepth>
+            <dpi>300</dpi>
+          </technical_metadata>
+          <versions>
+            <version name="original">
+              <aspect_ratio>1.5019999742507935</aspect_ratio>
+              <extension>jpg</extension>
+              <_download_allowed>0</_download_allowed>
+              <status>done</status>
+              <compiled>jpg image, 4310 x 2868 @ 24 bit, 1.28 MB</compiled>
+              <filesize>1337009</filesize>
+              <height>2868</height>
+              <has_more_jobs>0</has_more_jobs>
+              <width>4310</width>
+              <dpi>300</dpi>
+              <date_created>2011-09-21T10:19:39Z</date_created>
+              <class>image</class>
+              <deep_link_url>https://lazardb.gbv.de/api/v1/objects/uuid/9e8b4b24-89e7-4521-b22b-2640cfdbe5b8/file/id/1001976606/file_version/name/original/disposition/inline</deep_link_url>
+            </version>
+            <version name="preview">
+              <aspect_ratio>1.503000020980835</aspect_ratio>
+              <extension>jpg</extension>
+              <_download_allowed>0</_download_allowed>
+              <status>done</status>
+              <filesize>57804</filesize>
+              <height>665</height>
+              <has_more_jobs>0</has_more_jobs>
+              <width>1000</width>
+              <class>image</class>
+              <dpi>300</dpi>
+              <deep_link_url>https://lazardb.gbv.de/api/v1/objects/uuid/9e8b4b24-89e7-4521-b22b-2640cfdbe5b8/file/id/1001976606/file_version/name/preview/disposition/inline</deep_link_url>
+            </version>
+            <version name="small">
+              <aspect_ratio>1.503999948501587</aspect_ratio>
+              <extension>jpg</extension>
+              <_download_allowed>1</_download_allowed>
+              <status>done</status>
+              <filesize>16914</filesize>
+              <height>250</height>
+              <has_more_jobs>0</has_more_jobs>
+              <width>376</width>
+              <class>image</class>
+              <dpi>300</dpi>
+              <deep_link_url>https://lazardb.gbv.de/api/v1/objects/uuid/9e8b4b24-89e7-4521-b22b-2640cfdbe5b8/file/id/1001976606/file_version/name/small/disposition/inline</deep_link_url>
+            </version>
+            <version name="huge">
+              <aspect_ratio>1.5019999742507935</aspect_ratio>
+              <extension>jpg</extension>
+              <_download_allowed>0</_download_allowed>
+              <status>done</status>
+              <filesize>163715</filesize>
+              <height>1331</height>
+              <has_more_jobs>0</has_more_jobs>
+              <width>2000</width>
+              <class>image</class>
+              <dpi>300</dpi>
+              <deep_link_url>https://lazardb.gbv.de/api/v1/objects/uuid/9e8b4b24-89e7-4521-b22b-2640cfdbe5b8/file/id/1001976606/file_version/name/huge/disposition/inline</deep_link_url>
+            </version>
+            <version name="full">
+              <aspect_ratio>1.5019999742507935</aspect_ratio>
+              <extension>jpg</extension>
+              <_download_allowed>0</_download_allowed>
+              <status>done</status>
+              <filesize>787666</filesize>
+              <height>2868</height>
+              <has_more_jobs>0</has_more_jobs>
+              <width>4310</width>
+              <class>image</class>
+              <dpi>300</dpi>
+              <deep_link_url>https://lazardb.gbv.de/api/v1/objects/uuid/9e8b4b24-89e7-4521-b22b-2640cfdbe5b8/file/id/1001976606/file_version/name/full/disposition/inline</deep_link_url>
+            </version>
+          </versions>
+        </file>
+      </files>
+    </datei>
+    <_nested__objekttyp__titel>
+      <objekttyp__titel>
+        <titel type="text_l10n_oneline">
+          <de-DE>Markierung der Herde</de-DE>
+        </titel>
+      </objekttyp__titel>
+    </_nested__objekttyp__titel>
+    <version type="text_oneline">1.0</version>
+    <_nested__objekttyp__urheber>
+      <objekttyp__urheber>
+        <urheber>
+          <person_urheber>
+            <_version>10</_version>
+            <_id>3</_id>
+            <_system_object_id>418</_system_object_id>
+            <_standard>
+              <de-DE>Dadunashvili, Elguja</de-DE>
+              <en-US>Dadunashvili, Elguja</en-US>
+              <und>Dadunashvili, Elguja</und>
+            </_standard>
+            <name type="text_oneline">Dadunashvili, Elguja</name>
+            <custom name="gnd" type="custom:base.custom-data-type-gnd.gnd">
+              <string name="conceptURI">http://d-nb.info/gnd/133557154</string>
+              <object name="_fulltext">
+                <string name="string">http://d-nb.info/gnd/133557154</string>
+                <string name="text">Dadunašvili, Elguǰa</string>
+              </object>
+              <string name="conceptName">Dadunašvili, Elguǰa</string>
+            </custom>
+            <custom name="orcid" type="custom:base.custom-data-type-link.link">
+              <string name="url">http://orcid.org/0000-0002-5434-0815</string>
+              <string name="tld">org</string>
+              <string name="hostname">orcid.org</string>
+              <object name="_fulltext">
+                <string name="string">http://orcid.org/0000-0002-5434-0815</string>
+                <object name="l10ntext">
+                  <string name="de_DE"/>
+                  <string name="en_US"/>
+                  <string name="ka_GE"/>
+                </object>
+              </object>
+              <object name="text">
+                <string name="de_DE"/>
+                <string name="en_US"/>
+                <string name="ka_GE"/>
+              </object>
+            </custom>
+          </person_urheber>
+        </urheber>
+        <affiliation>
+          <affiliation>
+            <_version>4</_version>
+            <_id>1</_id>
+            <_system_object_id>10192</_system_object_id>
+            <_standard>
+              <de-DE>Friedrich Schiller Universität Jena / Staatliche Ilia Universität Tiflis</de-DE>
+              <en-US>Friedrich Schiller University Jena / Ilia State University Tbilisi</en-US>
+              <und>იენის ფრიდრიხ შილერის უნივერსიტეტი / ილიას სახელმწიფო უნივერსიტეტი</und>
+            </_standard>
+            <name type="text_l10n_oneline">
+              <de-DE>Friedrich Schiller Universität Jena / Staatliche Ilia Universität Tiflis</de-DE>
+              <en-US>Friedrich Schiller University Jena / Ilia State University Tbilisi</en-US>
+              <und>იენის ფრიდრიხ შილერის უნივერსიტეტი / ილიას სახელმწიფო უნივერსიტეტი</und>
+            </name>
+          </affiliation>
+        </affiliation>
+      </objekttyp__urheber>
+    </_nested__objekttyp__urheber>
+    <_nested__objekttyp__keywords_gnd>
+      <objekttyp__keywords_gnd>
+        <custom name="keyword" type="custom:base.custom-data-type-gnd.gnd">
+          <object name="_fulltext">
+            <string name="text">Schafhaltung</string>
+            <string name="string">http://d-nb.info/gnd/4116366-7</string>
+          </object>
+          <string name="conceptURI">http://d-nb.info/gnd/4116366-7</string>
+          <string name="conceptName">Schafhaltung</string>
+        </custom>
+      </objekttyp__keywords_gnd>
+    </_nested__objekttyp__keywords_gnd>
+    <_nested__objekttyp__contributor>
+      <objekttyp__contributor>
+        <person>
+          <person_urheber>
+            <_version>2</_version>
+            <_id>2</_id>
+            <_system_object_id>413</_system_object_id>
+            <_standard>
+              <de-DE>Minkner, Sebastian</de-DE>
+              <en-US>Minkner, Sebastian</en-US>
+              <und>Minkner, Sebastian</und>
+            </_standard>
+            <name type="text_oneline">Minkner, Sebastian</name>
+            <custom name="orcid" type="custom:base.custom-data-type-link.link">
+              <string name="url">orcid.org/0000-0002-8679-8628</string>
+              <string name="tld">org</string>
+              <string name="hostname">orcid.org</string>
+              <object name="_fulltext">
+                <string name="string">orcid.org/0000-0002-8679-8628</string>
+                <object name="l10ntext">
+                  <string name="de_DE"/>
+                  <string name="en_US"/>
+                </object>
+              </object>
+              <object name="text">
+                <string name="de_DE"/>
+                <string name="en_US"/>
+              </object>
+            </custom>
+          </person_urheber>
+        </person>
+        <rolle>
+          <person_rolle>
+            <_version>4</_version>
+            <_id>14</_id>
+            <_system_object_id>579</_system_object_id>
+            <_standard>
+              <de-DE>ProjectBeteiligte</de-DE>
+              <en-US>ProjectMember</en-US>
+              <und>ProjectMember</und>
+            </_standard>
+            <name type="text_l10n_oneline">
+              <de-DE>ProjectBeteiligte</de-DE>
+              <en-US>ProjectMember</en-US>
+              <und>ProjectMember</und>
+            </name>
+          </person_rolle>
+        </rolle>
+      </objekttyp__contributor>
+      <objekttyp__contributor>
+        <person>
+          <person_urheber>
+            <_version>4</_version>
+            <_id>5</_id>
+            <_system_object_id>420</_system_object_id>
+            <_standard>
+              <de-DE>Fieber, Marco</de-DE>
+              <en-US>Fieber, Marco</en-US>
+              <und>Fieber, Marco</und>
+            </_standard>
+            <name type="text_oneline">Fieber, Marco</name>
+            <custom name="orcid" type="custom:base.custom-data-type-link.link">
+              <object name="text">
+                <string name="de_DE"/>
+                <string name="en_US"/>
+              </object>
+              <string name="url">http://orcid.org/0000-0001-5491-4842</string>
+            </custom>
+          </person_urheber>
+        </person>
+        <rolle>
+          <person_rolle>
+            <_version>4</_version>
+            <_id>14</_id>
+            <_system_object_id>579</_system_object_id>
+            <_standard>
+              <de-DE>ProjectBeteiligte</de-DE>
+              <en-US>ProjectMember</en-US>
+              <und>ProjectMember</und>
+            </_standard>
+            <name type="text_l10n_oneline">
+              <de-DE>ProjectBeteiligte</de-DE>
+              <en-US>ProjectMember</en-US>
+              <und>ProjectMember</und>
+            </name>
+          </person_rolle>
+        </rolle>
+      </objekttyp__contributor>
+      <objekttyp__contributor>
+        <person>
+          <person_urheber>
+            <_version>5</_version>
+            <_id>4</_id>
+            <_system_object_id>419</_system_object_id>
+            <_standard>
+              <de-DE>May, Etienne</de-DE>
+              <en-US>May, Etienne</en-US>
+              <und>May, Etienne</und>
+            </_standard>
+            <name type="text_oneline">May, Etienne</name>
+            <custom name="orcid" type="custom:base.custom-data-type-link.link">
+              <object name="text">
+                <string name="de_DE"/>
+                <string name="en_US"/>
+              </object>
+              <string name="url">http://orcid.org/0000-0001-5786-9581</string>
+            </custom>
+          </person_urheber>
+        </person>
+        <rolle>
+          <person_rolle>
+            <_version>4</_version>
+            <_id>14</_id>
+            <_system_object_id>579</_system_object_id>
+            <_standard>
+              <de-DE>ProjectBeteiligte</de-DE>
+              <en-US>ProjectMember</en-US>
+              <und>ProjectMember</und>
+            </_standard>
+            <name type="text_l10n_oneline">
+              <de-DE>ProjectBeteiligte</de-DE>
+              <en-US>ProjectMember</en-US>
+              <und>ProjectMember</und>
+            </name>
+          </person_rolle>
+        </rolle>
+      </objekttyp__contributor>
+      <objekttyp__contributor>
+        <person>
+          <person_urheber>
+            <_version>4</_version>
+            <_id>7</_id>
+            <_system_object_id>422</_system_object_id>
+            <_standard>
+              <de-DE>Hubl, Angelika</de-DE>
+              <en-US>Hubl, Angelika</en-US>
+              <und>Hubl, Angelika</und>
+            </_standard>
+            <name type="text_oneline">Hubl, Angelika</name>
+          </person_urheber>
+        </person>
+        <rolle>
+          <person_rolle>
+            <_version>4</_version>
+            <_id>14</_id>
+            <_system_object_id>579</_system_object_id>
+            <_standard>
+              <de-DE>ProjectBeteiligte</de-DE>
+              <en-US>ProjectMember</en-US>
+              <und>ProjectMember</und>
+            </_standard>
+            <name type="text_l10n_oneline">
+              <de-DE>ProjectBeteiligte</de-DE>
+              <en-US>ProjectMember</en-US>
+              <und>ProjectMember</und>
+            </name>
+          </person_rolle>
+        </rolle>
+      </objekttyp__contributor>
+      <objekttyp__contributor>
+        <person>
+          <person_urheber>
+            <_version>3</_version>
+            <_id>6</_id>
+            <_system_object_id>421</_system_object_id>
+            <_standard>
+              <de-DE>Mgaloblishvili, Sopio</de-DE>
+              <en-US>Mgaloblishvili, Sopio</en-US>
+              <und>Mgaloblishvili, Sopio</und>
+            </_standard>
+            <name type="text_oneline">Mgaloblishvili, Sopio</name>
+            <custom name="orcid" type="custom:base.custom-data-type-link.link">
+              <string name="url">http://orcid.org/0000-0002-2488-8505</string>
+              <string name="tld">org</string>
+              <string name="hostname">orcid.org</string>
+              <object name="_fulltext">
+                <string name="string">http://orcid.org/0000-0002-2488-8505</string>
+                <object name="l10ntext">
+                  <string name="de_DE"/>
+                  <string name="en_US"/>
+                </object>
+              </object>
+              <object name="text">
+                <string name="de_DE"/>
+                <string name="en_US"/>
+              </object>
+            </custom>
+          </person_urheber>
+        </person>
+        <rolle>
+          <person_rolle>
+            <_version>4</_version>
+            <_id>14</_id>
+            <_system_object_id>579</_system_object_id>
+            <_standard>
+              <de-DE>ProjectBeteiligte</de-DE>
+              <en-US>ProjectMember</en-US>
+              <und>ProjectMember</und>
+            </_standard>
+            <name type="text_l10n_oneline">
+              <de-DE>ProjectBeteiligte</de-DE>
+              <en-US>ProjectMember</en-US>
+              <und>ProjectMember</und>
+            </name>
+          </person_rolle>
+        </rolle>
+      </objekttyp__contributor>
+      <objekttyp__contributor>
+        <person>
+          <person_urheber>
+            <_version>3</_version>
+            <_id>1</_id>
+            <_system_object_id>412</_system_object_id>
+            <_standard>
+              <de-DE>Gebert, Mildred</de-DE>
+              <en-US>Gebert, Mildred</en-US>
+              <und>Gebert, Mildred</und>
+            </_standard>
+            <name type="text_oneline">Gebert, Mildred</name>
+            <custom name="orcid" type="custom:base.custom-data-type-link.link">
+              <object name="text">
+                <string name="de_DE"/>
+                <string name="en_US"/>
+              </object>
+              <string name="url">http://orcid.org/0000-0002-7986-7904</string>
+            </custom>
+          </person_urheber>
+        </person>
+        <rolle>
+          <person_rolle>
+            <_version>4</_version>
+            <_id>14</_id>
+            <_system_object_id>579</_system_object_id>
+            <_standard>
+              <de-DE>ProjectBeteiligte</de-DE>
+              <en-US>ProjectMember</en-US>
+              <und>ProjectMember</und>
+            </_standard>
+            <name type="text_l10n_oneline">
+              <de-DE>ProjectBeteiligte</de-DE>
+              <en-US>ProjectMember</en-US>
+              <und>ProjectMember</und>
+            </name>
+          </person_rolle>
+        </rolle>
+      </objekttyp__contributor>
+    </_nested__objekttyp__contributor>
+    <_nested__objekttyp__informant>
+      <objekttyp__informant>
+        <informant>
+          <person_informant>
+            <_version>3</_version>
+            <_id>1</_id>
+            <_system_object_id>424</_system_object_id>
+            <_standard>
+              <de-DE>424v1_m_52</de-DE>
+              <en-US>424v1_m_52</en-US>
+              <und>424v1_m_52</und>
+            </_standard>
+            <pseudonym type="text_oneline">424v1_m_52</pseudonym>
+          </person_informant>
+        </informant>
+      </objekttyp__informant>
+      <objekttyp__informant>
+        <informant>
+          <person_informant>
+            <_version>6</_version>
+            <_id>2</_id>
+            <_system_object_id>425</_system_object_id>
+            <_standard>
+              <de-DE>#425m1967</de-DE>
+              <en-US>#425m1967</en-US>
+              <und>#425m1967</und>
+            </_standard>
+            <pseudonym type="text_oneline">#425m1967</pseudonym>
+          </person_informant>
+        </informant>
+      </objekttyp__informant>
+    </_nested__objekttyp__informant>
+    <_nested__objekttyp__datum>
+      <objekttyp__datum>
+        <anfang type="date">2011-09-21</anfang>
+        <ende type="date"/>
+      </objekttyp__datum>
+    </_nested__objekttyp__datum>
+    <beschreibung type="text_l10n">
+      <de-DE>Traditionelle Regel der Markierung der Herde. Dabei  wird gezeigt wie man mit Hilfe eines speziellen Geräts ein Schaf markiert.</de-DE>
+    </beschreibung>
+    <_nested__objekttyp__orte>
+      <objekttyp__orte>
+        <ort>
+          <ort>
+            <_version>5</_version>
+            <_id>3</_id>
+            <_system_object_id>417</_system_object_id>
+            <_standard>
+              <de-DE>Ch'antlisquri</de-DE>
+              <en-US>Chantlisqure</en-US>
+              <und>ჩანტლისყურე</und>
+            </_standard>
+            <name type="text_l10n_oneline">
+              <de-DE>Ch'antlisquri</de-DE>
+              <en-US>Chantlisqure</en-US>
+              <und>ჩანტლისყურე</und>
+            </name>
+            <custom name="geonames_uri" type="custom:base.custom-data-type-geonames.geonames">
+              <object name="_fulltext">
+                <string name="string">http://www.geonames.org/824940</string>
+                <string name="text">Ch’antlisquri</string>
+              </object>
+              <string name="conceptURI">http://www.geonames.org/824940</string>
+              <string name="conceptName">Ch’antlisquri</string>
+            </custom>
+            <exakte_koordinaten type="text_oneline">41.906562, 45.914137</exakte_koordinaten>
+          </ort>
+        </ort>
+      </objekttyp__orte>
+    </_nested__objekttyp__orte>
+    <_nested__objekttyp__relationen>
+      <objekttyp__relationen>
+        <lk_relation_typ_id>
+          <relation_typ>
+            <_version>4</_version>
+            <_id>35</_id>
+            <_system_object_id>1012</_system_object_id>
+            <_standard>
+              <de-DE>IstEnthaltenIn</de-DE>
+            </_standard>
+            <name type="text_l10n_oneline">
+              <de-DE>IstEnthaltenIn</de-DE>
+            </name>
+          </relation_typ>
+        </lk_relation_typ_id>
+      </objekttyp__relationen>
+    </_nested__objekttyp__relationen>
+  </objekttyp>
+</objects>
