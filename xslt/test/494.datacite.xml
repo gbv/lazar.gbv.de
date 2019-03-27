@@ -24,7 +24,7 @@
     </datacite:contributor>
   </datacite:contributors>
   <datacite:descriptions>
-    <datacite:description descriptionType="Abstracts" xml:lang="de">Die Video- und Fotodateien zeigen die Anfertigung des Besens im Detail</datacite:description>
+    <datacite:description descriptionType="Abstract" xml:lang="de">Die Video- und Fotodateien zeigen die Anfertigung des Besens im Detail</datacite:description>
   </datacite:descriptions>
   <datacite:dates>
     <datacite:date dateType="Created">2011-09-29</datacite:date>
@@ -37,7 +37,7 @@
     <datacite:alternateIdentifier alternateIdentifierType="UUID">31ab40ef-9fbf-4674-9c5b-2391e0b5cdb4</datacite:alternateIdentifier>
   </datacite:alternateIdentifiers>
   <datacite:relatedIdentifiers>
-    <datacite:relatedIdentifier relatedIdentifierType="URL" relationType="isIdenticalTo">https://lazardb.gbv.de/detail/494</datacite:relatedIdentifier>
+    <datacite:relatedIdentifier relatedIdentifierType="URL" relationType="IsIdenticalTo">https://lazardb.gbv.de/detail/494</datacite:relatedIdentifier>
   </datacite:relatedIdentifiers>
   <datacite:version>1.0</datacite:version>
   <datacite:rightsList>
