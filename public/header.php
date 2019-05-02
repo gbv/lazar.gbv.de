@@ -30,8 +30,8 @@ $TYPES = [
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/bootstrap-lazar.css">
+    <link rel="stylesheet" href="https://lazar.gbv.de/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://lazar.gbv.de/css/bootstrap-lazar.css">
     <title>LaZAR-APIs</title>
   </head>
   <body>

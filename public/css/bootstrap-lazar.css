@@ -1,15 +1,28 @@
 .navbar {
   background-color: #577fbb !important;
 }
+
 body {
   padding-top: 70px;
 }
 
-.anchor > a {
+.anchor>a {
   position: absolute;
   left: 0px;
   top: -70px;
 }
+
 .anchor {
   position: relative;
+}
+
+.download_formats {
+  width: 80%;
+  margin-top: 50px;
+}
+
+.download_formats .tab-content .tab-pane {
+  border: 1px solid #dee2e6;
+  border-top: 0;
+  padding: 10px;
 }
