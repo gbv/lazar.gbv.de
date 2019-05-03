@@ -44,12 +44,12 @@ $TYPES = [
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-<?php foreach ($TYPES as $path => $entity) { ?>
-          <li class="nav-item">
-            <a class="nav-link<?= $SECTION === $path ? ' active' : '' ?>"
-               href="../<?=$path?>"><?=$entity['name']?></a>
-          </li>
-<?php } ?>
+          <?php foreach ($TYPES as $path => $entity) { ?>
+                    <li class="nav-item">
+                      <a class="nav-link<?= $SECTION === $path ? ' active' : '' ?>"
+                         href="../<?=$path?>"><?=$entity['name']?></a>
+                    </li>
+          <?php } ?>
           <li class="nav-item">
             <a class="nav-link<?= $SECTION === 'api' ? ' active' : '' ?>"
                href="../api">APIs</a>

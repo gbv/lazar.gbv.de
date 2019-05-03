@@ -80,9 +80,15 @@
       <title>OAI 2.0 Request Results</title>
       <xsl:call-template name="css"/>
       <xsl:call-template name="xmlStyle"/>
+      <link rel="shortcut icon" type="image/x-icon" href="https://lazar.gbv.de/images/lazar_favicon.png" />
     </head>
     <body>
       <xsl:call-template name="navbar"/>
+      <div class="splitterUnderNav">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+      	 <path class="lazar-shape-fill" d="M0,6V0h1000v100L0,6z"></path>
+        </svg>
+      </div>
       <div class="container-fluid">
         <xsl:apply-templates select="oai:OAI-PMH" />
         <xsl:call-template name="footer"/>
@@ -104,12 +110,15 @@
 
 <xsl:template name="navbar">
   <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
-    <xsl:if test="$brand">
-      <a class="navbar-brand" href="{$brandUrl}">
-        <xsl:value-of select="$brand"/>
+      <a class="navbar-brand" href="../api">
       </a>
-    </xsl:if>
     <ul class="navbar-nav">
+      <li>
+        <xsl:attribute name="class">nav-item
+          <xsl:if test="$verb ='Identify'">active</xsl:if>
+        </xsl:attribute>
+        <a class="nav-link" href="https://lazar.gbv.de/api/oai">LaZAR-OAI-PMH</a>
+      </li>
       <li>
         <xsl:attribute name="class">nav-item
           <xsl:if test="$verb ='Identify'">active</xsl:if>
@@ -247,9 +256,9 @@
       <a name="{$n}" />
       <h3>
         <xsl:text>Record </xsl:text>
-        <xsl:value-of select="$n"/>      
+        <xsl:value-of select="$n"/>
         <xsl:text>/</xsl:text>
-        <xsl:value-of select="$count"/>      
+        <xsl:value-of select="$count"/>
         <xsl:apply-templates select="$resumptionToken" mode="link">
           <xsl:with-param name="text">+…</xsl:with-param>
         </xsl:apply-templates>
@@ -395,7 +404,7 @@
           <a href="?verb=GetRecord&amp;metadataPrefix={$prefix}&amp;identifier={$identifier}">
             Record
           </a>
-        </xsl:when>   
+        </xsl:when>
         <xsl:otherwise>
           <a href="?verb=ListIdentifiers&amp;metadataPrefix={$prefix}">
             Identifiers
@@ -404,7 +413,7 @@
           <a href="?verb=ListRecords&amp;metadataPrefix={$prefix}">
             Records
           </a>
-        </xsl:otherwise>            
+        </xsl:otherwise>
       </xsl:choose>
     </td>
   </tr>
