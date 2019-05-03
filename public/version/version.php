@@ -16,22 +16,21 @@ else {
   die("Incorrect Parameters");
 }
 
-$xmlOrigPath = 'https://lazardb.gbv.de/api/v1/objects/uuid/' . $uuid . '/format/xml_easydb';
-$xmlOrigStr = file_get_contents($xmlOrigPath);
-$xmlOrig = simplexml_load_string($xmlOrigStr);
-$lazardbUrl = $xmlOrig->objekttyp->_urls;
-$lazardbUrl = $lazardbUrl->xpath('//*[@type="easydb-id"]');
-$lazardbUrl = strval($lazardbUrl[0][0]);
-
-echo '<h3>Dies ist Version ' . $version . ' des Datensatzes <a href="' . $lazardbUrl . '" target="_blank">' . $lazardbUrl . '</a></h3>';
-
 // get easydb-XML for Version
 $xmlVersionPath = 'https://lazardb.gbv.de/api/v1/objects/uuid/' . $uuid . '/version/' . $version . '/format/xml_easydb';
 $xmlVersionStr = file_get_contents($xmlVersionPath);
-
 $xmlVersion = simplexml_load_string($xmlVersionStr);
-$xmlVersion->formatOutput = true;
 
+$lazardbUrl = $xmlVersion->objekttyp->_urls;
+$lazardbUrl = $lazardbUrl->xpath('//*[@type="easydb-id"]');
+$lazardbUrl = strval($lazardbUrl[0][0]);
+$uri = "https://lazar.gbv.de/id/" . $uuid;
+
+echo '<h3>Datensatz-Version</h3>';
+echo '<p>Dies ist <b>Version ' . $version . '</b> des Datensatzes <a href="' . $uri . '">' . $uri . '</a></p>';
+echo '<p>Ansicht in easyDB siehe unter <a href="' . $lazardbUrl . '">' . $lazardbUrl . '</a>.</p>';
+
+$xmlVersion->formatOutput = true;
 $xmlString = htmlentities($xmlVersion->saveXML());
 
 // get JSON for Version
