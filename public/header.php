@@ -32,11 +32,13 @@ $TYPES = [
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://lazar.gbv.de/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://lazar.gbv.de/css/bootstrap-lazar.css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://lazar.gbv.de/images/lazar_favicon.png">
     <title>LaZAR-APIs</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="../">LaZAR</a>
+      <a class="navbar-brand" href="../"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -62,4 +64,9 @@ $TYPES = [
         </ul>
       </div>
     </nav>
+    <div class="splitterUnderNav">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+      	<path class="lazar-shape-fill" d="M0,6V0h1000v100L0,6z"></path>
+      </svg>
+    </div>
     <div class="container-fluid">
