@@ -277,7 +277,13 @@
           <xsl:variable name="role">
             <xsl:apply-templates select="edb:rolle/edb:person_rolle"/>
           </xsl:variable>
-          <datacite:contributor contributorType="{$role}">
+          <datacite:contributor>
+            <xsl:attribute name="contributorType">
+              <xsl:if test="$role != 'Translator'">
+                <xsl:value-of select="$role"/>
+              </xsl:if>
+              <xsl:if test="$role = 'Translator'">Other</xsl:if>
+            </xsl:attribute>
             <datacite:contributorName>
               <xsl:value-of select="$person/edb:name[@type='text_oneline']"/>
             </datacite:contributorName>
