@@ -143,9 +143,13 @@ class Proxy
                 $sets[$setSpec] = $setName ? $setName->nodeValue : '';
             }
             foreach ($this->intersectSets as $set1 => $pattern) {
-                if (!$sets[$set1]) continue;
+                if (!$sets[$set1]) {
+                    continue;
+                }
                 foreach ($sets as $set2 => $setName) {
-                    if (!preg_match("/$pattern/", $set2)) continue;
+                    if (!preg_match("/$pattern/", $set2)) {
+                        continue;
+                    }
                     $setNode = $dom->createElement('set');
                     $setNode->appendChild($dom->createElement('setSpec', "$set1*$set2"));
                     $setNode->appendChild($dom->createElement('setName', $sets[$set1]." ".$setName));
@@ -167,7 +171,7 @@ class Proxy
                 $node->setAttribute('metadataPrefix', $query['targetPrefix']);
             }
             if (count($query['sets'])) {
-                $node->setAttribute('set',implode("*",$query['sets']));
+                $node->setAttribute('set', implode("*", $query['sets']));
             }
         }
 

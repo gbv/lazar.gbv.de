@@ -1,19 +1,18 @@
 <?php
 include 'header.php';
 
-if(isset($_GET['path'])) {
-  $path = trim($_GET['path']);
-  $parts = explode('/', $path);
-  $parts = array_filter($parts);
+if (isset($_GET['path'])) {
+    $path = trim($_GET['path']);
+    $parts = explode('/', $path);
+    $parts = array_filter($parts);
   // parameter-count wrong
-  if(count($parts) != 2) {
+    if (count($parts) != 2) {
+        die("Incorrect Parameters");
+    }
+    $uuid = $parts[0];
+    $version = $parts[1];
+} else {
     die("Incorrect Parameters");
-  }
-  $uuid = $parts[0];
-  $version = $parts[1];
-}
-else {
-  die("Incorrect Parameters");
 }
 
 // get easydb-XML for Version

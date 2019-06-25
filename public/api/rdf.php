@@ -32,7 +32,7 @@ $uri = "https://lazar.gbv.de/id/$id";
 include_once '../header.php';
 
 ?>
-  <?php echo $record->ownerDocument->saveXML($record); ?>
+    <?php echo $record->ownerDocument->saveXML($record); ?>
 
 <hr>
 <p>

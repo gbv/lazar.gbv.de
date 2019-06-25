@@ -20,8 +20,7 @@ Der Quellcode des Proxy befindet sich im Unterverzeichnis `src/`.
 
 ### Linked Open Data
 
-*...noch nicht umgesetzt...*
-
+Linked-Open Data wird in rudimentärer Form durch Konvertierung von DataCite-XML nach HTML+RDFa bereitgestellt.
 
 ## XSLT-Skripte
 
@@ -29,9 +28,7 @@ In easyDB können mittels XSLT Formate zur Auslieferung per OAI-PMH definiert we
 
     cd xslt
 
-Zum Testen kann mit `getrecord` ein Datensätz per OAI-PMH heruntergeladen werden:
-
-    ./getrecord oai:lazar.gbv.de:4c5b995c-32b5-45c0-8ad4-8f5c3964bcdb > easydb.xml
+Zum Testen kann mit `getrecord` ein Datensätz per OAI-PMH heruntergeladen werdbereitgestellt../getrecord oai:lazar.gbv.de:4c5b995c-32b5-45c0-8ad4-8f5c3964bcdb > easydb.xml
 
 Die Umgebungsvariable `OAIMPH` setzt einen anderen OAI-Endpunkt. Als zweiter Parameter kann ein Metadatenformat statt `easydb` angegeben werden (z.B. `oai_dc`).
 
@@ -50,6 +47,9 @@ Im Unterverzeichnis `test` befinden sich Beispieldatensätze für Regressionstes
 
 werden alle Beispiele überprüft.
 
+Zusätzlich sollten die Zieldateien mit `xmlint` validiert werden, z.B.
+
+    xmllint --noout --schema schemas/datacite.xsd datacite.xml
 
 ## Installation
 

@@ -44,12 +44,12 @@ $TYPES = [
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <?php foreach ($TYPES as $path => $entity) { ?>
+            <?php foreach ($TYPES as $path => $entity) { ?>
                     <li class="nav-item">
                       <a class="nav-link<?= $SECTION === $path ? ' active' : '' ?>"
                          href="../<?=$path?>"><?=$entity['name']?></a>
                     </li>
-          <?php } ?>
+            <?php } ?>
           <li class="nav-item">
             <a class="nav-link<?= $SECTION === 'api' ? ' active' : '' ?>"
                href="../api">APIs</a>
@@ -66,7 +66,7 @@ $TYPES = [
     </nav>
     <div class="splitterUnderNav">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
-      	<path class="lazar-shape-fill" d="M0,6V0h1000v100L0,6z"></path>
+        <path class="lazar-shape-fill" d="M0,6V0h1000v100L0,6z"></path>
       </svg>
     </div>
     <div class="container-fluid">
