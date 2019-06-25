@@ -225,9 +225,14 @@
     <xsl:variable name="pubdates" select="$dates[edb:datumstyp/edb:datumstyp/edb:name/edb:de-DE='Publikationsdatum']"/>
     <xsl:variable name="year" select="substring($pubdates/edb:anfang,1,4)"/>
     <xsl:if test="string($year)">
-      <!-- TODO: this is required! -->
       <datacite:publicationYear>
         <xsl:value-of select="$year"/>
+      </datacite:publicationYear>
+    </xsl:if>
+    <xsl:if test="not($year)">
+      <!-- just take the last date in the list -->
+      <datacite:publicationYear>
+        <xsl:copy-of select="substring($dates[last()]/edb:anfang,1,4)"/>
       </datacite:publicationYear>
     </xsl:if>
   </xsl:template>

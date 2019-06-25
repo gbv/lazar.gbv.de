@@ -14,4 +14,4 @@ fi
 ./getrecord "$1" easydb > easydb.xml
 
 echo $SCRIPT >&2
-../xslt.php easydb.xml $SCRIPT
+./xslt.php easydb.xml $SCRIPT

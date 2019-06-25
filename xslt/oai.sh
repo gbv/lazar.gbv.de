@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASE=${OAIPMH:-https://lazardb.gbv.de/api/v1/plugin/base/oai/oai}
+BASE=${OAIPMH:-https://lazardb.gbv.de/api/plugin/base/oai/oai/request}
 
 GetRecordURL () {
     echo "$BASE?verb=GetRecord&identifier=$2&metadataPrefix=$3"
