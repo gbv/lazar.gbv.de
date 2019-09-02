@@ -3,6 +3,8 @@
      LaZAR-DB Export nach DataCite
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:date="http://exslt.org/dates-and-times" 
+    extension-element-prefixes="date"
   xmlns:datacite="http://datacite.org/schema/kernel-4"
   xmlns:edb="https://schema.easydb.de/EASYDB/1.0/objects/"
   exclude-result-prefixes="edb xsl">
@@ -230,9 +232,16 @@
       </datacite:publicationYear>
     </xsl:if>
     <xsl:if test="not($year)">
-      <!-- just take the last date in the list -->
       <datacite:publicationYear>
-        <xsl:copy-of select="substring($dates[last()]/edb:anfang,1,4)"/>
+          <!-- try: just take the last date in the list -->
+          <xsl:variable name="firstYear" select="substring($dates[last()]/edb:anfang,1,4)"/>
+          <xsl:if test="string($firstYear)">
+              <xsl:copy-of select="$firstYear"/>
+          </xsl:if>
+          <!-- else take the current year -->
+          <xsl:if test="not($firstYear)">
+              <xsl:value-of select="substring(date:date(), 1,4)"/>
+          </xsl:if>
       </datacite:publicationYear>
     </xsl:if>
   </xsl:template>
